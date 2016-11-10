@@ -16,12 +16,12 @@
                 <img src="{{ asset('public/images/logo-fishblock.png') }}" alt="FishBlock Logo" width="20%">
             </figure>
             <div class="">
-                <div class=""><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></div>
-                <div class=""><a href="{{ path('fos_user_security_login') }}">Se Connecter</a></div>
+                <div class="btn-fish"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></div>
+                <div class="btn-fish"><a href="{{ path('fos_user_security_login') }}">Se Connecter</a></div>
             </div>
             <nav>
-                <div class=""><a href="{{ path('_index') }}">Accueil</a></div>
-                <div class=""><a href="{{ path('_series') }}">Séries</a></div>
+                <div class="btn-fish"><a href="{{ path('_index') }}">Accueil</a></div>
+                <div class="btn-fish"><a href="{{ path('_series') }}">Séries</a></div>
             </nav>
         </header>
         {% block body %}{% endblock %}
