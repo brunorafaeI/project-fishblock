@@ -1,0 +1,4 @@
+acme_fish_block:
+    resource: "@AcmeFishBlockBundle/Resources/config/routing.yml"
+    prefix:   /
+

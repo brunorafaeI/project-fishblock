@@ -1,0 +1,8 @@
+# Acme/FishBlockBundle/Resources/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+_index:
+    resource: "@AcmeFishBlockBundle/Controller/"
+    type:     annotation
+    prefix:   /

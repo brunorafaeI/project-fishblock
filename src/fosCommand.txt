@@ -1,0 +1,3 @@
+php app/console fos:user:create                               #Create a user.
+php app/console fos:user:activate [user]                      #Active a user.
+php app/console fos:user:promote [user] [role] [--super]      #Add role of the user.
