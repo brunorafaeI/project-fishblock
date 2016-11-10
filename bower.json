@@ -1,0 +1,23 @@
+{
+  "name": "Project FishBlock",
+  "homepage": "https://github.com/brunorafaeI/project-fishblock",
+  "authors": [
+    "Bruno Rafael <brunorafaelap@gmail.com>"
+  ],
+  "description": "Project FishBlock est un resau social de series",
+  "main": "",
+  "keywords": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "fa-awesome": "^2.0.2"
+  }
+}

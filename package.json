@@ -1,0 +1,22 @@
+{
+  "name": "FishBlock",
+  "version": "1.0.0",
+  "description": "Symfony Standard Edition ========================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunorafaeI/project-fishblock.git"
+  },
+  "author": "Bruno Rafael",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunorafaeI/project-fishblock/issues"
+  },
+  "homepage": "https://github.com/brunorafaeI/project-fishblock#readme",
+  "devDependencies": {
+    "gulp-sass": "^2.3.2"
+  }
+}
