@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,MAAM;EACJ,OAAO,EAAE,IAAI;;AACf,IAAI;EACF,SAAS,EAAE,MAAM;;AAEnB,MAAM;EACJ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,gBAAgB,EAAE,OAAO",
+"sources": ["fishblock.sass"],
+"names": [],
+"file": "fishblock.css"
+}

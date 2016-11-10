@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}FishBlock - Votre Portail de Séries!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('public/css/fishblock.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -11,6 +12,9 @@
         <h1 class="cache">FishBlock - Votre Portail de Séries</h1>
         <header>
             <h1>Bienvenue à votre Portail de Séries</h1>
+            <figure>
+                <img src="{{ asset('public/images/logo-fishblock.png') }}" alt="FishBlock Logo" width="20%">
+            </figure>
             <div class="">
                 <div class=""><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></div>
                 <div class=""><a href="{{ path('fos_user_security_login') }}">Se Connecter</a></div>
