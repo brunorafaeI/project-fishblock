@@ -7,7 +7,22 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <main>
+        <h1 class="cache">FishBlock - Votre Portail de Séries</h1>
+        <header>
+            <h1>Bienvenue à votre Portail de Séries</h1>
+            <div class="">
+                <div class=""><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></div>
+                <div class=""><a href="{{ path('fos_user_security_login') }}">Se Connecter</a></div>
+            </div>
+            <nav>
+                <div class=""><a href="{{ path('_index') }}">Accueil</a></div>
+                <div class=""><a href="{{ path('_series') }}">Séries</a></div>
+            </nav>
+        </header>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+    </main>
     </body>
 </html>

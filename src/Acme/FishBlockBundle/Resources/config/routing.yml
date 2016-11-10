@@ -6,3 +6,44 @@ _index:
     resource: "@AcmeFishBlockBundle/Controller/"
     type:     annotation
     prefix:   /
+
+#_admin_genre:
+#    resource: "@AcmeFishBlockBundle/Controller/GenreController.php"
+#    type:     annotation
+#    prefix:   /admin
+#
+#_admin_film:
+#    resource: "@AcmeFishBlockBundle/Controller/FilmController.php"
+#    type:     annotation
+#    prefix:   /admin
+
+#imie_tv_admin:
+#    path: /admin
+#    defaults: { _controller: AcmeFishBlockBundle:Admin:index}
+
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+#_security_login_check:
+#    pattern: /login_check
+
+# Cette route sera gérée automatiquement par symfony, il faut juste la déclarer
+#_security_logout:
+#    pattern: /logout
+
+#_admin:
+#    resource: "@AcmeFishBlockBundle/Controller/AdminController.php"
+#    type:     annotation
+
+admin_genre:
+    resource: "@AcmeFishBlockBundle/Controller/GenreController.php"
+    type:     annotation
+
+admin_serie:
+    resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
+    type:     annotation
+
+
+_series:
+    resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
+    type:     annotation
+    prefix:   /
