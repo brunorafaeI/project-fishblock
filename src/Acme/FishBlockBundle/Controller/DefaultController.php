@@ -16,5 +16,15 @@ class DefaultController extends Controller
     public function ActionIndex(){
         return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig');
     }
+ //    /**
+	//  * @Route("/searchSubmit")
+	//  */
+	// public function searchAction(Request $request)
+	// {
+	//     $searchTerm = $request->query->get('search-term');
+	//     return $this->redirect($this->generateUrl('bundle_controller_search', array(
+	//         'searchTerm' => $searchTerm,
+	//     )));
+	// }
 
 }

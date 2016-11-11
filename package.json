@@ -16,7 +16,5 @@
     "url": "https://github.com/brunorafaeI/project-fishblock/issues"
   },
   "homepage": "https://github.com/brunorafaeI/project-fishblock#readme",
-  "devDependencies": {
-    "gulp-sass": "^2.3.2"
-  }
+  "devDependencies": ""
 }

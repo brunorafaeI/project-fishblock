@@ -9,9 +9,9 @@ gulp.task('sass', function(){
 })
 
 //task for watch
-gulp.task('watch', () =>
+gulp.task('watch', function(){
     gulp.watch('web/public/sass/**/*.sass', ['sass'])
-)
+})
 
 //task for default gulp
 gulp.task('default', ['sass', 'watch'])

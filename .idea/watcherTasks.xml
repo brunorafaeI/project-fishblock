@@ -9,7 +9,7 @@
       <option name="fileExtension" value="sass" />
       <option name="immediateSync" value="true" />
       <option name="name" value="Sass" />
-      <option name="output" value="$FileNameWithoutExtension$.css" />
+      <option name="output" value="$FileParentDir$\css\$FileNameWithoutExtension$.css" />
       <option name="outputFilters">
         <array />
       </option>

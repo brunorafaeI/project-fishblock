@@ -1,0 +1,74 @@
+@import others/mixins
+// @import others/reset
+@import ../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap
+@import ../../../bower_components/breakpoint-sass/stylesheets/breakpoint
+
+body
+	font-family: 'Open Sans', sans-serif !important
+a
+	+transition(.5s)
+	&:hover,
+	&:focus
+		text-decoration: none !important
+		color: $yellow-fish
+ul
+	li
+		display: inline-block
+		a
+			text-transform: capitalize	
+
+header
+	background-color: $blue-fish
+	width: 100%
+	min-height: 100px
+	padding-top: 20px
+	margin-bottom: 20px
+
+	figure
+		img
+			.logo
+			float: left
+
+	span
+		float: right
+		font-weight: $bold
+		a
+
+
+	nav.menu-login-fish
+		float: right
+		width: 320px
+		height: 50px
+		font-weight: $bold
+
+nav.menu-nav-fish
+	
+	height: 3em
+	padding: 8px
+	font-size: 1.1em
+	font-weight: $bold
+
+	ul
+		li
+			margin-right: 1em
+
+	span
+		font-size: 1.3em
+		margin-right: 0.2em
+
+.btn-fish
+	padding: 6px 10px
+	border: 2px solid $gris-clair-fish
+	border-radius: 6px
+	color: $gris-fish
+
+.btn-fish:hover
+	background-color: $gris-fish
+	color: $yellow-fish
+
+.cache-fish
+	display: none
+
+
+	
+	

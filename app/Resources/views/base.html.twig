@@ -5,28 +5,58 @@
         <title>{% block title %}FishBlock - Votre Portail de Séries!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('public/css/fishblock.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
     <main>
-        <h1 class="cache">FishBlock - Votre Portail de Séries</h1>
-        <header>
-            <h1>Bienvenue à votre Portail de Séries</h1>
-            <figure>
-                <img src="{{ asset('public/images/logo-fishblock.png') }}" alt="FishBlock Logo" width="20%">
+        <h1 class="cache-fish">FishBlock - Votre Portail de Séries</h1>
+        <header class="container-fluid">
+
+            {# Logo of the website #}
+            <figure class="logo-fish">
+                <img src="{{ asset('public/images/logo-fishblock2.png') }}" class="animated bounceInLeft" alt="FishBlock Logo" width="280px">
             </figure>
-            <div class="">
-                <div class="btn-fish"><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></div>
-                <div class="btn-fish"><a href="{{ path('fos_user_security_login') }}">Se Connecter</a></div>
-            </div>
-            <nav>
-                <div class="btn-fish"><a href="{{ path('_index') }}">Accueil</a></div>
-                <div class="btn-fish"><a href="{{ path('_series') }}">Séries</a></div>
+
+            {# button login / inscription #}
+            <nav class="menu-login-fish ">
+                <h1 class="cache-fish">login / inscription</h1>
+                    <ul>                        
+                        <li><a href="{{ path('fos_user_registration_register') }}" class="btn-fish btn-actived">s'inscrire</a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}" class="btn-fish">se connecter</a></li>
+                    </ul>
             </nav>
+
+            {# Change langages #}
+            <span class="lang-fish">
+                <a href="" lang="fr" class="btn-fish btn-actived">FR</a>
+                <a href="" lang="en" class="btn-fish">EN</a>
+            </span>
+            
         </header>
+
+        {# Menu navigation #}
+            <nav class="menu-nav-fish">
+                <h1 class="cache-fish">Menu of navigation</h1>
+                    <ul>
+                        <li><a href="{{ path('_index') }}" class="btn-fish btn-actived"><span class="fa fa-home"></span>accueil</a></li>
+                        <li><a href="{{ path('_series') }}" class="btn-fish"><span class="fa fa-tv"></span>séries</a></li>
+                    </ul>
+            </nav>
+        
+         {# Button search  , {'searchTerm': app.request.query.get('search-term')})  #} 
+           {#  <form class="navbar-form" method="get" action="{{ path('path_id') }}" role="search"> 
+                <div class="input-group">
+                    <input type="search" class="form-control" placeholder="Search" name="search-term" id="search-term" required>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form> #}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 
-    </main>
+        </main>
     </body>
 </html>

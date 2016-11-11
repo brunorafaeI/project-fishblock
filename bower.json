@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "fa-awesome": "^2.0.2",
-    "breakpoint-sass": "^2.7.0"
+    "breakpoint-sass": "^2.7.0",
+    "font-awesome": "^4.7.0"
   }
 }
