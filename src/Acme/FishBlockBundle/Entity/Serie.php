@@ -59,6 +59,16 @@ class Serie
      * @ORM\Column(type="text")
      */
     protected $description;
+
+    /**
+     * @var \Image
+     *
+     * @ORM\OneToOne(targetEntity="Image", inversedBy="film", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     *
+     */
+    private $image;
+
     /**
      * Constructor
      */
@@ -165,4 +175,27 @@ class Serie
         return $this->titre;
     }
 
+
+    /**
+     * Set image
+     *
+     * @param \Acme\FishBlockBundle\Entity\Image $image
+     * @return Serie
+     */
+    public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Acme\FishBlockBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

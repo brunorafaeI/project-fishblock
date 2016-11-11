@@ -59,6 +59,16 @@ class Serie
      * @ORM\Column(type="text")
      */
     protected $description;
+
+    /**
+     * @var \Image
+     *
+     * @ORM\OneToOne(targetEntity="Image", inversedBy="film", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     *
+     */
+    private $image;
+
     /**
      * Constructor
      */
