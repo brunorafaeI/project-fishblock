@@ -5583,7 +5583,10 @@ header {
     font-weight: 700; }
 
 nav.menu-nav-fish {
-  height: 3em;
+  display: inline-block;
+  float: left;
+  min-width: 74%;
+  height: 2.5em;
   padding: 8px;
   font-size: 1.1em;
   font-weight: 700; }
@@ -5596,7 +5599,7 @@ nav.menu-nav-fish {
 .btn-fish {
   padding: 6px 10px;
   border: 2px solid #E6E6E6;
-  border-radius: 6px;
+  border-radius: 4px;
   color: #4D4D4D; }
 
 .btn-fish:hover {
@@ -5605,5 +5608,29 @@ nav.menu-nav-fish {
 
 .cache-fish {
   display: none; }
+
+section {
+  position: relative; }
+
+section.search-fish {
+  display: inline-block;
+  float: right;
+  min-width: 25%; }
+  section.search-fish form div input {
+    border: 2px solid #E6E6E6;
+    border-radius: 4px !important;
+    padding-right: 35px !important; }
+  section.search-fish .btn-search-fish {
+    clear: both;
+    cursor: pointer;
+    font-size: 1.5em;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    z-index: 5555;
+    background: transparent;
+    border: none; }
+  section.search-fish i:hover {
+    color: #FDB515; }
 
 /*# sourceMappingURL=fishblock.css.map */
