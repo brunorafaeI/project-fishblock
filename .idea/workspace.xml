@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e809b25e-1ad4-40cb-98d7-6f484669143f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/favicon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/public/css/fishblock.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/public/css/plugins.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/public/images/favicon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/public/images/favicon2.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sass-cache/d615c6a09efd62da32e25056a1d8401e260d881f/fishblock.sassc" afterPath="$PROJECT_DIR$/.sass-cache/d615c6a09efd62da32e25056a1d8401e260d881f/fishblock.sassc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/images/logo-fishblock.png" afterPath="$PROJECT_DIR$/web/public/images/logo-fishblock.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/images/logo-fishblock2.png" afterPath="$PROJECT_DIR$/web/public/images/logo-fishblock2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/FishBlockBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/Acme/FishBlockBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/css/fishblock.css" afterPath="$PROJECT_DIR$/web/public/css/fishblock.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/public/sass/fishblock.sass" afterPath="$PROJECT_DIR$/web/public/sass/fishblock.sass" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Acme/FishBlockBundle/DataFixtures/ORM/LoadingFixtures.php" afterPath="$PROJECT_DIR$/src/Acme/FishBlockBundle/DataFixtures/ORM/LoadingFixtures.php" />
     </list>
     <ignored path="filrouge.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,38 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="RegistrationFormType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Form/Type/RegistrationFormType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="33" column="64" selection-start-line="33" selection-start-column="64" selection-end-line="33" selection-end-column="64" />
-              <folding>
-                <element signature="e#298#338#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1122">
               <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-              <folding>
-                <marker date="1478884383902" expanded="true" signature="82:149" ph="{% block title ...%}" />
-                <marker date="1478884383902" expanded="true" signature="166:203" ph="{% block stylesheets ...%}" />
-                <marker date="1478884383902" expanded="true" signature="2856:2886" ph="{% block body ...%}" />
-                <marker date="1478884383902" expanded="true" signature="2914:2951" ph="{% block javascripts ...%}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadingFixtures.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Acme/FishBlockBundle/DataFixtures/ORM/LoadingFixtures.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -165,7 +122,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/Acme/FishBlockBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/Acme/FishBlockBundle/Entity/User.php" />
-        <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/fosCommand.txt" />
@@ -205,6 +161,7 @@
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/src/Acme/FishBlockBundle/DataFixtures/ORM/LoadingFixtures.php" />
       </list>
     </option>
@@ -315,6 +272,24 @@
               <option name="myItemId" value="Acme" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FishBlockBundle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filrouge" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filrouge" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -396,18 +371,18 @@
       <updated>1478774700430</updated>
       <workItem from="1478774705110" duration="28119000" />
       <workItem from="1478874713095" duration="160000" />
-      <workItem from="1478879782291" duration="3294000" />
+      <workItem from="1478879782291" duration="3854000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31573000" />
+    <option name="totallyTimeSpent" value="32133000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="201" y="94" width="1555" height="961" extended-state="1" />
-    <editor active="false" />
+    <frame x="201" y="94" width="1555" height="961" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1872887" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1872887" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995266" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -442,13 +417,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Acme/FishBlockBundle/Entity/Serie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-818">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/OptionsResolver/OptionsResolverInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
@@ -735,19 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-          <folding>
-            <marker date="1478884383902" expanded="true" signature="82:149" ph="{% block title ...%}" />
-            <marker date="1478884383902" expanded="true" signature="166:203" ph="{% block stylesheets ...%}" />
-            <marker date="1478884383902" expanded="true" signature="2856:2886" ph="{% block body ...%}" />
-            <marker date="1478884383902" expanded="true" signature="2914:2951" ph="{% block javascripts ...%}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -804,10 +759,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="20" column="72" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Acme/FishBlockBundle/DataFixtures/ORM/LoadingFixtures.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-88">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding>
+            <element signature="e#643#693#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="51" column="37" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
           <folding />
         </state>
       </provider>

@@ -120,4 +120,27 @@ class Genre
         return $this->label;
     }
 
+
+    /**
+     * Add listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     * @return Genre
+     */
+    public function addListeDesSeries(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries[] = $listeDesSeries;
+
+        return $this;
+    }
+
+    /**
+     * Remove listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     */
+    public function removeListeDesSeries(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries->removeElement($listeDesSeries);
+    }
 }
