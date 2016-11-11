@@ -35,7 +35,8 @@
             </span>
             
         </header>
-
+       
+       <section class="nav-fish">
         {# Menu navigation #}
             <nav class="menu-nav-fish">
                 <h1 class="cache-fish">Menu of navigation</h1>
@@ -46,17 +47,21 @@
             </nav>
         
          {# Button search  {{ path('path_id' , {'searchTerm': app.request.query.get('search-term')}) }}  #} 
-            <section class="search-fish">
+            <div class="search-fish">
                 <form class="navbar-form" method="get" action="" role="search"> 
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Recherche" name="search-fish" id="search-fish" required>                    
                         <button class="btn-search-fish"><i class="fa fa-search" type="submit"></i></button>                
                     </div>
                 </form>
-            </section>
+            </div>
+        </section>     
+        
+        <section>
         {% block body %}{% endblock %}
+        </section>
         {% block javascripts %}{% endblock %}
-
+       
         </main>
     </body>
 </html>
