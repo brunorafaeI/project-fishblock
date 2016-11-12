@@ -83,4 +83,27 @@ class Image
 
 
 
+
+    /**
+     * Set serie
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $serie
+     * @return Image
+     */
+    public function setSerie(\Acme\FishBlockBundle\Entity\Serie $serie = null)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \Acme\FishBlockBundle\Entity\Serie 
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
 }

@@ -1,0 +1,7 @@
+{% block sidebar %}
+    <ul id="menu-genres" class="nav nav-list">
+        <li class="nav-header"> Administrer</li>
+        <li {% if section|default('') == "genre" %}class="selected"{% endif %}><a href="{{ path('genre') }}">Genres</a></li>
+        <li {% if section|default('') == "serie" %}class="selected"{% endif %}><a href="{{ path('serie') }}">Series</a></li>
+    </ul>
+{% endblock %}

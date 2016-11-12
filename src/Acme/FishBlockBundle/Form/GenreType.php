@@ -51,7 +51,7 @@ class GenreType extends AbstractType
     public function getName()
     {
         // Identifiant du formulaire
-        return 'imie_tvbundle_genre';
+        return 'acme_fishblockbundle_genre';
     }
 
 

@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}FishBlock - Votre Portail de Séries!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('public/css/fishblock.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/fish-style.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -23,8 +23,26 @@
             <nav class="menu-login-fish ">
                 <h1 class="cache-fish">login / inscription</h1>
                     <ul>                        
-                        <li><a href="{{ path('fos_user_registration_register') }}" class="btn-fish btn-actived">s'inscrire</a></li>
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                {{ app.user.username }} |
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% else %}
+                        <li><a href="{{ path('fos_user_registration_register') }}" class="btn-fish">s'inscrire</a></li>
                         <li><a href="{{ path('fos_user_security_login') }}" class="btn-fish">se connecter</a></li>
+                            {% endif %}
+
+
+                            {% for type, messages in app.session.flashBag.all %}
+                                {% for message in messages %}
+                                    <div class="{{ type }}">
+                                        {{ message|trans({}, 'FOSUserBundle') }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
                     </ul>
             </nav>
 
@@ -36,7 +54,7 @@
             
         </header>
        
-       <section class="nav-fish">
+       <article class="nav-fish">
         {# Menu navigation #}
             <nav class="menu-nav-fish">
                 <h1 class="cache-fish">Menu of navigation</h1>
@@ -55,13 +73,45 @@
                     </div>
                 </form>
             </div>
-        </section>     
+        </article>
         
-        <section>
+        <section class="contenu-fish">
         {% block body %}{% endblock %}
         </section>
         {% block javascripts %}{% endblock %}
-       
+
+        {% block footer %}
+       <footer>
+        <article class="categories-fish">
+            <ul>
+                <li>Suivez-nous</li>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                    </ul>
+                <li>Séries</li>
+                    <ul>
+                        <li>Action</li>
+                        <li>Horreur</li>
+                        <li>Comedie</li>
+                    </ul>
+                <li>Contacts</li>
+                    <ul>
+                        <li>Fone: +33 02 45 78 96</li>
+                        <li>Email: contact@fishblock.fr</li>
+                        <li>Adresse: 1 Rue Victor Hugo - Nantes 44400</li>
+                    </ul>
+                <li>Newletter</li>
+                    <ul>
+                        <li>CONTEUDO 1</li>
+                        <li>CONTEUDO 2</li>
+                        <li>CONTEUDO 3</li>
+                    </ul>
+            </ul>
+        </article>
+       </footer>
+        {% endblock %}
         </main>
     </body>
 </html>

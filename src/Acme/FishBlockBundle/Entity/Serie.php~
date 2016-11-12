@@ -175,4 +175,27 @@ class Serie
         return $this->titre;
     }
 
+
+    /**
+     * Set image
+     *
+     * @param \Acme\FishBlockBundle\Entity\Image $image
+     * @return Serie
+     */
+    public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Acme\FishBlockBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }

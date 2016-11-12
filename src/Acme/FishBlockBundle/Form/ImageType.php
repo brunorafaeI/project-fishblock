@@ -6,8 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-
-class SerieType extends AbstractType
+class ImageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,10 +15,7 @@ class SerieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('image', new ImageType())
-            ->add('description')
-            ->add('listeDesGenres')
+            ->add('name','text')
         ;
     }
 
@@ -29,7 +25,7 @@ class SerieType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\FishBlockBundle\Entity\Serie'
+            'data_class' => 'Acme\FishBlockBundle\Entity\Image'
         ));
     }
 
@@ -38,6 +34,6 @@ class SerieType extends AbstractType
      */
     public function getName()
     {
-        return 'acme_fishblockbundle_serie';
+        return 'acme_fishblockbundle_image';
     }
 }

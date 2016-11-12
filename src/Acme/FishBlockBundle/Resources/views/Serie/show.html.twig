@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+{% use 'AcmeFishBlockBundle:Admin:sidebar_admin.html.twig' %}
+
+{% block body -%}
+    <h1>Serie</h1>
+
+    <table class="record_properties table">
+        <tbody>
+        <tr>
+            <th>Id:</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre:</th>
+            <td>{{ entity.titre }}</td>
+        </tr>
+        <tr>
+            <th>Image:</th>
+            <td><img src="{{ entity.image.name }}" width="30%" /></td>
+        </tr>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('serie') }}">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span> Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('serie_edit', { 'id': entity.id }) }}">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </a>
+        </li>
+        <li onclick="return confirm('Voullez-vous vraiment supprimer cette série?')">{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}

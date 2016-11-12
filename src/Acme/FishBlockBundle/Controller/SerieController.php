@@ -25,7 +25,7 @@ class SerieController extends Controller
     /**
      * Lists all Serie entities.
      *
-     * @Route("/", name="_series")
+     * @Route("/", name="serie")
      * @Method("GET")
      * @Template()
      */
@@ -117,16 +117,16 @@ class SerieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $serie = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
+        $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
 
-        if (!$serie) {
+        if (!$entity) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'serie'      => $serie,
+            'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -140,6 +140,7 @@ class SerieController extends Controller
      */
     public function editAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);

@@ -63,7 +63,7 @@ class Serie
     /**
      * @var \Image
      *
-     * @ORM\OneToOne(targetEntity="Image", inversedBy="film", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Image", inversedBy="serie", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      *
      */

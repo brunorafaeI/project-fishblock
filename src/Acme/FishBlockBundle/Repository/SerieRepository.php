@@ -22,7 +22,7 @@ class SerieRepository extends EntityRepository
     {
         /* Création de la requète avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
-        $queryBuilder->select("f, g")
+        $queryBuilder->select("s, g")
             ->from("AcmeFishBlockBundle:Serie", "s")
             ->leftJoin("s.listeDesGenres", "g");
 
@@ -52,7 +52,7 @@ class SerieRepository extends EntityRepository
 
         /* Création de la requète count avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
-        $queryBuilder->select("count(f) as total")
+        $queryBuilder->select("count(s) as total")
             ->from("AcmeFishBlockBundle:Serie", "s");
 
         /**
