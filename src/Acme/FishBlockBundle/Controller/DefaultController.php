@@ -15,18 +15,19 @@ class DefaultController extends Controller
      * @Route("/", name="_index", defaults={"label"=""})
      * @Template()
      */
-    public function IndexAction(){
+     public function IndexAction(){
         return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig');
+
     }
 
 
 
     /**
      * @Route("/list-series", name="_series", defaults={"label"=""})
-     * @Route("/list-series/genre/{label}", name="_genre", defaults={"label"=""})
+     * @Route("/select-genre/{label}", name="_genre", defaults={"label"=""})
      * @Template()
      */
-    public function listSerieAction($label)
+    public function listSeriesAction($label)
     {
         /* Tableau qui va stocker toutes les données à remplacer dans le template twig */
         $variables = array();
@@ -64,6 +65,7 @@ class DefaultController extends Controller
             ->fetchAllWithSeriesCount();
 
         return $this->render('AcmeFishBlockBundle:Series:list_series.html.twig', $variables);
+
     }
 
 

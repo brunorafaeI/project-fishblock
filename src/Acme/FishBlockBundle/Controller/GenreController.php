@@ -37,7 +37,7 @@ class GenreController extends Controller
     /**
      * Creates a new Genre entity.
      *
-     * @Route("/", name="genre_create")
+     * @Route("/create", name="genre_create")
      * @Method("POST")
      * @Template("AcmeFishBlockBundle:Genre:new.html.twig")
      */

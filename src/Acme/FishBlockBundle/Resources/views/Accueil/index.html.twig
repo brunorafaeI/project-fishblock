@@ -1,15 +1,13 @@
-{% extends '::base.html.twig' %}
-
-{#{% use 'AcmeFishBlockBundle:Accueil:sidebar_genres.html.twig' %}#}
-
-{#{% block sidebar %}{% endblock %}#}
+{% extends 'FOSUserBundle::layout.html.twig' %}
 
 
 
 {% block body %}
 
+    {% include 'AcmeFishBlockBundle:Accueil:slider_serie.html.twig' %}
+
+    {% include 'AcmeFishBlockBundle:Accueil:sidebar_genres.html.twig' %}
 
 
 {% endblock %}
-
 

@@ -1,20 +1,22 @@
-Liste de séries
-
 {% for entity in entities %}
     <tr>
         <td><a href="{{ path('serie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
         <td>{{ entity.titre }}</td>
-        <td><img src="{{ entity.image }}" width="50%"/></td>
-        <td>{{ entity.description }}</td>
+        <td><img src="{{ entity.image }}" class="img-serie-fish"/></td>
+        <div class="description">
+            <td>{{ entity.description }}</td>
+        </div>
         <td>
-            <ul>
-                <li>
-                    <a href="{{ path('serie_show', { 'id': entity.id }) }}"> Show</a>
-                </li>
-                <li>
-                    <a href="{{ path('serie_edit', { 'id': entity.id }) }}"> Edit</a>
-                </li>
-            </ul>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <ul>
+                    <li>
+                        <a href="{{ path('serie_show', { 'id': entity.id }) }}"> Show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('serie_edit', { 'id': entity.id }) }}"> Edit</a>
+                    </li>
+                </ul>
+            {% endif %}
         </td>
     </tr>
 {% endfor %}

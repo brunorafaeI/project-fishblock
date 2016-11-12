@@ -21,18 +21,6 @@ fishblock_admin:
     path: /admin
     defaults: { _controller: AcmeFishBlockBundle:Admin:index}
 
-_admin:
-    resource: "@AcmeFishBlockBundle/Controller/AdminController.php"
-    type:     annotation
-
-_admin_genre:
-    resource: "@AcmeFishBlockBundle/Controller/GenreController.php"
-    type:     annotation
-
-_admin_serie:
-    resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
-    type:     annotation
-
 _series:
     resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
     type:     annotation

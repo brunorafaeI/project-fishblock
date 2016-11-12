@@ -1,4 +1,5 @@
 imports:
+    - { resource: "@AcmeFishBlockBundle/Resources/config/config.yml" }
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
@@ -70,3 +71,4 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: Acme\FishBlockBundle\Entity\User
+

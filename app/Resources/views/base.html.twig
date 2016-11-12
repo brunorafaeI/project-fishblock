@@ -16,7 +16,7 @@
 
             {# Logo of the website #}
             <figure class="logo-fish">
-                <img src="{{ asset('public/images/logo-fishblock2.png') }}" class="animated bounceInLeft" alt="FishBlock Logo" width="280px">
+                <a href="{{ path('_index') }}"><img src="{{ asset('public/images/logo-fishblock2.png') }}" class="animated bounceInLeft" alt="FishBlock Logo" width="280px"></a>
             </figure>
 
             {# button login / inscription #}
@@ -63,7 +63,7 @@
                         <li><a href="{{ path('_series') }}" class="btn-fish"><span class="fa fa-tv"></span>séries</a></li>
                     </ul>
             </nav>
-        
+
          {# Button search  {{ path('path_id' , {'searchTerm': app.request.query.get('search-term')}) }}  #} 
             <div class="search-fish">
                 <form class="navbar-form" method="get" action="" role="search"> 
@@ -74,11 +74,17 @@
                 </form>
             </div>
         </article>
-        
+
+
         <section class="contenu-fish">
         {% block body %}{% endblock %}
+
         </section>
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('public/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('public/js/slider-fish.js') }}"></script>
+
+        {% endblock %}
 
         {% block footer %}
        <footer>

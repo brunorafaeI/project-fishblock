@@ -4,23 +4,30 @@
 
 {% block body %}
     {% for serie in series %}
-        <div class="block">
-            <h2>{{ serie.titre }}</h2>
-            <div class="tags-list">{% for Genre in serie.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="badge">{{ Genre.label }}</span>{% endfor %}</div>
-            <div class="illustration">
-                {% if serie.image.name is defined %}
-                    <img src="{{ serie.image.name }}" width="100%" />
-                {% else %}
-                    <span class="fa fa-ban"></span>
-                {% endif %}
+        <aside class="list-serie-fish">
+            <div class="block animated fadeInUp">
+                <h4>{{ serie.titre }}</h4>
+                <div class="list-group">{% for Genre in serie.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
+                <div class="illustration">
+                    {#<span class="roll">#}
+                        {#<h2>{{ serie.titre }}</h2>#}
+			            {#<p>{{ serie.description }}</p>#}
+                    {#</span>#}
+                    {% if serie.image.name is defined %}
+                    <a  href="{{ path('serie_show', { 'id': serie.id }) }}"><img src="{{ serie.image.name }}" class="img-serie-fish hoverzoom" /></a>
+                    {% else %}
+                        <span class="fa fa-ban"></span>
+                    {% endif %}
+                </div>
+                <div class="description">
+                    {{ serie.description }}
+                </div>
+                <div class="read-more">
+                    <a class="btn btn-primary" href="{{ path('serie_show', { 'id': serie.id }) }}">View</a>
+                </div>
             </div>
-            <div class="description">
-                {{ serie.description }}
-            </div>
-            <div class="read-more">
-                <a class="btn btn-primary btn-small" href="#">View</a>
-            </div>
-        </div>
+
     {% else %}<div class="alert">Désolé, il n'y a aucun serie dans cette section</div>
     {% endfor %}
+        </aside>
 {% endblock %}

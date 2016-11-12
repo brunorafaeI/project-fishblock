@@ -17,7 +17,7 @@ use Acme\FishBlockBundle\Form\SerieType;
 /**
  * Serie controller.
  *
- * @Route("/serie")
+ * @Route("/admin/serie")
  */
 class SerieController extends Controller
 {
@@ -43,7 +43,7 @@ class SerieController extends Controller
     /**
      * Creates a new Serie entity.
      *
-     * @Route("/", name="serie_create")
+     * @Route("/create", name="serie_create")
      * @Method("POST")
      * @Template("AcmeFishBlockBundle:Admin:new_serie.html.twig")
      */
@@ -109,7 +109,7 @@ class SerieController extends Controller
     /**
      * Finds and displays a Serie entity.
      *
-     * @Route("/{id}", name="serie_show")
+     * @Route("/{id}/show", name="serie_show")
      * @Method("GET")
      * @Template()
      */
@@ -181,7 +181,7 @@ class SerieController extends Controller
     /**
      * Edits an existing Serie entity.
      *
-     * @Route("/{id}", name="serie_update")
+     * @Route("/{id}/update", name="serie_update")
      * @Method("PUT")
      * @Template("AcmeFishBlockBundle:Serie:edit.html.twig")
      */
@@ -214,7 +214,7 @@ class SerieController extends Controller
     /**
      * Deletes a Serie entity.
      *
-     * @Route("/{id}", name="serie_delete")
+     * @Route("/{id}/delete", name="serie_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
