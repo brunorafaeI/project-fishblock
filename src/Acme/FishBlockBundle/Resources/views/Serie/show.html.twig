@@ -2,7 +2,7 @@
 {% use 'AcmeFishBlockBundle:Admin:sidebar_admin.html.twig' %}
 
 {% block body -%}
-    <h1>Serie</h1>
+    <h1>{{ 'fish.serie'|trans({}, 'AcmeFishBlockBundle') }}</h1>
 
     <table class="record_properties table">
         <tbody>
@@ -29,14 +29,16 @@
     <ul class="record_actions">
         <li>
             <a href="{{ path('serie') }}">
-                <span class="glyphicon glyphicon-circle-arrow-left"></span> Back to the list
+                <span class="fa fa-arrow-circle-left"></span> {{ 'fish.back_list'|trans({}, 'AcmeFishBlockBundle') }}
             </a>
         </li>
+        <br>
         <li>
             <a href="{{ path('serie_edit', { 'id': entity.id }) }}">
-                <span class="glyphicon glyphicon-edit"></span> Edit
+                <span class="fa fa-edit"></span> {{ 'fish.edit'|trans({}, 'AcmeFishBlockBundle') }}
             </a>
         </li>
-        <li onclick="return confirm('Voullez-vous vraiment supprimer cette série?')">{{ form(delete_form) }}</li>
+        <br>
+        <li onclick="return confirm('Voullez-vous vraiment supprimer cette série?')">{{ form(delete_form)}}</li>
     </ul>
 {% endblock %}

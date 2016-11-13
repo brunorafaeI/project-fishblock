@@ -1,3 +1,5 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
 {% for entity in entities %}
     <tr>
         <td><a href="{{ path('serie_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>

@@ -13,6 +13,19 @@ use Doctrine\ORM\EntityRepository;
 class SerieRepository extends EntityRepository
 {
     /**
+     * @return array
+     */
+    public function lastAjoutSerie(){
+        $query = $this->_em->createQueryBuilder();
+        $query->select('s')
+            ->from('AcmeFishBlockBundle:Serie', 's')
+            ->setMaxResults(4)
+            ->orderBy('s.id', 'DESC');
+
+        return $query->getQuery()->getResult();
+
+    }
+    /**
      * Retourne la liste des series correspondant au genre passé en paramètre (id)
      * Si aucun genre n'est spécifié, la liste de tous les series est renvoyée.
      * @param int $idGenre Id du genre à rechercher

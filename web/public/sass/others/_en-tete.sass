@@ -1,5 +1,9 @@
 body
 	font-family: 'Open Sans', sans-serif !important
+	//background-image: url('../images/bgheader.jpg')
+	//background-repeat: no-repeat
+	//background-attachment: fixed
+	//background-size: auto
 a
 	+transition(.5s)
 	&:hover,
@@ -33,6 +37,7 @@ header
 		width: 320px
 		height: 50px
 		font-weight: $bold
+		text-transform: capitalize
 		li
 			a
 				padding: 6px 18px
@@ -56,15 +61,6 @@ nav.menu-nav-fish
 		font-size: 1.3em
 		margin-right: 0.2em
 
-.btn-fish
-	padding: 6px 10px
-	border: 2px solid $gris-clair-fish
-	border-radius: 4px
-	color: $gris-fish
-
-.btn-fish:hover
-	background-color: $gris-fish
-	color: $yellow-fish
 
 .cache-fish
 	display: none

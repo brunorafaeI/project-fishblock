@@ -2,6 +2,7 @@
 
 namespace Acme\FishBlockBundle\Controller;
 
+
 use Acme\FishBlockBundle\Entity\Serie;
 use Acme\FishBlockBundle\Entity\Genre;
 use Acme\FishBlockBundle\AcmeFishBlockBundle;
@@ -16,15 +17,18 @@ class DefaultController extends Controller
      * @Template()
      */
      public function IndexAction(){
-        return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig');
+         $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
+         $series = $repo->lastAjoutSerie();
+
+         return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig', ['series' => $series]);
 
     }
 
 
 
     /**
-     * @Route("/list-series", name="_series", defaults={"label"=""})
-     * @Route("/select-genre/{label}", name="_genre", defaults={"label"=""})
+     * @Route("/series", name="_series", defaults={"label"=""})
+     * @Route("/genre/{label}", name="_genre", defaults={"label"=""})
      * @Template()
      */
     public function listSeriesAction($label)

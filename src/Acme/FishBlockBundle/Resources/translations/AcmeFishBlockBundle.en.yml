@@ -1,0 +1,11 @@
+fish:
+  read: Learn more...
+  create: Create
+  delete: Delete
+  upgrade: Upgrade
+  home: Home
+  series: Series
+  serie: Serie
+  search: Search
+  back_list: Back
+  edit: Edit

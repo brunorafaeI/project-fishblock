@@ -1,0 +1,30 @@
+{% block new %}
+    {% for serie in series %}
+        <aside class="list-serie-fish">
+        <div class="block animated fadeInUp">
+            <h4>{{ serie.titre }}</h4>
+            <div class="list-group">{% for Genre in serie.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
+            <div class="illustration  hoverzoom">
+                {% if serie.image.name is defined %}
+                    <a  href="{{ path('serie_show', { 'id': serie.id }) }}">
+                            <span class="roll">
+                                <h2>Title</h2>
+                                <p>description</p>
+                            </span>
+                    </a>
+                    <img src="{{ serie.image.name }}" class="img-serie-fish" />
+
+                {% else %}
+                    <span class="fa fa-ban"></span>
+                {% endif %}
+            </div>
+            <div class="description">
+                {{ serie.description }}
+            </div>
+            <div class="read-more">
+                <a class="" href="{{ path('serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
+            </div>
+        </div>
+    {% endfor %}
+    </aside>
+{% endblock %}

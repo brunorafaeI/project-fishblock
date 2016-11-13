@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function indexAction()
     {
         /**
-         * Comme @Template() est vide, il va chercher par défaut le fichier dans videoBundle/views/Admin/index.html.twig
+         * Comme @Template() est vide, il va chercher par défaut le fichier dans FishBlockBundle/Resources/views/Admin/index.html.twig
          */
         return $this->render('AcmeFishBlockBundle:Admin:index_admin.html.twig');
     }

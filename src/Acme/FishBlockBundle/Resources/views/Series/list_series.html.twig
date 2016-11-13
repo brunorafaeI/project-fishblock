@@ -1,20 +1,36 @@
-{% extends '::base.html.twig' %}
-
-{% use 'AcmeFishBlockBundle:Series:select_genres.html.twig' %}
+{% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block body %}
+    <div class="dropdown">
+        <button class="btn btn-default dropdrown-toggle btn-fish" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Genres
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu select-genre-fish" aria-labelledby="dropdownMenu1">
+            <li {% if selected_genre < 1 %}class="active-fish"{% endif %}><a href="{{ path('_series') }}">Tous <span class="badge badge-info">{{ total_nb_series }}</span></a></li>
+            {% for genre in genres %}
+                <li {% if genre['genre'].id == selected_genre %}class="active-fish"{% endif %}><a href="{{ path('_genre', { 'label': genre['genre'].label }) }}">{{ genre['genre'].label }} <span class="badge badge-info">{{ genre['nbConcernedSeries'] }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
     {% for serie in series %}
+
+
         <aside class="list-serie-fish">
             <div class="block animated fadeInUp">
                 <h4>{{ serie.titre }}</h4>
                 <div class="list-group">{% for Genre in serie.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
-                <div class="illustration">
-                    {#<span class="roll">#}
-                        {#<h2>{{ serie.titre }}</h2>#}
-			            {#<p>{{ serie.description }}</p>#}
-                    {#</span>#}
+                <div class="illustration  hoverzoom">
                     {% if serie.image.name is defined %}
-                    <a  href="{{ path('serie_show', { 'id': serie.id }) }}"><img src="{{ serie.image.name }}" class="img-serie-fish hoverzoom" /></a>
+                        <a  href="{{ path('serie_show', { 'id': serie.id }) }}">
+                            <span class="roll">
+                                <h2>Title</h2>
+                                <p>description</p>
+                            </span>
+                        </a>
+                     <img src="{{ serie.image.name }}" class="img-serie-fish" />
+
                     {% else %}
                         <span class="fa fa-ban"></span>
                     {% endif %}
@@ -23,11 +39,11 @@
                     {{ serie.description }}
                 </div>
                 <div class="read-more">
-                    <a class="btn btn-primary" href="{{ path('serie_show', { 'id': serie.id }) }}">View</a>
+                    <a class="" href="{{ path('serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
                 </div>
             </div>
 
-    {% else %}<div class="alert">Désolé, il n'y a aucun serie dans cette section</div>
+    {% else %}<div class="alert-info">Désolé, il n'y a aucun serie dans cette section</div>
     {% endfor %}
         </aside>
 {% endblock %}

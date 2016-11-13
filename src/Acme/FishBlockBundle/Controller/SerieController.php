@@ -40,6 +40,8 @@ class SerieController extends Controller
             'entities' => $entities,
         );
     }
+
+
     /**
      * Creates a new Serie entity.
      *
@@ -83,7 +85,7 @@ class SerieController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'fish.create', 'translation_domain' => 'AcmeFishBlockBundle'));
 
         return $form;
     }
@@ -174,7 +176,7 @@ class SerieController extends Controller
         ));
 
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'fish.update', 'translation_domain' => 'AcmeFishBlockBundle'));
 
         return $form;
     }
@@ -249,7 +251,7 @@ class SerieController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('serie_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'fish.delete', 'translation_domain' => 'AcmeFishBlockBundle'))
             ->getForm()
             ;
     }

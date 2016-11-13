@@ -17,7 +17,7 @@ _admin_serie:
     type:     annotation
     prefix:   /admin
 
-fishblock_admin:
+fish_admin:
     path: /admin
     defaults: { _controller: AcmeFishBlockBundle:Admin:index}
 
