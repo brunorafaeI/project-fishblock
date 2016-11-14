@@ -15,7 +15,7 @@ class SerieRepository extends EntityRepository
     /**
      * @return array
      */
-    public function lastAjoutSerie(){
+    public function lastAddSerie(){
         $query = $this->_em->createQueryBuilder();
         $query->select('s')
             ->from('AcmeFishBlockBundle:Serie', 's')
@@ -74,7 +74,14 @@ class SerieRepository extends EntityRepository
          */
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
-    
-    
-    
+
+//        /**
+//         * Retourne le nombre de serie au total
+//         * @return int Renvoie le nombre de series total
+//         */
+//        public function getSerie(){
+//            return $this->createQueryBuilder('s')
+//                ->getQuery()
+//                ->getResult();
+//        }
 }

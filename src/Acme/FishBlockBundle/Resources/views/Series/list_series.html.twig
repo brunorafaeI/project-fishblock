@@ -23,12 +23,21 @@
                 <div class="list-group">{% for Genre in serie.listeDesGenres %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
                 <div class="illustration  hoverzoom">
                     {% if serie.image.name is defined %}
-                        <a  href="{{ path('serie_show', { 'id': serie.id }) }}">
+                        <a  href="{{ path('_serie_show', { 'label': serie.titre|replace(" ", "-") }) }}">
                             <span class="roll">
                                 <h2>Title</h2>
                                 <p>description</p>
                             </span>
                         </a>
+
+                        {# ICONES JAIME, PARTAGER ET COMMENTAIRE #}
+                        {#<div class="roll">
+                            <ul>
+                                <li><a href=""><i class="fa fa-heart"></i> j'aime</a></li>
+                                <li><a href=""><i class="fa fa-commenting"></i> commenter</a></li>
+                                <li><a href=""><i class="fa fa-share-alt"></i> partager</a></li>
+                            </ul>
+                        </div>#}
                      <img src="{{ serie.image.name }}" class="img-serie-fish" />
 
                     {% else %}

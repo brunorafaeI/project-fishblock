@@ -13,7 +13,7 @@ use Acme\FishBlockBundle\Form\GenreType;
 /**
  * Genre controller.
  *
- * @Route("/genre")
+ * @Route("/genres")
  */
 class GenreController extends Controller
 {

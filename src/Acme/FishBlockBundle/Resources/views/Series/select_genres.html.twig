@@ -1,9 +1,0 @@
-{% block sidebar %}
-    <ul class="nav nav-list">
-        <li class="nav-header">Tri par genre</li>
-        <li {% if selected_genre < 1 %}class="active"{% endif %}><a href="{{ path('_series') }}">Tous <span class="badge badge-info">{{ total_nb_series }}</span></a></li>
-        {% for genre in genres %}
-            <li {% if genre['genre'].id == selected_genre %}class="active"{% endif %}><a href="{{ path('_genre', { 'label': genre['genre'].label }) }}">{{ genre['genre'].label }} <span class="badge badge-info">{{ genre['nbConcernedSeries'] }}</span></a></li>
-        {% endfor %}
-    </ul>
-{% endblock %}

@@ -17,7 +17,7 @@ use Acme\FishBlockBundle\Form\SerieType;
 /**
  * Serie controller.
  *
- * @Route("/admin/serie")
+ * @Route("/admin/series")
  */
 class SerieController extends Controller
 {

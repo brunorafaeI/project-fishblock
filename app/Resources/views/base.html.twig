@@ -12,43 +12,39 @@
     <body>
     <main>
         <h1 class="cache-fish">FishBlock - Votre Portail de Séries</h1>
+        <div class="top-fish"></div>
         <header class="container-fluid">
 
             {# Logo of the website #}
             <figure class="logo-fish">
-                <a href="{{ path('_index') }}"><img src="{{ asset('public/images/logo-fishblock2.png') }}" class="animated bounceInLeft" alt="FishBlock Logo" width="280px"></a>
+                <a href="{{ path('_index') }}"><img src="{{ asset('public/images/logo-fishblock2.png') }}" class="animated bounceInLeft" alt="FishBlock Logo" width="200px"></a>
             </figure>
 
            {% block login %} {% endblock %}
 
             {# Change langages #}
             <span class="lang-fish">
+                <i class="fa fa-globe"></i>
                 <a href="" lang="fr" class="btn-fish btn-actived">FR</a>
                 <a href="" lang="en" class="btn-fish">EN</a>
             </span>
-            
+
+            {#LANGUE EN MODE LISTE#}
+            {#<div class="dropdown lang-fish">
+                <i class="fa fa-globe"></i>
+                <button class="btn btn-default dropdrown-toggle btn-fish" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    langues
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu select-genre-fish" aria-labelledby="dropdownMenu1">
+                    <li href="" lang="fr" {% if app.request == 'fr' %} class="active-fish"{% endif %} >french <i></i></li>
+                    <li href="" lang="en" {% if app.request == 'en'  %} class="active-fish" {% endif %} >english <img src="{{ asset('public/images/flag-usa.png') }}"></img></li>
+                </ul>
+            </div>#}
+
         </header>
        
-       <article class="nav-fish">
-        {# Menu navigation #}
-            <nav class="menu-nav-fish">
-                <h1 class="cache-fish">Menu of navigation</h1>
-                    <ul>
-                        <li><a href="{{ path('_index') }}" class="btn-fish btn-actived"><span class="fa fa-home"></span>{{ 'fish.home'|trans({}, 'AcmeFishBlockBundle') }}</a></li>
-                        <li><a href="{{ path('_series') }}" class="btn-fish"><span class="fa fa-tv"></span>{{ 'fish.series'|trans({}, 'AcmeFishBlockBundle') }}</a></li>
-                    </ul>
-            </nav>
-
-         {# Button search  {{ path('path_id' , {'searchTerm': app.request.query.get('search-term')}) }}  #} 
-            <div class="search-fish">
-                <form class="navbar-form" method="get" action="" role="search"> 
-                    <div class="input-group">
-                        <input type="search" class="form-control" placeholder="{{ 'fish.search'|trans({}, 'AcmeFishBlockBundle') }}" name="search-fish" id="search-fish" required>
-                        <button class="btn-search-fish"><i class="fa fa-search" type="submit"></i></button>                
-                    </div>
-                </form>
-            </div>
-        </article>
+        {% include('::sidebar_fish.html.twig') %}
 
 
         <section class="contenu-fish">
@@ -64,34 +60,7 @@
 
         {% block footer %}
        <footer>
-        <article class="categories-fish">
-            <ul>
-                <li>Suivez-nous</li>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                    </ul>
-                <li>Séries</li>
-                    <ul>
-                        <li>Action</li>
-                        <li>Horreur</li>
-                        <li>Comedie</li>
-                    </ul>
-                <li>Contacts</li>
-                    <ul>
-                        <li>Fone: +33 02 45 78 96</li>
-                        <li>Email: contact@fishblock.fr</li>
-                        <li>Adresse: 1 Rue Victor Hugo - Nantes 44400</li>
-                    </ul>
-                <li>Newletter</li>
-                    <ul>
-                        <li>CONTEUDO 1</li>
-                        <li>CONTEUDO 2</li>
-                        <li>CONTEUDO 3</li>
-                    </ul>
-            </ul>
-        </article>
+        {% include('::footer_fish.html.twig') %}
        </footer>
         {% endblock %}
         </main>

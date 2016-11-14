@@ -1,0 +1,20 @@
+<article class="nav-fish">
+    {# Menu navigation #}
+    <nav class="menu-nav-fish">
+        <h1 class="cache-fish">Menu of navigation</h1>
+        <ul>
+            <li><a href="{{ path('_index') }}" class="btn-fish btn-actived"><span class="fa fa-home"></span>{{ 'fish.home'|trans({}, 'AcmeFishBlockBundle') }}</a></li>
+            <li><a href="{{ path('_series') }}" class="btn-fish"><span class="fa fa-tv"></span>{{ 'fish.series'|trans({}, 'AcmeFishBlockBundle') }}</a></li>
+        </ul>
+    </nav>
+
+    {# Button search  {{ path('path_id' , {'searchTerm': app.request.query.get('search-term')}) }}  #}
+    <div class="search-fish">
+        <form class="navbar-form" method="get" action="" role="search">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="{{ 'fish.search'|trans({}, 'AcmeFishBlockBundle') }}" name="search-fish" id="search-fish" required>
+                <button class="btn-search-fish"><i class="fa fa-search" type="submit"></i></button>
+            </div>
+        </form>
+    </div>
+</article>

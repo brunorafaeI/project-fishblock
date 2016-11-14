@@ -18,7 +18,7 @@ class DefaultController extends Controller
      */
      public function IndexAction(){
          $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
-         $series = $repo->lastAjoutSerie();
+         $series = $repo->lastAddSerie();
 
          return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig', ['series' => $series]);
 
@@ -72,7 +72,25 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     *
+     * @Route("/serie/{label}", name="_serie_show", defaults={"label"=""})
+     * @Template()
+     */
+    public function showSerieAction($label){
 
+            $label = str_replace("-"," ",$label);
+            $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
+            $titre = $repo->findOneBy(array('titre' => $label));
+
+            if($titre){
+                $serie = $titre;
+                return $this->render('AcmeFishBlockBundle:Series:show_serie.html.twig', ['serie' => $serie]);
+
+            }
+
+
+    }
 
 
 
