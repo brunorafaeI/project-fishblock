@@ -1,6 +1,34 @@
 {% block slider %}
-    <aside class="slide-fish">
-        <h1>SlideShow </h1>
+    <aside class="contenu-slide-fish">
+        <h1 class="cache-fish">SlideShow </h1>
+            <ul class="slide-fish">
+                <li>
+                    <a href="">
+                        <figure>
+                            <img src="{{ asset('public/images/slider/the-vampire-diaries.jpg') }}" height="360" alt="">
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <figure>
+                            <img src="{{ asset('public/images/slider/arrow.jpg') }}" height="360" alt="">
+                        </figure>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <figure>
+                            <img src="{{ asset('public/images/slider/the-walking-dead.jpg') }}" height="360" alt="">
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        <ul class="nav-slide-fish">
+            <li><a href="#1"></a></li>
+            <li><a href="#2"></a></li>
+            <li><a href="#3"></a></li>
+        </ul>
     </aside>
 
 {% endblock %}

@@ -1,9 +1,53 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
 {% block body %}
-
-    <figure class="logo-serie-fish">
-        <a href="" alt=""></a>
-    </figure>
+    <artcile class="couverture-fish">
+        <figure class="logo-serie-fish">
+            <a href="" alt=""></a>
+        </figure>
+        <div class="proposer-fish">
+            <a href="" class="btn-fish"><i class="fa fa-edit"></i>proposer</a>
+        </div>
+        <aside class="nav-logo-serie">
+            <p>{{ serie.titre }}</p>
+        </aside>
+    </artcile>
+    <article class="contenu-serie-fish container-fluid">
+        <aside class="col-md-3">
+            <div class="trailler-fish">
+                <iframe width="250" height="260" src="https://www.youtube.com/embed/EI0ib1NErqg" frameborder="0" allowfullscreen></iframe>
+                <h3>Trailler</h3>
+            </div>
+        </aside>
+        <section class="saison-serie-fish col-md-9">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="">saison 1</a></li>
+                <li role="presentation"><a href="">saison 2</a></li>
+                <li role="presentation"><a href="">saison 3</a></li>
+                <li role="presentation"><a href="">saison 4</a></li>
+                <li role="presentation"><a href="">saison 5</a></li>
+                <li role="presentation"><a href="">saison 6</a></li>
+                <li role="presentation"><a href="">saison 7</a></li>
+                <li role="presentation"><a href="">saison 8</a></li>
+                <li role="presentation"><a href="">saison 9</a></li>
+            </ul>
+            <aside class="episodes-fish">
+                <ul class="episode-double-fish">
+                    <li><a href="">01 - episode</a></li>
+                    <li><a href="">02 - episode</a></li>
+                    <li><a href="">03 - episode</a></li>
+                    <li><a href="">04 - episode</a></li>
+                    <li><a href="">05 - episode</a></li>
+                    <li><a href="">06 - episode</a></li>
+                    <li><a href="">07 - episode</a></li>
+                    <li><a href="">08 - episode</a></li>
+                    <li><a href="">09 - episode</a></li>
+                    <li><a href="">10 - episode</a></li>
+                    <li><a href="">11 - episode</a></li>
+                    <li><a href="">12 - episode</a></li>
+                </ul>
+            </aside>
+        </section>
+    </article>
 
 {% endblock %}

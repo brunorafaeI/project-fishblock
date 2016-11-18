@@ -1,5 +1,41 @@
-aside.slide-fish
-  +clearfix
+aside.contenu-slide-fish
+  position: relative
   width: 100%
   height: 360px
-  background-color: $green-fish
+  background-color: $black-fish
+  overflow: hidden
+
+ul.slide-fish
+  //float: left
+  width: 100%
+  height: 360px
+
+  li
+    text-align: center
+    list-style: none
+    display: none
+
+
+ul.nav-slide-fish
+  position: absolute
+  bottom: 0px
+  right: 100px
+
+  li
+    margin: 5px
+    width: 10px
+    height: 10px
+
+    a
+      display: block
+      width: 10px
+      height: 10px
+      background-color: $yellow-fish
+      cursor: pointer
+
+    a:hover
+      background-color: $gris-fish
+
+    a.select
+      background-color: $gris-fish
+      cursor: default
