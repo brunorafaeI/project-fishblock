@@ -19,7 +19,7 @@ class Genre
     protected $id;
 
     /**
-     * Bidirectional
+     * Unidirectional
      *
      * @ORM\ManyToMany(targetEntity="Serie", mappedBy="listeDesGenres")
      */
@@ -36,6 +36,12 @@ class Genre
      * )
      */
     protected $label;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Proposer", inversedBy="listeDesGenres")
+     *
+     */
+    protected $propose;
 
     /**
      * Constructor

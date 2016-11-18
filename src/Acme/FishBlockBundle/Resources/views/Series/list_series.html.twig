@@ -1,6 +1,20 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
+{% block title %}List de Séries{% endblock %}
 {% block body %}
+
+    {#Button Proposer#}
+    <div class="proposer-fish">
+        <a href="
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ path('proposer_new') }}
+            {% else %}
+                {{ path('fos_user_security_login') }}
+            {% endif %}
+            " class="btn-fish" style="border:2px solid #6D6D6D "><i class="fa fa-edit"></i>proposer</a>
+    </div>
+
+    {#Button liste de genres#}
     <div class="dropdown">
         <button class="btn btn-default dropdrown-toggle btn-fish" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Genres
@@ -14,8 +28,10 @@
         </ul>
     </div>
 
-    {% for serie in series %}
 
+
+    {#Liste de séries#}
+    {% for serie in series %}
 
         <aside class="list-serie-fish">
             <div class="block animated fadeInUp">

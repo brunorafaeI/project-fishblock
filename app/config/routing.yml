@@ -1,3 +1,7 @@
+acme_fish_block_proposer:
+    resource: "@AcmeFishBlockBundle/Controller/ProposerController.php"
+    type:     annotation
+
 acme_fish_block:
     resource: "@AcmeFishBlockBundle/Resources/config/routing.yml"
     prefix:   /

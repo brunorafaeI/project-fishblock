@@ -26,8 +26,8 @@ $(function(){
     var link = $('ul.nav-slide-fish li a');
     var linkSelect = $('ul.nav-slide-fish li a.select').index();
 
-    image.eq(0).show();
-    link.eq(0).addClass('select');
+    image.eq(2).show();
+    link.eq(2).addClass('select');
 
 
     link.click(function(){

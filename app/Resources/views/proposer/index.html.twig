@@ -1,0 +1,60 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+
+{% block body %}
+    <h1 class="panel-heading">Liste de séries proposées</h1>
+
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom de la série</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proposer in proposers %}
+            <tr>
+                <td>
+                    <a href="{{ path('proposer_show', { 'id': proposer.id }) }}">{{ proposer.id }}</a>
+                </td>
+                <td>
+                    {{ proposer.nomSerie }}
+                </td>
+                <td>
+                    <img src="{{ proposer.image }}" alt="{{ proposer.nomSerie }}" width="240">
+                </td>
+                <td>
+                    {{ proposer.description }}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="">
+                                <span class="fa fa-thumbs-o-up"></span> {{ 'fish.accept'|trans({}, 'AcmeFishBlockBundle') }}
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="">
+                                <span class="fa fa-thumbs-o-down"></span> {{ 'fish.reject'|trans({}, 'AcmeFishBlockBundle') }}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#Button back#}
+    <ul>
+        <li>
+            <a href="{{ path('_series') }}" style="font-size: 18px">
+                <span class="fa fa-arrow-circle-left" ></span> {{ 'fish.back'|trans({}, 'AcmeFishBlockBundle') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -19,7 +19,7 @@ class Genre
     protected $id;
 
     /**
-     * Bidirectional
+     * Unidirectional
      *
      * @ORM\ManyToMany(targetEntity="Serie", mappedBy="listeDesGenres")
      */
@@ -36,6 +36,7 @@ class Genre
      * )
      */
     protected $label;
+
 
     /**
      * Constructor
@@ -142,5 +143,28 @@ class Genre
     public function removeListeDesSeries(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
     {
         $this->listeDesSeries->removeElement($listeDesSeries);
+    }
+
+    /**
+     * Set propose
+     *
+     * @param \Acme\FishBlockBundle\Entity\Proposer $propose
+     * @return Genre
+     */
+    public function setPropose(\Acme\FishBlockBundle\Entity\Proposer $propose = null)
+    {
+        $this->propose = $propose;
+
+        return $this;
+    }
+
+    /**
+     * Get propose
+     *
+     * @return \Acme\FishBlockBundle\Entity\Proposer 
+     */
+    public function getPropose()
+    {
+        return $this->propose;
     }
 }

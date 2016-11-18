@@ -1,0 +1,44 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>{{ proposer.nomSerie }}</h1>
+
+    <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>Id :</th>
+                <td>{{ proposer.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom de la série :</th>
+                <td>{{ proposer.nomSerie }}</td>
+            </tr>
+            <tr>
+                <th>Image :</th>
+                <td><img src="{{ proposer.image }}" alt="{{ proposer.nomSerie }}" width="240"> </td>
+            </tr>
+            <tr>
+                <th>Description :</th>
+                <td>{{ proposer.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('proposer_index') }}" style="font-size: 18px">
+                <span class="fa fa-arrow-circle-left" ></span> {{ 'fish.back'|trans({}, 'AcmeFishBlockBundle') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('proposer_edit', { 'id': proposer.id }) }}">
+                <span class="fa fa-edit"></span> {{ 'fish.edit'|trans({}, 'AcmeFishBlockBundle') }}
+            </a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

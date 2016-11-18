@@ -1,13 +1,25 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
-
+{% block title %}{{ serie.titre }} {% endblock %}
 {% block body %}
     <artcile class="couverture-fish">
+
+        {#Image top serie#}
         <figure class="logo-serie-fish">
             <a href="" alt=""></a>
         </figure>
+
+        {#Button proposer#}
         <div class="proposer-fish">
-            <a href="" class="btn-fish"><i class="fa fa-edit"></i>proposer</a>
+            <a href="
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ path('proposer_new') }}
+            {% else %}
+                {{ path('fos_user_security_login') }}
+            {% endif %}
+            " class="btn-fish" style="border:2px solid #6D6D6D "><i class="fa fa-edit"></i>proposer</a>
         </div>
+
+        {#Nav logo serie#}
         <aside class="nav-logo-serie">
             <p>{{ serie.titre }}</p>
         </aside>

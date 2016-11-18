@@ -19,6 +19,9 @@ class AdminController extends Controller
          */
         return $this->render('AcmeFishBlockBundle:Admin:index_admin.html.twig');
     }
+
+
+
 }
 
 ?>

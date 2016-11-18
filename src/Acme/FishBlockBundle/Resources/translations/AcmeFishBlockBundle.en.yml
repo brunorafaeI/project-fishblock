@@ -7,5 +7,8 @@ fish:
   series: Series
   serie: Serie
   search: Search
-  back_list: Back
+  back: Back
   edit: Edit
+  show: Show
+  accept: Accept
+  reject: Reject
