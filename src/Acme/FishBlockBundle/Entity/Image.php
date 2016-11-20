@@ -27,11 +27,12 @@ class Image
     /**
      * @var String
      *
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" })
+     * @ORM\Column(type="string", length=255)
+     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
-    private $url;
+    private $path;
+
+
 
 
 
@@ -46,29 +47,25 @@ class Image
     }
 
     /**
-     * Set url
+     * Set path
      *
-     * @param string $url
+     * @param string $path
      * @return Image
      */
-    public function setUrl($url)
+    public function setPath($path)
     {
-        $this->url = $url;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get path
      *
      * @return string 
      */
-    public function getUrl()
+    public function getPath()
     {
-        return $this->url;
+        return $this->path;
     }
-
-
-
-
 }

@@ -19,7 +19,7 @@ class ProposerType extends AbstractType
     {
         $builder
             ->add('nomSerie','text', array('label' => 'Nom de la série :'))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'required' => false))
+            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
             ->add('category')
             ->add('description', TextareaType::class, array('label' => 'Description :'))
         ;

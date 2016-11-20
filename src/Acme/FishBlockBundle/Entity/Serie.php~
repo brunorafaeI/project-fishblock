@@ -56,7 +56,7 @@ class Serie
     /**
      * @var String
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToOne(targetEntity="Image")
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     protected $image;
@@ -71,107 +71,6 @@ class Serie
     protected $category;
 
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set titre
-     *
-     * @param string $titre
-     * @return Serie
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get titre
-     *
-     * @return string 
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Serie
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Serie
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Serie
-     */
-    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Acme\FishBlockBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 
     /**
      * Affichage d'une entité Serie avec echo

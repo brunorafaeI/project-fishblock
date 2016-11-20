@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Acme\FishBlockBundle\FileUploader;
+use Symfony\Component\HttpFoundation\File\File;
 use Acme\FishBlockBundle\Entity\User;
 use Acme\FishBlockBundle\Entity\Proposer;
 use Acme\FishBlockBundle\Entity\Serie;
@@ -35,10 +36,11 @@ class ImageUploadListener
 
     private function uploadFile($entity)
     {
-        // upload only works for Serie, User, Proposer entities
-        if (!$entity instanceof Serie OR !$entity instanceof User OR !$entity instanceof Proposer) {
-            return;
-        }
+
+        // upload only works for Serie entities
+//        if (!$entity instanceof Serie) {
+//            return;
+//        }
 
 
         $file = $entity->getImage();

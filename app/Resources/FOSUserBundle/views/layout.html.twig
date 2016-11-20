@@ -8,10 +8,17 @@
         <ul>
 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ app.user.username }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                {{ app.user.username }}
+                <a href="{{ path('fos_user_profile_show') }}">
+                    <img class="mini-image-fish"  src="
+                        {% if app.user.image == true %}
+                            {{ asset('uploads/images/') ~ app.user.image }}
+                            {% else %}
+                            {{ asset('uploads/images/geek.jpg') }}
+                        {% endif %}" width="60" alt="{{ app.user.username }}
+                    ">
                 </a>
+
             {% else %}
                 <li><a href="{{ path('fos_user_registration_register') }}" class="btn-fish">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                 <li><a href="{{ path('fos_user_security_login') }}" class="btn-fish">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
@@ -32,9 +39,11 @@
 
 {% block body %}
 
-        <article class="login-form-fish">
+    <a href="{{ path('fos_user_security_logout') }}" class="logout-fish">
+        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+    </a>
+    <article class="login-form-fish">
         {% block fos_user_content %}
         {% endblock fos_user_content %}
         </article>
-
 {% endblock %}

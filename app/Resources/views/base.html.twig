@@ -13,7 +13,7 @@
 
         <script>
             tinymce.init({
-                modeon: 'textarea',
+                mode: 'textareas',
                 menubar: false,
                 plugins: [
                     "advlist autolink lists link image charmap print preview anchor",
@@ -76,18 +76,6 @@
                 <a href="{{ path('_langue', {'langue' : 'en'}) }}" class="">EN</a>
             </span>
 
-            {#LANGUE EN MODE LISTE#}
-            {#<div class="dropdown lang-fish">
-                <i class="fa fa-globe"></i>
-                <button class="btn btn-default dropdrown-toggle btn-fish" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    langues
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu select-genre-fish" aria-labelledby="dropdownMenu1">
-                    <li href="" lang="fr" {% if app.request == 'fr' %} class="active-fish"{% endif %} >french <i></i></li>
-                    <li href="" lang="en" {% if app.request == 'en'  %} class="active-fish" {% endif %} >english <img src="{{ asset('public/images/flag-usa.png') }}"></img></li>
-                </ul>
-            </div>#}
 
         </header>
        

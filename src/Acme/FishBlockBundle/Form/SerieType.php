@@ -16,7 +16,8 @@ class SerieType extends AbstractType
     {
         $builder
             ->add('titre', 'text', array('label' => 'Titre :'))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null))
+            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null,
+            'attr' => array('required' => false)))
             ->add('description')
             ->add('category')
         ;

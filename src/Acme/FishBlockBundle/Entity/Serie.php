@@ -56,7 +56,7 @@ class Serie
     /**
      * @var String
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToOne(targetEntity="Image")
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     protected $image;
@@ -69,6 +69,25 @@ class Serie
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
+
+
+
+    /**
+     * Affichage d'une entité Serie avec echo
+     * @return string Représentation de la série
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getImage(),
+            $this->getTitre(),
+            $this->getDescription(),
+            $this->getCategory(),
+            $this->getId()
+
+        );
+    }
+
 
 
     /**
@@ -130,10 +149,10 @@ class Serie
     /**
      * Set image
      *
-     * @param string $image
+     * @param \Acme\FishBlockBundle\Entity\Image $image
      * @return Serie
      */
-    public function setImage($image)
+    public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
     {
         $this->image = $image;
 
@@ -143,7 +162,7 @@ class Serie
     /**
      * Get image
      *
-     * @return string 
+     * @return \Acme\FishBlockBundle\Entity\Image 
      */
     public function getImage()
     {
@@ -172,22 +191,4 @@ class Serie
     {
         return $this->category;
     }
-
-    /**
-     * Affichage d'une entité Serie avec echo
-     * @return string Représentation de la série
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getImage(),
-            $this->getTitre(),
-            $this->getDescription(),
-            $this->getCategory(),
-            $this->getId()
-
-        );
-    }
-
-
 }
