@@ -15,7 +15,10 @@
 
 namespace Acme\FishBlockBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /*******************************************************************************************
  *
@@ -39,16 +42,6 @@ class Serie
      */
     protected $id;
 
-    /**
-     * Bidirectional
-     *
-     * @ORM\ManyToMany(targetEntity="Genre", inversedBy="listeDesSeries")
-     * @ORM\JoinTable(name="_assoc_serie_genre",
-     *   joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *   inverseJoinColumns={@ORM\JoinColumn(name="serie_id", referencedColumnName="id")}
-     * )
-     */
-    protected $listeDesGenres;
 
     /**
      * @ORM\Column(type="string", length=120)
@@ -61,26 +54,27 @@ class Serie
     protected $description;
 
     /**
-     * @var \Image
+     * @var String
      *
-     * @ORM\OneToOne(targetEntity="Image", inversedBy="serie", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
-     *
+     * @ORM\Column(type="string", length=255)
+     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
-    private $image;
+    protected $image;
+
 
     /**
-     * Constructor
+     * @var \Category
+     *
+     * @ORM\OneToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    public function __construct()
-    {
-        $this->listeDesGenres = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $category;
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -103,7 +97,7 @@ class Serie
     /**
      * Get titre
      *
-     * @return string
+     * @return string 
      */
     public function getTitre()
     {
@@ -126,7 +120,7 @@ class Serie
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -134,55 +128,12 @@ class Serie
     }
 
     /**
-     * Add listeDesGenres
-     *
-     * @param \Acme\FishBlockBundle\Entity\Genre $listeDesGenres
-     * @return Serie
-     */
-    public function addListeDesGenre(\Acme\FishBlockBundle\Entity\Genre $listeDesGenres)
-    {
-        $this->listeDesGenres[] = $listeDesGenres;
-
-        return $this;
-    }
-
-    /**
-     * Remove listeDesGenres
-     *
-     * @param \Acme\FishBlockBundle\Entity\Genre $listeDesGenres
-     */
-    public function removeListeDesGenre(\Acme\FishBlockBundle\Entity\Genre $listeDesGenres)
-    {
-        $this->listeDesGenres->removeElement($listeDesGenres);
-    }
-
-    /**
-     * Get listeDesGenres
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getListeDesGenres()
-    {
-        return $this->listeDesGenres;
-    }
-
-    /**
-     * Affichage d'une entité Serie avec echo
-     * @return string Représentation du serie
-     */
-    public function __toString()
-    {
-        return $this->titre;
-    }
-
-
-    /**
      * Set image
      *
-     * @param \Acme\FishBlockBundle\Entity\Image $image
+     * @param string $image
      * @return Serie
      */
-    public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
+    public function setImage($image)
     {
         $this->image = $image;
 
@@ -192,10 +143,51 @@ class Serie
     /**
      * Get image
      *
-     * @return \Acme\FishBlockBundle\Entity\Image 
+     * @return string 
      */
     public function getImage()
     {
         return $this->image;
     }
+
+    /**
+     * Set category
+     *
+     * @param \Acme\FishBlockBundle\Entity\Category $category
+     * @return Serie
+     */
+    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Acme\FishBlockBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Affichage d'une entité Serie avec echo
+     * @return string Représentation de la série
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getImage(),
+            $this->getTitre(),
+            $this->getDescription(),
+            $this->getCategory(),
+            $this->getId()
+
+        );
+    }
+
+
 }

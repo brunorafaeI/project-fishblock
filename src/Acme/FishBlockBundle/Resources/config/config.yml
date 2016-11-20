@@ -5,8 +5,8 @@ fos_user:
     use_username_form_type: true
     model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
     from_email:
-        address:        webmaster@example.com
-        sender_name:    webmaster
+        address:        brunorafaelap@gmail.com
+        sender_name:    Bruno Rafael
     profile:
         form:
             type:               FOS\UserBundle\Form\Type\ProfileFormType # or 'fos_user_profile' on Symfony < 2.8
@@ -45,3 +45,5 @@ fos_user:
         username_canonicalizer: fos_user.util.canonicalizer.default
         token_generator:        fos_user.util.token_generator.default
         user_manager:           fos_user.user_manager.default
+
+

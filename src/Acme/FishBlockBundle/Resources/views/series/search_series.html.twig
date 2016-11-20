@@ -1,0 +1,61 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block title %}Recherche de Séries{% endblock %}
+{% block body %}
+
+    {#Button Proposer#}
+    <div class="proposer-fish">
+        <a href="
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ path('proposer_new') }}
+            {% else %}
+                {{ path('fos_user_security_login') }}
+            {% endif %}
+            " class="btn-fish" style="border:2px solid #6D6D6D "><i class="fa fa-edit"></i>proposer</a>
+    </div>
+
+    {#Liste de séries#}
+    {% for serie in series %}
+        <div class="loading"></div>
+
+
+        <aside class="list-serie-fish" id="resultats_recherche">
+        <div class="block animated fadeInUp">
+            <h4>{{ serie.titre }}</h4>
+            <div class="list-group">{% for Genre in serie.category %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
+            <div class="illustration  hoverzoom">
+                {% if serie.image is defined %}
+                    <a  href="{{ path('_serie_show', { 'label': serie.titre|replace(" ", "-") }) }}">
+                            <span class="roll">
+                                <h2>Title</h2>
+                                <p>description</p>
+                            </span>
+                    </a>
+
+                    {# ICONES JAIME, PARTAGER ET COMMENTAIRE #}
+                    {#<div class="roll">
+                        <ul>
+                            <li><a href=""><i class="fa fa-heart"></i> j'aime</a></li>
+                            <li><a href=""><i class="fa fa-commenting"></i> commenter</a></li>
+                            <li><a href=""><i class="fa fa-share-alt"></i> partager</a></li>
+                        </ul>
+                    </div>#}
+                    <img src="{{ asset('uploads/series/') ~ serie.image }}" class="img-serie-fish" />
+
+                {% else %}
+                    <span class="fa fa-ban"></span>
+                {% endif %}
+            </div>
+            <div class="description">
+                {{ serie.description }}
+            </div>
+            <div class="read-more">
+                <a class="" href="{{ path('serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
+            </div>
+        </div>
+
+    {% else %}<div class="alert-info">Désolé, il n'y a aucun serie dans cette section</div>
+    {% endfor %}
+    </aside>
+
+{% endblock %}

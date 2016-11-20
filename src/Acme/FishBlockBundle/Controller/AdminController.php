@@ -17,7 +17,7 @@ class AdminController extends Controller
         /**
          * Comme @Template() est vide, il va chercher par défaut le fichier dans FishBlockBundle/Resources/views/Admin/index.html.twig
          */
-        return $this->render('AcmeFishBlockBundle:Admin:index_admin.html.twig');
+        return $this->render('AcmeFishBlockBundle:admin:index_admin.html.twig');
     }
 
 

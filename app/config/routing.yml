@@ -1,5 +1,5 @@
-acme_fish_block_proposer:
-    resource: "@AcmeFishBlockBundle/Controller/ProposerController.php"
+acme_fish_block_category:
+    resource: "@AcmeFishBlockBundle/Controller/CategoryController.php"
     type:     annotation
 
 acme_fish_block:

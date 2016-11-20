@@ -3,6 +3,7 @@
 namespace Acme\FishBlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Proposer
@@ -28,19 +29,11 @@ class Proposer
      */
     private $nomSerie;
 
-    /**
-     * Unidirectional
-     *
-     * @ORM\OneToOne(targetEntity="Genre")
-     *
-     */
-    protected $listeDesGenres;
-
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=150)
+     * @ORM\Column(type="string", length=150, nullable=true)
+     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     private $image;
 
@@ -51,6 +44,16 @@ class Proposer
      */
     private $description;
 
+
+    /**
+     * @var \Category
+     *
+     * @ORM\OneToOne(targetEntity="Category")
+     */
+    protected $category;
+
+
+    
 
     /**
      * Get id
@@ -83,29 +86,6 @@ class Proposer
     public function getNomSerie()
     {
         return $this->nomSerie;
-    }
-
-    /**
-     * Set genre
-     *
-     * @param string $genre
-     * @return Proposer
-     */
-    public function setGenre($genre)
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    /**
-     * Get genre
-     *
-     * @return string 
-     */
-    public function getGenre()
-    {
-        return $this->genre;
     }
 
     /**
@@ -155,25 +135,42 @@ class Proposer
     }
 
     /**
-     * Set listeDesGenres
+     * Set category
      *
-     * @param \Acme\FishBlockBundle\Entity\Genre $listeDesGenres
+     * @param \Acme\FishBlockBundle\Entity\Category $category
      * @return Proposer
      */
-    public function setListeDesGenres(\Acme\FishBlockBundle\Entity\Genre $listeDesGenres = null)
+    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
     {
-        $this->listeDesGenres = $listeDesGenres;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get listeDesGenres
+     * Get category
      *
-     * @return \Acme\FishBlockBundle\Entity\Genre 
+     * @return \Acme\FishBlockBundle\Entity\Category 
      */
-    public function getListeDesGenres()
+    public function getCategory()
     {
-        return $this->listeDesGenres;
+        return $this->category;
     }
+
+    /**
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getNomSerie(),
+            $this->getImage(),
+            $this->getCategory(),
+            $this->getId()
+
+        );
+    }
+
+
 }

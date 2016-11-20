@@ -1,0 +1,13 @@
+# app/config/services.yml
+services:
+    # ...
+    app.images_uploader:
+        class: Acme\FishBlockBundle\FileUploader
+        arguments: ['%images_serie_directory%']
+
+    app.doctrine_images_listener:
+            class: Acme\FishBlockBundle\EventListener\ImageUploadListener
+            arguments: ['@app.images_uploader']
+            tags:
+                - { name: doctrine.event_listener, event: prePersist }
+                - { name: doctrine.event_listener, event: preUpdate }

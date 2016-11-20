@@ -8,9 +8,9 @@
         </ul>
     </nav>
 
-    {# Button search  {{ path('path_id' , {'searchTerm': app.request.query.get('search-term')}) }}  #}
+    {# Button search  #}
     <div class="search-fish">
-        <form class="navbar-form" method="get" action="" role="search">
+        <form class="navbar-form" method="POST" action="{{ path('_series_search') }}" role="search" id="form_recherche">
             <div class="input-group">
                 <input type="search" class="form-control" placeholder="{{ 'fish.search'|trans({}, 'AcmeFishBlockBundle') }}" name="search-fish" id="search-fish" required>
                 <button class="btn-search-fish"><i class="fa fa-search" type="submit"></i></button>
@@ -18,3 +18,4 @@
         </form>
     </div>
 </article>
+

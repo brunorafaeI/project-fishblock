@@ -2,9 +2,10 @@
 
 namespace Acme\FishBlockBundle\Controller;
 
+
 use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\Form\Test\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Acme\FishBlockBundle\Entity\Serie;
 use Acme\FishBlockBundle\Form\SerieType;
+
 
 
 /**
@@ -47,20 +49,20 @@ class SerieController extends Controller
      *
      * @Route("/create", name="serie_create")
      * @Method("POST")
-     * @Template("AcmeFishBlockBundle:Admin:new_serie.html.twig")
+     * @Template("AcmeFishBlockBundle:admin:new_serie.html.twig")
      */
     public function createAction(Request $request)
     {
         $entity = new Serie();
-//        $image = new Image();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            $em->persist($entity->getImage());
             $em->flush();
+
 
             return $this->redirect($this->generateUrl('serie_show', array('id' => $entity->getId())));
         }
@@ -118,18 +120,14 @@ class SerieController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -144,7 +142,6 @@ class SerieController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
 
         if (!$entity) {
@@ -255,6 +252,7 @@ class SerieController extends Controller
             ->getForm()
             ;
     }
+
 
 
 

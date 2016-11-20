@@ -1,0 +1,60 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block title %}List de Séries{% endblock %}
+{% block body %}
+    <h1>Liste de Séries</h1>
+    <ul>
+        <li>
+            <a href="{{ path('serie_new') }}" style="font-size: 24px;">
+                <span class="fa fa-sticky-note-o"></span> {{ 'fish.create'|trans({}, 'AcmeFishBlockBundle') }}
+            </a>
+        </li>
+    </ul>
+    <table class="table table-responsive">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for entity in entities %}
+    <tr>
+        <td><a href="{{ path('_serie_show', { 'label': entity.titre|replace(" ", "-") }) }}">{{ entity.id }}</a></td>
+        <td>{{ entity.titre }}</td>
+        <td><img src="{{ asset('uploads/series/') ~ entity.image }}" width="50" /></td>
+        <div class="description">
+            <td>{{ entity.description }}</td>
+        </div>
+        <td>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <ul>
+                    <li>
+                        <a href="{{ path('serie_show', { 'id': entity.id }) }}">
+                            <span class="fa fa-eye" style="font-size: 24px"></span>
+                        </a>
+                    </li>
+                    <br>
+                    <li>
+                        <a href="{{ path('serie_edit', { 'id': entity.id }) }}">
+                            <span class="fa fa-edit" style="font-size: 24px"></span>
+                        </a>
+                    </li>
+                    <br>
+                    <li onclick="return confirm('Voullez-vous vraiment supprimer cette série?')">
+                        <a href="{{ path('serie_delete', { 'id': entity.id }) }}">
+                            <span class="fa fa-remove" style="font-size: 24px"></span>
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
+        </td>
+    </tr>
+{% endfor %}
+</tbody>
+    </table>
+
+{% endblock %}

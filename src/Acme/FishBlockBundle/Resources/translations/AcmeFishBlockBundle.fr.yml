@@ -12,3 +12,5 @@ fish:
   show: Visualiser
   accept: Accepter
   reject: Refuser
+  propo: Proposer
+  category: Catégories

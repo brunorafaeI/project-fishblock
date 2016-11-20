@@ -7,8 +7,8 @@ _index:
     type:     annotation
     prefix:   /
 
-_admin_genre:
-    resource: "@AcmeFishBlockBundle/Controller/GenreController.php"
+_admin_category:
+    resource: "@AcmeFishBlockBundle/Controller/CategoryController.php"
     type:     annotation
     prefix:   /admin
 
@@ -25,3 +25,13 @@ _series:
     resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
     type:     annotation
     prefix:   /
+
+acme_fish_block_proposer:
+    resource: "@AcmeFishBlockBundle/Controller/ProposerController.php"
+    type:     annotation
+
+_langue:
+    path: /{langue}
+    defaults: { _controller: AcmeFishBlockBundle:Default:index}
+    requirements:
+            langue: fr|en

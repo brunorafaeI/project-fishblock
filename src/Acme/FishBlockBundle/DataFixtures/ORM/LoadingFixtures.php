@@ -18,9 +18,9 @@ use Acme\FishBlockBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 
 /*
- * Nous aurons besoin de nos entités Genre et Serie également, on le déclare donc ici aussi...
+ * Nous aurons besoin de nos entités Categorie et Serie également, on le déclare donc ici aussi...
  */
-use Acme\FishBlockBundle\Entity\Genre;
+use Acme\FishBlockBundle\Entity\Categorie;
 use Acme\FishBlockBundle\Entity\Serie;
 
 /*
@@ -30,29 +30,29 @@ class LoadingFixtures implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        // Création d'un Genre "Horreur"
-        $Horreur = new Genre();
+        // Création d'un Categorie "Horreur"
+        $Horreur = new Categorie();
         $Horreur->setLabel("Horreur");
         // Enregistrment dans la base de données
         $manager->persist($Horreur);
         $manager->flush();
 
         // Création d'un genre Action
-        $Action = new Genre();
+        $Action = new Categorie();
         $Action->setLabel("Action");
         // Enregistrment dans la base de données
         $manager->persist($Action);
         $manager->flush();
 
         // Création d'un genre Aventure
-        $Aventure = new Genre();
+        $Aventure = new Categorie();
         $Aventure->setLabel("Aventure");
         // Enregistrment dans la base de données
         $manager->persist($Aventure);
         $manager->flush();
 
         // Création d'un genre Science fiction
-        $Science_fiction = new Genre();
+        $Science_fiction = new Categorie();
         $Science_fiction->setLabel("Science fiction");
         // Enregistrment dans la base de données
         $manager->persist($Science_fiction);
@@ -62,8 +62,8 @@ class LoadingFixtures implements FixtureInterface
         $Serie = new Serie();
         $Serie->setTitre("Matrix");
         $Serie->setDescription("Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?");
-        $Serie->getListeDesGenres()->add($Action);
-        $Serie->getListeDesGenres()->add($Science_fiction);
+        $Serie->getListeDesCategories()->add($Action);
+        $Serie->getListeDesCategories()->add($Science_fiction);
         // Enregistrment dans la base de données
         $manager->persist($Serie);
         $manager->flush();

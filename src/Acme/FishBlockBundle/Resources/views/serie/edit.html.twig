@@ -1,0 +1,17 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block title %}Edition de Séries{% endblock %}
+{% block body %}
+    <ul>
+        <li>
+            <a href="{{ path('serie_show', {'id' : entity.id}) }}" style="font-size: 18px">
+                <span class="fa fa-arrow-circle-left"></span> {{ 'fish.back'|trans({}, 'AcmeFishBlockBundle') }}
+            </a>
+        </li>
+    </ul>
+    <h1>Série edit</h1>
+    <article class="form-fish">
+    {{ form(edit_form) }}
+    </article>
+
+{% endblock %}

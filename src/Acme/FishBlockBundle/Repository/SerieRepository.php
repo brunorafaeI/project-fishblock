@@ -31,17 +31,17 @@ class SerieRepository extends EntityRepository
      * @param int $idGenre Id du genre à rechercher
      * @return @AcmeFishBlockBundle/Entity/Serie[] Liste des series du genre demandé
      */
-    public function findByGenre($idGenre = 0)
+    public function findByCategory($idCategory = 0)
     {
         /* Création de la requète avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
-        $queryBuilder->select("s, g")
+        $queryBuilder->select("s, c")
             ->from("AcmeFishBlockBundle:Serie", "s")
-            ->leftJoin("s.listeDesGenres", "g");
+            ->leftJoin("s.category", "c");
 
         /* Si on reçoit un id de genre valide alors on recherche les Series de ce genre là uniquement */
-        if ((int)$idGenre > 0) {
-            $queryBuilder->where("g.id=:idGenre")->setParameter("idGenre", (int)$idGenre);
+        if ((int)$idCategory > 0) {
+            $queryBuilder->where("c.id=:idCategory")->setParameter("idCategory", (int)$idCategory);
         }
         /* Puis on retourne la liste des series du genre demandé */
         return $queryBuilder->getQuery()->getResult();
@@ -75,13 +75,8 @@ class SerieRepository extends EntityRepository
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
-//        /**
-//         * Retourne le nombre de serie au total
-//         * @return int Renvoie le nombre de series total
-//         */
-//        public function getSerie(){
-//            return $this->createQueryBuilder('s')
-//                ->getQuery()
-//                ->getResult();
-//        }
+
+
+
+
 }

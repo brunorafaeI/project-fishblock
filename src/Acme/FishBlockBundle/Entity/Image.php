@@ -3,7 +3,8 @@
 namespace Acme\FishBlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -24,25 +25,20 @@ class Image
     private $id;
 
     /**
-     * @var string
+     * @var String
      *
-     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" })
      */
-    private $name;
-
-    /**
-     * @var \Serie
-     * @ORM\OneToOne(targetEntity="Serie", mappedBy="image")
-     *
-     */
-    private $serie;
+    private $url;
 
 
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -50,60 +46,29 @@ class Image
     }
 
     /**
-     * Set name
+     * Set url
      *
-     * @param string $description
+     * @param string $url
      * @return Image
      */
-    public function setName($name)
+    public function setUrl($url)
     {
-        $this->name = $name;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get url
      *
-     * @return string
+     * @return string 
      */
-    public function getName()
+    public function getUrl()
     {
-        return $this->name;
-    }
-
-    /**
-     * Affichage d'une entité Serie avec echo
-     * @return string Représentation du serie
-     */
-    public function __toString()
-    {
-        return $this->name;
+        return $this->url;
     }
 
 
 
 
-    /**
-     * Set serie
-     *
-     * @param \Acme\FishBlockBundle\Entity\Serie $serie
-     * @return Image
-     */
-    public function setSerie(\Acme\FishBlockBundle\Entity\Serie $serie = null)
-    {
-        $this->serie = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Get serie
-     *
-     * @return \Acme\FishBlockBundle\Entity\Serie 
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
 }

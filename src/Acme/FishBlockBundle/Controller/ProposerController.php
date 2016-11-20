@@ -26,7 +26,7 @@ class ProposerController extends Controller
 
         $proposers = $em->getRepository('AcmeFishBlockBundle:Proposer')->findAll();
 
-        return $this->render('proposer/index.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:proposer:index.html.twig', array(
             'proposers' => $proposers,
         ));
     }
@@ -51,7 +51,7 @@ class ProposerController extends Controller
             return $this->redirectToRoute('proposer_show', array('id' => $proposer->getId()));
         }
 
-        return $this->render('proposer/new.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:proposer:new.html.twig', array(
             'proposer' => $proposer,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class ProposerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($proposer);
 
-        return $this->render('proposer/show.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:proposer:show.html.twig', array(
             'proposer' => $proposer,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -81,7 +81,7 @@ class ProposerController extends Controller
      */
     public function editAction(Request $request, Proposer $proposer)
     {
-        $deleteForm = $this->createDeleteForm($proposer);
+
         $editForm = $this->createForm('Acme\FishBlockBundle\Form\ProposerType', $proposer);
         $editForm->handleRequest($request);
 
@@ -91,10 +91,9 @@ class ProposerController extends Controller
             return $this->redirectToRoute('proposer_edit', array('id' => $proposer->getId()));
         }
 
-        return $this->render('proposer/edit.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:proposer:edit.html.twig', array(
             'proposer' => $proposer,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 

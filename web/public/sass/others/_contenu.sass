@@ -1,3 +1,10 @@
+span.fa-ban
+  font-size: 240px !important
+
+section > h1
+  text-align: center
+  color: $red-fish
+
 main
   position: relative
   width: 100%
@@ -10,7 +17,43 @@ section.contenu-fish
   min-height: 600px
   padding: 40px
 
+/*********************** FORM ADMIN ********************/
+
 article.form-fish
+  position: relative
+  width: 60%
+  margin: 5% auto
+
+  label
+    display: inline-block
+    margin-right: 8px
+  textarea
+    height: 130px
+    margin-bottom: 8px
+
+
+  input:not([type=checkbox]), textarea, select, button[type=submit]
+    border: 2px solid $blue-fish
+    display: block
+    border-radius: 4px
+    width: 40%
+    padding: 0.5em
+    margin-bottom: 15px
+
+  select
+    width: 20% !important
+
+  input[type=submit], button[type=submit]
+    margin-top: 20px
+
+  input:hover, input:focus, textarea:focus, textarea:hover, select:focus, select:hover, button[type=submit]:hover, button[type=submit]:focus
+    background-color: $gris-fish
+    color: $yellow-fish
+    border-color: $yellow-fish
+
+/*********************** FORM LOGIN ********************/
+
+article.login-form-fish
   position: relative
   width: 25%
   margin-left: 10%
@@ -23,17 +66,20 @@ article.form-fish
   textarea
     height: 100px
 
-  input:not([type=checkbox]), textarea, select
+  input:not([type=checkbox]), textarea, select, button[type=submit]
     border: 2px solid $blue-fish
     border-radius: 4px
     width: 100%
     padding: 0.5em
     margin-bottom: 15px
 
-  input[type=submit]
+  select
+    width: 25% !important
+
+  input[type=submit], button[type=submit]
     margin-top: 20px
 
-  input:hover, input:focus, textarea:focus, textarea:hover, select:focus, select:hover
+  input:hover, input:focus, textarea:focus, textarea:hover, select:focus, select:hover, button[type=submit]:hover, button[type=submit]:focus
     background-color: $gris-fish
     color: $yellow-fish
     border-color: $yellow-fish
