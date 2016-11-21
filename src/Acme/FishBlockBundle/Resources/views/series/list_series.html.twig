@@ -11,7 +11,7 @@
             {% else %}
                 {{ path('fos_user_security_login') }}
             {% endif %}
-            " class="btn-fish" style="border:2px solid #6D6D6D "><i class="fa fa-edit"></i>proposer</a>
+            " class="btn-fish" style="border:2px solid #6D6D6D "><i class="fa fa-edit"></i>{{ 'fish.propo'|trans({}, 'AcmeFishBlockBundle') }}</a>
     </div>
 
     {#Button liste de categories#}
@@ -69,7 +69,7 @@
             </div>
 
     {% else %}
-        <div class="alert-fish animated fadeInRight">Désolé, il n'y a aucun serie dans cette section</div>
+        <div class="alert-fish animated fadeInRight">Désolé, il n'y a aucune série dans cette catégorie.</div>
     {% endfor %}
         </aside>
 {% endblock %}
