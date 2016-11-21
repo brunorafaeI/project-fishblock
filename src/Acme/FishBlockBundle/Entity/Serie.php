@@ -49,6 +49,16 @@ class Serie
     protected $titre;
 
     /**
+     * @ORM\Column(type="string", length=120)
+     */
+    protected $auteur;
+
+    /**
+     * @ORM\Column(type="string", length=120)
+     */
+    protected $acteurs;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $description;
@@ -65,7 +75,7 @@ class Serie
     /**
      * @var \Category
      *
-     * @ORM\OneToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
@@ -83,10 +93,13 @@ class Serie
             $this->getTitre(),
             $this->getDescription(),
             $this->getCategory(),
+            $this->getAuteur(),
+            $this->getActeurs(),
             $this->getId()
 
         );
     }
+
 
 
 
@@ -121,6 +134,52 @@ class Serie
     public function getTitre()
     {
         return $this->titre;
+    }
+
+    /**
+     * Set auteur
+     *
+     * @param string $auteur
+     * @return Serie
+     */
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return string 
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    /**
+     * Set acteurs
+     *
+     * @param string $acteurs
+     * @return Serie
+     */
+    public function setActeurs($acteurs)
+    {
+        $this->acteurs = $acteurs;
+
+        return $this;
+    }
+
+    /**
+     * Get acteurs
+     *
+     * @return string 
+     */
+    public function getActeurs()
+    {
+        return $this->acteurs;
     }
 
     /**

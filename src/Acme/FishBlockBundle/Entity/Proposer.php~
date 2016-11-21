@@ -25,14 +25,14 @@ class Proposer
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_serie", type="string", length=150, nullable=true)
+     * @ORM\Column(name="nom_serie", type="string", length=150)
      */
     private $nomSerie;
 
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=150)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     private $image;
@@ -55,107 +55,6 @@ class Proposer
 
     
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set nomSerie
-     *
-     * @param string $nomSerie
-     * @return Proposer
-     */
-    public function setNomSerie($nomSerie)
-    {
-        $this->nomSerie = $nomSerie;
-
-        return $this;
-    }
-
-    /**
-     * Get nomSerie
-     *
-     * @return string 
-     */
-    public function getNomSerie()
-    {
-        return $this->nomSerie;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     * @return Proposer
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Proposer
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Proposer
-     */
-    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Acme\FishBlockBundle\Entity\Category 
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 
     /**
      * Affichage d'une entité Proposer avec echo

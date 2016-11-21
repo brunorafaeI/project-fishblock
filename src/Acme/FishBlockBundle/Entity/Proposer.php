@@ -25,14 +25,14 @@ class Proposer
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_serie", type="string", length=150, nullable=true)
+     * @ORM\Column(name="nom_serie", type="string", length=150, nullable=false)
      */
     private $nomSerie;
 
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=150)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     private $image;
@@ -54,6 +54,24 @@ class Proposer
 
 
     
+
+
+    /**
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getNomSerie(),
+            $this->getImage(),
+            $this->getCategory(),
+            $this->getId()
+
+        );
+    }
+
+
 
     /**
      * Get id
@@ -156,21 +174,4 @@ class Proposer
     {
         return $this->category;
     }
-
-    /**
-     * Affichage d'une entité Proposer avec echo
-     * @return string Représentation du proposer
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getNomSerie(),
-            $this->getImage(),
-            $this->getCategory(),
-            $this->getId()
-
-        );
-    }
-
-
 }
