@@ -129,6 +129,7 @@ class DefaultController extends Controller
 
 
             $search = $this->get('request')->get('search-fish');
+            $search = htmlspecialchars($search);
             $repo = $this->get('doctrine')->getRepository('AcmeFishBlockBundle:Serie');
 
             if($search != '')

@@ -68,6 +68,18 @@
             </figure>
 
            {% block login %} {% endblock %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {#icones messages#}
+                <span class="icon-notify-fish">
+                    <a href="">
+                        <i class="fa fa-bell-o"><span class="badge">3</span></i>
+                    </a>
+                    <a href="">
+                        <i class="fa fa-envelope-o"><span class="badge">5</span></i>
+                    </a>
+                </span>
+            {% endif %}
+
 
             {# Change langages #}
             <span class="lang-fish">
@@ -75,7 +87,6 @@
                 <a href="{{ path('_langue', {'langue' : 'fr'}) }}" class="">FR</a>
                 <a href="{{ path('_langue', {'langue' : 'en'}) }}" class="">EN</a>
             </span>
-
 
         </header>
        

@@ -57,7 +57,7 @@ $(function(){
 
         /********* Alerts messages **************/
         $("div.alert-fish").addClass("animated fadeOutRight");
-    }, 5000);
+    }, 4000);
 
 
 })

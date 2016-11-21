@@ -60,7 +60,7 @@ class ProposerController extends Controller
     /**
      * Finds and displays a proposer entity.
      *
-     * @Route("/prposer/{id}", name="proposer_show")
+     * @Route("/admin/prposer/{id}", name="proposer_show")
      * @Method("GET")
      */
     public function showAction(Proposer $proposer)
@@ -76,7 +76,7 @@ class ProposerController extends Controller
     /**
      * Displays a form to edit an existing proposer entity.
      *
-     * @Route("/proposer/{id}/edit", name="proposer_edit")
+     * @Route("/admin/proposer/{id}/edit", name="proposer_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Proposer $proposer)
@@ -100,7 +100,7 @@ class ProposerController extends Controller
     /**
      * Deletes a proposer entity.
      *
-     * @Route("/proposer/{id}", name="proposer_delete")
+     * @Route("/admin/proposer/{id}", name="proposer_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Proposer $proposer)
