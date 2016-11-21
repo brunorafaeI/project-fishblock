@@ -1,8 +1,15 @@
+acme_fish_block_seasion:
+    resource: "@AcmeFishBlockBundle/Controller/SeasionController.php"
+    type:     annotation
+
+acme_fish_block_episode:
+    resource: "@AcmeFishBlockBundle/Controller/EpisodeController.php"
+    type:     annotation
+
 acme_fish_block_category:
     resource: "@AcmeFishBlockBundle/Controller/CategoryController.php"
     type:     annotation
 
 acme_fish_block:
     resource: "@AcmeFishBlockBundle/Resources/config/routing.yml"
-    prefix:   /
 

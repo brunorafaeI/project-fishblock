@@ -8,13 +8,14 @@
         <link rel="stylesheet" href="{{ asset('public/css/plugins.css') }}">
         <link rel="stylesheet" href="{{ asset('public/css/animate.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>
         <script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
 
         <script>
             tinymce.init({
                 mode: 'textareas',
                 menubar: false,
+                entity_encoding : "raw",
+                extended_valid_elements : 'img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]',
                 plugins: [
                     "advlist autolink lists link image charmap print preview anchor",
                     "searchreplace visualblocks code fullscreen",
@@ -25,8 +26,7 @@
                 content_css: [
                     '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
                     '//www.tinymce.com/css/codepen.min.css'
-                ],
-                entity_encoding : "raw"
+                ]
             });
             function ajaxLoad() {
                 var ed = tinyMCE.get('content');
@@ -85,7 +85,7 @@
             <span class="lang-fish">
                 <i class="fa fa-globe"></i>
                 <a href="{{ path('_langue', {'langue' : 'fr'}) }}" class="">FR</a>
-                <a href="{{ path('_langue', {'langue' : 'en'}) }}" class="">EN</a>
+                <a href="{{ path('_langue', {'langue' : 'en'}) }}" class=""><img src="{{ asset('public/images/flag-usa.png') }}" width="24"> </a>
             </span>
 
         </header>
@@ -101,6 +101,7 @@
             <script src="{{ asset('public/js/jquery.min.js') }}"></script>
             <script src="{{ asset('public/js/fishblock.js') }}"></script>
             <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>
 
 
 

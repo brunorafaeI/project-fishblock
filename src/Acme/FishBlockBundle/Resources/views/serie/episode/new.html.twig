@@ -1,0 +1,17 @@
+{% extends 'FOSUserBundle::layout.html.twig' %}
+
+{% block title %}Creation de Episode{% endblock %}
+{% block body %}
+    <h1>Episode creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('episode_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

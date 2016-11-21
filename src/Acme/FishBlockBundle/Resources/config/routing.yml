@@ -17,21 +17,3 @@ _admin_serie:
     type:     annotation
     prefix:   /admin
 
-fish_admin:
-    path: /admin
-    defaults: { _controller: AcmeFishBlockBundle:Admin:index}
-
-_series:
-    resource: "@AcmeFishBlockBundle/Controller/SerieController.php"
-    type:     annotation
-    prefix:   /
-
-acme_fish_block_proposer:
-    resource: "@AcmeFishBlockBundle/Controller/ProposerController.php"
-    type:     annotation
-
-_langue:
-    path: /{langue}
-    defaults: { _controller: AcmeFishBlockBundle:Default:index}
-    requirements:
-            langue: fr|en
