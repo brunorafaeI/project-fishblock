@@ -3,13 +3,12 @@
 namespace Acme\FishBlockBundle\Controller;
 
 
-use Acme\FishBlockBundle\Entity\Serie;
-use Acme\FishBlockBundle\Entity\Category;
 use Acme\FishBlockBundle\AcmeFishBlockBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 
 // Important to use these statemenets, the json response is optional for our response.
@@ -21,27 +20,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="_index", defaults={"label"=""})
+     * @Route("/", name="_index")
      * @Template()
      */
-     public function indexAction($langue = null)
+     public function indexAction()
      {
          $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
          $series = $repo->lastAddSerie();
 
-
-
-        // Change langue
-         if ($langue != null) {
-             // On enregistre la langue en session
-             $this->container->get('session')->set('_locale', $langue);
-             $request = $this->container->get('request');
-             $request->setLocale($langue);
-             $locale = $request->getLocale();
-
-             return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig', array('locale' => $locale, 'series' => $series));
-
-         }
 
          return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig', array('series' => $series));
 
@@ -156,6 +142,33 @@ class DefaultController extends Controller
 
         }
 
+    }
+
+    /**
+     * Change the locale for the current user
+     *
+     * @param String $language
+     * @return array
+     *
+     * @Route("/{langue}", name="_langue")
+     * @Template()
+     */
+    public function setLocaleAction($langue = null)
+    {
+        if($langue != null)
+        {
+            // On enregistre la langue en session
+            $this->get('session')->set('_locale', $langue);
+        }
+
+        // on tente de rediriger vers la page d'origine
+        $url = $this->container->get('request')->headers->get('referer');
+        if(empty($url))
+        {
+            $url = $this->container->get('router')->generate('_index');
+        }
+
+        return new RedirectResponse($url);
     }
 
 

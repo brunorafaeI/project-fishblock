@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Seasions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Episodes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seasion in seasions %}
+            <tr>
+                <td><a href="{{ path('seasion_show', { 'id': seasion.id }) }}">{{ seasion.id }}</a></td>
+                <td>{{ seasion.episodes }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('seasion_show', { 'id': seasion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('seasion_edit', { 'id': seasion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('seasion_new') }}">Create a new seasion</a>
+        </li>
+    </ul>
+{% endblock %}
