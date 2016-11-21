@@ -38,10 +38,11 @@
 {% endblock %}
 
 {% block body %}
-
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <a href="{{ path('fos_user_security_logout') }}" class="logout-fish">
         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
     </a>
+    {% endif %}
     <article class="login-form-fish">
         {% block fos_user_content %}
         {% endblock fos_user_content %}
