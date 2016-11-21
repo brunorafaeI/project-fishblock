@@ -24,7 +24,7 @@
                     {{ proposer.nomSerie }}
                 </td>
                 <td>
-                    <img src="{{ proposer.image }}" alt="{{ proposer.nomSerie }}" width="240">
+                    <img src="{{ asset('uploads/images/') ~ proposer.image }}" alt="{{ proposer.nomSerie }}" width="240">
                 </td>
                 <td>
                     {{ proposer.description }}

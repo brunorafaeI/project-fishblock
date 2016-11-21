@@ -25,7 +25,7 @@ class Proposer
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_serie", type="string", length=150, nullable=false)
+     * @ORM\Column(name="nom_serie", type="string", length=150, nullable=true)
      */
     private $nomSerie;
 
@@ -40,7 +40,7 @@ class Proposer
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
