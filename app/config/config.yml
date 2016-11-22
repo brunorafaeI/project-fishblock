@@ -73,3 +73,5 @@ fos_user:
     firewall_name: main
     user_class: Acme\FishBlockBundle\Entity\User
 
+# Gregwar Captcha anti spam
+gregwar_captcha: ~

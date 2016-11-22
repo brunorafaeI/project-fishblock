@@ -2,10 +2,9 @@
 
 namespace Acme\FishBlockBundle\Form;
 
-use Doctrine\ORM\Query\Expr\Select;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,6 +21,7 @@ class ProposerType extends AbstractType
             ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'required' => false))
             ->add('category')
             ->add('description', TextareaType::class, array('label' => 'Description :','required' => false))
+            ->add('captcha', CaptchaType::class)
         ;
     }
     

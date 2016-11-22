@@ -75,8 +75,22 @@ class SerieRepository extends EntityRepository
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
+    // Moteur de recherche
+    /**
+     * @return array
+     */
+    public function searchSerie($search)
+    {
+        $query = $this->_em->createQueryBuilder();
+        $query->select('s')
+            ->from('AcmeFishBlockBundle:Serie', 's')
+            ->where("s.titre LIKE :search")
+            ->orderBy("s.titre", "ASC")
+            ->setParameter("search", "%" . $search . "%")
+            ->getQuery();
 
-
+        return $query->getQuery()->getResult();
+    }
 
 
 }

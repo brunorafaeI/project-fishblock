@@ -7,6 +7,7 @@ use Acme\FishBlockBundle\AcmeFishBlockBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -106,33 +107,25 @@ class DefaultController extends Controller
        /**
        * @Route("/series/search", name="_series_search")
        * @Method("POST")
-       * @Template()
        */
-    public function rechercheAction()
+    public function searchAction()
     {
+        //On vérifie si la méthode est POST
         if($this->get('request')->getMethod() == 'POST')
         {
-
-
+            //On prend la valeur passée pour le champ #search-fish
+            //et puis, on trait cette valeur avec la fonction htmlspecialchars
             $search = $this->get('request')->get('search-fish');
             $search = htmlspecialchars($search);
             $repo = $this->get('doctrine')->getRepository('AcmeFishBlockBundle:Serie');
 
-            if($search != '')
+            //On vérifie si la valeur existe
+            if($search)
             {
-
-                $query = $repo->CreateQueryBuilder("s")
-                            ->where("s.titre LIKE :search")
-                            ->orderBy("s.titre", "ASC")
-                            ->setParameter("search", "%".$search."%")
-                            ->getQuery();
-                $series = $query->getResult();
-
-
-
+                //Si elle existe, on appelle la méthode searchSerie dans le fichier SerieRepository
+                //et on return le résultat.
+                $series = $repo->searchSerie($search);
                 return $this->render('AcmeFishBlockBundle:Series:search_series.html.twig', array('series' => $series));
-
-
 
             }
             else {
