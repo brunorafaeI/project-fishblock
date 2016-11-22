@@ -17,7 +17,7 @@ section.contenu-fish
   min-height: 600px
   padding: 40px
 
-/*********************** FORM ADMIN ********************/
+/*********************** FORM ********************/
 
 article.form-fish
   position: relative
@@ -33,7 +33,7 @@ article.form-fish
 
 
   input:not([type=checkbox]), textarea, select, button[type=submit]
-    border: 2px solid $yellow-fish
+    border: 1px solid $blue-fish
     display: block
     border-radius: 4px
     width: 40%
@@ -47,9 +47,7 @@ article.form-fish
     margin-top: 20px
 
   input:hover, input:focus, textarea:focus, textarea:hover, select:focus, select:hover, button[type=submit]:hover, button[type=submit]:focus
-    background-color: $gris-fish
-    color: $yellow-fish
-    border-color: $yellow-fish
+    box-shadow: 1px 1px 12px 5px $gris_clair-fish inset
 
 /*********************** FORM LOGIN ********************/
 
