@@ -75,3 +75,8 @@ fos_user:
 
 # Gregwar Captcha anti spam
 gregwar_captcha: ~
+
+# Chat Live
+cethyworks_zopim_chat:
+    account_id: brunorafaelap@gmail.com
+    demo_template: 'AcmeFishBlockBundle:accueil:index.html.twig'

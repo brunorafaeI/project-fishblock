@@ -1,0 +1,20 @@
+parameters:
+    cethyworks_zopim_chat.listener.class: Cethyworks\ZopimChatBundle\Listener\ChatSnippetListener
+    cethyworks_zopim_chat.listener.template: CethyworksZopimChatBundle::_chat_snippet.html.twig
+
+services:
+    cethyworks_zopim_chat.listener:
+        class: %cethyworks_zopim_chat.listener.class%
+        arguments:
+            - "@templating"
+            - %cethyworks_zopim_chat.listener.template%
+            - "@cethyworks_zopim_chat.handler"
+            - "%cethyworks_zopim_chat.demo_template%"
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            
+
+    cethyworks_zopim_chat.handler.default:
+        class: Cethyworks\ZopimChatBundle\Handler\DefaultChatHandler
+        arguments:
+            - "%cethyworks_zopim_chat.account_id%"
