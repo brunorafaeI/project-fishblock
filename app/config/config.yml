@@ -75,3 +75,16 @@ fos_user:
 
 # Gregwar Captcha anti spam
 gregwar_captcha: ~
+
+# app/config/config.yml
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+
+# Web Socket Configuration
+gos_web_socket:
+    server:
+        port: 3553        #The port the socket server will listen on
+        host: 127.0.0.1   #The host ip to bind to

@@ -100,6 +100,12 @@
 
         </section>
         {% block javascripts %}
+            {% javascripts
+                '@GosWebSocketBundle/Resources/public/js/vendor/*'
+            '@GosWebSocketBundle/Resources/public/js/*'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
             <script src="{{ asset('public/js/jquery.min.js') }}"></script>
             <script src="{{ asset('public/js/fishblock.js') }}"></script>
             <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
@@ -115,5 +121,6 @@
        </footer>
         {% endblock %}
         </main>
+    {{ ws_client() }}
     </body>
 </html>
