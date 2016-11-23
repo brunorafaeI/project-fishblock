@@ -100,10 +100,22 @@
 
         </section>
         {% block javascripts %}
-            <script src="{{ asset('public/js/jquery.min.js') }}"></script>
-            <script src="{{ asset('public/js/fishblock.js') }}"></script>
-            <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>
+            {% javascripts
+            'public/js/jquery.min.js'
+            'public/js/fishblock.js'
+            'public/js/bootstrap.min.js'
+            'public/js/tinymce/jquery.tinymce.min.js'
+            '@JDareClankBundle/Resources/public/js/*'
+            '@JDareClankBundle/Resources/public/js/vendor/*'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+
+            {#<script src="{{ asset('public/js/jquery.min.js') }}"></script>#}
+            {#<script src="{{ asset('public/js/fishblock.js') }}"></script>#}
+            {#<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>#}
+            {#<script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>#}
 
 
 
@@ -115,5 +127,12 @@
        </footer>
         {% endblock %}
         </main>
+
+    <script type="text/javascript">
+        var _CLANK_URI = "ws://{{ clank_host }}:{{ clank_port }}";
+        var myClank = Clank.connect(_CLANK_URI);
+    </script>
+
+    {{ clank_client() }}
     </body>
 </html>

@@ -9,6 +9,8 @@ imports:
 parameters:
     locale: fr
     images_serie_directory: '%kernel.root_dir%/../web/uploads/images'
+    clank_host:    127.0.0.1
+    clank_port:    3553
 
 framework:
     #esi:             ~
@@ -36,6 +38,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+            clank_host:    "%clank_host%"
+            clank_port:    "%clank_port%"
 
 # Doctrine Configuration
 doctrine:
@@ -75,3 +80,17 @@ fos_user:
 
 # Gregwar Captcha anti spam
 gregwar_captcha: ~
+
+# Assetic Configuration
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
+    bundles:        [ JDareClankBundle ]
+
+# Clank Configuration
+clank:
+    web_socket_server:
+        port: "%clank_port%"        #The port the socket server will listen on
+        host: "%clank_host%"   #(optional) The host ip to bind to
