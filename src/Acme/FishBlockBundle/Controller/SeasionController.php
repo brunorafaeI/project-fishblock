@@ -26,7 +26,7 @@ class SeasionController extends Controller
 
         $seasions = $em->getRepository('AcmeFishBlockBundle:Seasion')->findAll();
 
-        return $this->render('AcmeFishBlockBundle:serie:seasion:index.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:seasion:index.html.twig', array(
             'seasions' => $seasions,
         ));
     }
@@ -51,7 +51,7 @@ class SeasionController extends Controller
             return $this->redirectToRoute('seasion_show', array('id' => $seasion->getId()));
         }
 
-        return $this->render('AcmeFishBlockBundle:serie:seasion:new.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:seasion:new.html.twig', array(
             'seasion' => $seasion,
             'form' => $form->createView(),
         ));
@@ -67,7 +67,7 @@ class SeasionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($seasion);
 
-        return $this->render('AcmeFishBlockBundle:serie:seasion:show.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:seasion:show.html.twig', array(
             'seasion' => $seasion,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -91,7 +91,7 @@ class SeasionController extends Controller
             return $this->redirectToRoute('seasion_edit', array('id' => $seasion->getId()));
         }
 
-        return $this->render('AcmeFishBlockBundle:serie:seasion:edit.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:seasion:edit.html.twig', array(
             'seasion' => $seasion,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

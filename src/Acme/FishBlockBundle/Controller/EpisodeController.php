@@ -27,7 +27,7 @@ class EpisodeController extends Controller
 
         $episodes = $em->getRepository('AcmeFishBlockBundle:Episode')->findAll();
 
-        return $this->render('AcmeFishBlockBundle:serie:episode:index.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:episode:index.html.twig', array(
             'episodes' => $episodes,
         ));
     }
@@ -52,7 +52,7 @@ class EpisodeController extends Controller
             return $this->redirectToRoute('episode_show', array('id' => $episode->getId()));
         }
 
-        return $this->render('AcmeFishBlockBundle:serie:episode:new.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:episode:new.html.twig', array(
             'episode' => $episode,
             'form' => $form->createView(),
         ));
@@ -68,7 +68,7 @@ class EpisodeController extends Controller
     {
         $deleteForm = $this->createDeleteForm($episode);
 
-        return $this->render('AcmeFishBlockBundle:serie:episode:show.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:episode:show.html.twig', array(
             'episode' => $episode,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,7 +92,7 @@ class EpisodeController extends Controller
             return $this->redirectToRoute('episode_edit', array('id' => $episode->getId()));
         }
 
-        return $this->render('AcmeFishBlockBundle:serie:episode:edit.html.twig', array(
+        return $this->render('AcmeFishBlockBundle:episode:edit.html.twig', array(
             'episode' => $episode,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
