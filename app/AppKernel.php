@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Acme\FishBlockBundle\AcmeFishBlockBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new FOS\MessageBundle\FOSMessageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

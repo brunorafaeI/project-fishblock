@@ -75,3 +75,9 @@ fos_user:
 
 # Gregwar Captcha anti spam
 gregwar_captcha: ~
+
+# FosMessageBundle Configuration
+fos_message:
+    db_driver: orm
+    thread_class: Acme\FishBlockBundle\Entity\Thread
+    message_class: Acme\FishBlockBundle\Entity\Message
