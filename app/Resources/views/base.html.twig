@@ -30,30 +30,6 @@
                     '//www.tinymce.com/css/codepen.min.css'
                 ]
             });
-            function ajaxLoad() {
-                var ed = tinyMCE.get('content');
-
-                // Do you ajax call here, window.setTimeout fakes ajax call
-                ed.setProgressState(1); // Show progress
-                window.setTimeout(function() {
-                    ed.setProgressState(0); // Hide progress
-                    ed.setContent('HTML content that got passed from server.');
-                }, 3000);
-            }
-
-            function ajaxSave() {
-                var ed = tinyMCE.get('content');
-
-                // Do you ajax call here, window.setTimeout fakes ajax call
-                ed.setProgressState(1); // Show progress
-                window.setTimeout(function() {
-                    ed.setProgressState(0); // Hide progress
-                    alert(ed.getContent());
-                }, 3000);
-            }
-
-
-
         </script>
 
 
@@ -77,7 +53,7 @@
                         <i class="fa fa-bell-o"><span class="badge">3</span></i>
                     </a>
                     <a href="">
-                        <i class="fa fa-envelope-o"><span class="badge">5</span></i>
+                        <i class="fa fa-envelope-o"><span {% if fos_message_nb_unread() > 0%} class="badge">{{ fos_message_nb_unread() }}{% endif %}</span></i>
                     </a>
                 </span>
             {% endif %}
