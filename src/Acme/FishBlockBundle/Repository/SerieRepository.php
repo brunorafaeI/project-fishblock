@@ -18,7 +18,7 @@ class SerieRepository extends EntityRepository
     public function lastAddSerie(){
         $query = $this->_em->createQueryBuilder();
         $query->select('s')
-            ->from('AcmeFishBlockBundle:Serie', 's')
+            ->from('AcmeFishBlockBundle:Series', 's')
             ->setMaxResults(4)
             ->orderBy('s.id', 'DESC');
 
@@ -28,15 +28,15 @@ class SerieRepository extends EntityRepository
     /**
      * Retourne la liste des series correspondant au genre passé en paramètre (id)
      * Si aucun genre n'est spécifié, la liste de tous les series est renvoyée.
-     * @param int $idGenre Id du genre à rechercher
-     * @return @AcmeFishBlockBundle/Entity/Serie[] Liste des series du genre demandé
+     * @param int $idCategory Id du genre à rechercher
+     * @return @AcmeFishBlockBundle/Entity/Series[] Liste des series du genre demandé
      */
     public function findByCategory($idCategory = 0)
     {
         /* Création de la requète avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder->select("s, c")
-            ->from("AcmeFishBlockBundle:Serie", "s")
+            ->from("AcmeFishBlockBundle:Series", "s")
             ->leftJoin("s.category", "c");
 
         /* Si on reçoit un id de genre valide alors on recherche les Series de ce genre là uniquement */
@@ -66,7 +66,7 @@ class SerieRepository extends EntityRepository
         /* Création de la requète count avec le query builder */
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder->select("count(s) as total")
-            ->from("AcmeFishBlockBundle:Serie", "s");
+            ->from("AcmeFishBlockBundle:Series", "s");
 
         /**
          * Comme le seul résultat qui nous intéresse est le count et pas du tout l'entité,
@@ -83,7 +83,7 @@ class SerieRepository extends EntityRepository
     {
         $query = $this->_em->createQueryBuilder();
         $query->select('s')
-            ->from('AcmeFishBlockBundle:Serie', 's')
+            ->from('AcmeFishBlockBundle:Series', 's')
             ->where("s.titre LIKE :search")
             ->orderBy("s.titre", "ASC")
             ->setParameter("search", "%" . $search . "%")

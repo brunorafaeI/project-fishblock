@@ -1,4 +1,5 @@
 <?php
+//Acme/FishBlockBundle/Entity/Seasion.php
 
 namespace Acme\FishBlockBundle\Entity;
 
@@ -30,9 +31,9 @@ class Seasion
     private $label;
 
     /**
-     * @var \Serie
+     * @var \Series
      *
-     * @ORM\ManyToOne(targetEntity="Serie", inversedBy="seasion", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="seasion", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
      */
     private $serie;
@@ -46,51 +47,6 @@ class Seasion
     private $episodes;
 
 
-    /**
-     * Set serie
-     *
-     * @param \Acme\FishBlockBundle\Entity\Serie $serie
-     * @return Seasion
-     */
-    public function setSerie(\Acme\FishBlockBundle\Entity\Serie $serie = null)
-    {
-        $this->serie = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Get serie
-     *
-     * @return \Acme\FishBlockBundle\Entity\Serie
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
-
-    /**
-     * Add episodes
-     *
-     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
-     * @return Seasion
-     */
-    public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
-    {
-        $this->episodes[] = $episodes;
-
-        return $this;
-    }
-
-    /**
-     * Remove episodes
-     *
-     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
-     */
-    public function removeEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
-    {
-        $this->episodes->removeElement($episodes);
-    }
 
     /**
      * Constructor
@@ -99,6 +55,8 @@ class Seasion
     {
         $this->episodes = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
     /**
      * Get id
      *
@@ -133,6 +91,52 @@ class Seasion
     }
 
     /**
+     * Set serie
+     *
+     * @param \Acme\FishBlockBundle\Entity\Series $serie
+     * @return Seasion
+     */
+    public function setSerie(\Acme\FishBlockBundle\Entity\Series $serie = null)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \Acme\FishBlockBundle\Entity\Series
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Add episodes
+     *
+     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     * @return Seasion
+     */
+    public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    {
+        $this->episodes[] = $episodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodes
+     *
+     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     */
+    public function removeEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    {
+        $this->episodes->removeElement($episodes);
+    }
+
+    /**
      * Get episodes
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -141,7 +145,6 @@ class Seasion
     {
         return $this->episodes;
     }
-
 
     /**
      * Affichage d'une entité Proposer avec echo
@@ -157,6 +160,4 @@ class Seasion
 
         );
     }
-
-
 }

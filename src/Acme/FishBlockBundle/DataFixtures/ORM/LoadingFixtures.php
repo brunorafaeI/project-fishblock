@@ -20,8 +20,9 @@ use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
 /*
  * Nous aurons besoin de nos entités Categorie et Serie également, on le déclare donc ici aussi...
  */
-use Acme\FishBlockBundle\Entity\Categorie;
-use Acme\FishBlockBundle\Entity\Serie;
+use Acme\FishBlockBundle\Entity\Category;
+use Acme\FishBlockBundle\Entity\Series;
+
 
 /*
  * Les fixtures sont des objets qui doivent obligatoireemnt implémenter l'interface FixtureInterface
@@ -31,35 +32,35 @@ class LoadingFixtures implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         // Création d'un Categorie "Horreur"
-        $Horreur = new Categorie();
+        $Horreur = new Category();
         $Horreur->setLabel("Horreur");
         // Enregistrment dans la base de données
         $manager->persist($Horreur);
         $manager->flush();
 
         // Création d'un genre Action
-        $Action = new Categorie();
+        $Action = new Category();
         $Action->setLabel("Action");
         // Enregistrment dans la base de données
         $manager->persist($Action);
         $manager->flush();
 
         // Création d'un genre Aventure
-        $Aventure = new Categorie();
+        $Aventure = new Category();
         $Aventure->setLabel("Aventure");
         // Enregistrment dans la base de données
         $manager->persist($Aventure);
         $manager->flush();
 
         // Création d'un genre Science fiction
-        $Science_fiction = new Categorie();
+        $Science_fiction = new Category();
         $Science_fiction->setLabel("Science fiction");
         // Enregistrment dans la base de données
         $manager->persist($Science_fiction);
         $manager->flush();
 
-        // On crée le film Matrix !
-        $Serie = new Serie();
+        // On crée la série !
+        $Serie = new Series();
         $Serie->setTitre("Matrix");
         $Serie->setDescription("Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?");
         $Serie->getListeDesCategories()->add($Action);

@@ -38,7 +38,7 @@ class ImageUploadListener
     {
 
         // upload only works for Serie entities
-//        if (!$entity instanceof Serie) {
+//        if (!$entity instanceof Series) {
 //            return;
 //        }
 

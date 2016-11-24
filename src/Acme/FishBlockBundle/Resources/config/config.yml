@@ -48,9 +48,10 @@ fos_user:
 
 # EasyAdmin configuration
 easy_admin:
+    site_name:  'FishBlock Administration'
     entities:
-        - Acme\FishBlockBundle\Entity\Serie
         - Acme\FishBlockBundle\Entity\Customer
+        - Acme\FishBlockBundle\Entity\Series
         - Acme\FishBlockBundle\Entity\Category
         - Acme\FishBlockBundle\Entity\User
         - Acme\FishBlockBundle\Entity\Seasion

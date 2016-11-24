@@ -29,23 +29,6 @@ class Category
      */
     private $label;
 
-    /**
-     * @var \Series
-     * @ORM\OneToMany(targetEntity="Series", mappedBy="category")
-     *
-     */
-    private $serie;
-
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->serie = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 
     /**
      * Get id
@@ -56,6 +39,7 @@ class Category
     {
         return $this->id;
     }
+
 
     /**
      * Set label
@@ -80,38 +64,6 @@ class Category
         return $this->label;
     }
 
-    /**
-     * Add serie
-     *
-     * @param \Acme\FishBlockBundle\Entity\Series $serie
-     * @return Category
-     */
-    public function addSerie(\Acme\FishBlockBundle\Entity\Series $serie)
-    {
-        $this->serie[] = $serie;
-
-        return $this;
-    }
-
-    /**
-     * Remove serie
-     *
-     * @param \Acme\FishBlockBundle\Entity\Series $serie
-     */
-    public function removeSerie(\Acme\FishBlockBundle\Entity\Series $serie)
-    {
-        $this->serie->removeElement($serie);
-    }
-
-    /**
-     * Get serie
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSerie()
-    {
-        return $this->serie;
-    }
 
     /**
      * Affichage d'une entité Film avec echo
@@ -121,8 +73,9 @@ class Category
     {
         return array(
             $this->getLabel(),
-            $this->getSerie(),
             $this->getId(),
         );
     }
+
+    
 }

@@ -26,11 +26,11 @@ class DefaultController extends Controller
      */
      public function indexAction()
      {
-         $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
+         $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Series');
          $series = $repo->lastAddSerie();
 
 
-         return $this->render('AcmeFishBlockBundle:Accueil:index.html.twig', array('series' => $series));
+         return $this->render('AcmeFishBlockBundle:accueil:index.html.twig', array('series' => $series));
 
      }
 
@@ -65,13 +65,13 @@ class DefaultController extends Controller
 
         // Récupération de la liste des series grâce à notre méthode findByCategory.
         $listeDeSeries = $entityManager
-            ->getRepository("AcmeFishBlockBundle:Serie")
+            ->getRepository("AcmeFishBlockBundle:Series")
             ->findByCategory($variables['selected_category']);
 
         $variables['series'] = $listeDeSeries;
 
         // On récupère le nombre total de series en comptant simplement le resultat de la recheche de tous les series
-        $variables['total_nb_series'] = $entityManager->getRepository("AcmeFishBlockBundle:Serie")->countAll();
+        $variables['total_nb_series'] = $entityManager->getRepository("AcmeFishBlockBundle:Series")->countAll();
 
         /* On récupère la liste des categorys avec le nombre de series associés pour notre sidebar */
         $variables['categorys'] = $entityManager
@@ -90,7 +90,7 @@ class DefaultController extends Controller
     public function showSerieAction($label){
 
             $label = str_replace("-"," ",$label);
-            $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Serie');
+            $repo = $this->getDoctrine()->getRepository('AcmeFishBlockBundle:Series');
             $titre = $repo->findOneBy(array('titre' => $label));
 
             if($titre){
@@ -117,7 +117,7 @@ class DefaultController extends Controller
             //et puis, on trait cette valeur avec la fonction htmlspecialchars
             $search = $this->get('request')->get('search-fish');
             $search = htmlspecialchars($search);
-            $repo = $this->get('doctrine')->getRepository('AcmeFishBlockBundle:Serie');
+            $repo = $this->get('doctrine')->getRepository('AcmeFishBlockBundle:Series');
 
             //On vérifie si la valeur existe
             if($search)

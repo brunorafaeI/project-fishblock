@@ -1,5 +1,5 @@
 <?php
-//Acme/FishBlockBundle/Entity/Serie.php
+//Acme/FishBlockBundle/Entity/Series.php
 
 namespace Acme\FishBlockBundle\Entity;
 
@@ -9,12 +9,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * Serie
+ * Series
  *
- * @ORM\Table(name="serie")
+ * @ORM\Table(name="series")
  * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SerieRepository")
  */
-class Serie
+class Series
 {
     /**
      * @var int
@@ -66,8 +66,8 @@ class Serie
     /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Category")
+     *
      */
     protected $category;
 
@@ -88,7 +88,6 @@ class Serie
     }
 
 
-
     /**
      * Get id
      *
@@ -103,7 +102,7 @@ class Serie
      * Set titre
      *
      * @param string $titre
-     * @return Serie
+     * @return Series
      */
     public function setTitre($titre)
     {
@@ -126,7 +125,7 @@ class Serie
      * Set auteur
      *
      * @param string $auteur
-     * @return Serie
+     * @return Series
      */
     public function setAuteur($auteur)
     {
@@ -149,7 +148,7 @@ class Serie
      * Set acteurs
      *
      * @param string $acteurs
-     * @return Serie
+     * @return Series
      */
     public function setActeurs($acteurs)
     {
@@ -172,7 +171,7 @@ class Serie
      * Set description
      *
      * @param string $description
-     * @return Serie
+     * @return Series
      */
     public function setDescription($description)
     {
@@ -195,7 +194,7 @@ class Serie
      * Set image
      *
      * @param \Acme\FishBlockBundle\Entity\Image $image
-     * @return Serie
+     * @return Series
      */
     public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
     {
@@ -218,7 +217,7 @@ class Serie
      * Set category
      *
      * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Serie
+     * @return Series
      */
     public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
     {
@@ -241,7 +240,7 @@ class Serie
      * Add seasion
      *
      * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
-     * @return Serie
+     * @return Series
      */
     public function addSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
     {
@@ -288,6 +287,5 @@ class Serie
 
         );
     }
-
 
 }

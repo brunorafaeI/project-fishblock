@@ -3,6 +3,7 @@
 namespace Acme\FishBlockBundle\Controller;
 
 
+
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -11,7 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Acme\FishBlockBundle\Entity\Serie;
+use Acme\FishBlockBundle\Entity\Series;
 use Acme\FishBlockBundle\Form\SerieType;
 
 
@@ -35,7 +36,7 @@ class SerieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AcmeFishBlockBundle:Serie')->findAll();
+        $entities = $em->getRepository('AcmeFishBlockBundle:Series')->findAll();
 
 
         return array(
@@ -53,7 +54,7 @@ class SerieController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Serie();
+        $entity = new Series();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -76,11 +77,11 @@ class SerieController extends Controller
     /**
      * Creates a form to create a Serie entity.
      *
-     * @param Serie $entity The entity
+     * @param Series $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Serie $entity)
+    private function createCreateForm(Series $entity)
     {
         $form = $this->createForm(new SerieType(), $entity, array(
             'action' => $this->generateUrl('serie_create'),
@@ -101,7 +102,7 @@ class SerieController extends Controller
      */
     public function newAction()
     {
-        $entity = new Serie();
+        $entity = new Series();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -120,7 +121,7 @@ class SerieController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
+        $entity = $em->getRepository('AcmeFishBlockBundle:Series')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
@@ -142,7 +143,7 @@ class SerieController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
+        $entity = $em->getRepository('AcmeFishBlockBundle:Series')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
@@ -161,11 +162,11 @@ class SerieController extends Controller
     /**
      * Creates a form to edit a Serie entity.
      *
-     * @param Serie $entity The entity
+     * @param Series $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Serie $entity)
+    private function createEditForm(Series $entity)
     {
         $form = $this->createForm(new SerieType(), $entity, array(
             'action' => $this->generateUrl('serie_update', array('id' => $entity->getId())),
@@ -188,7 +189,7 @@ class SerieController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
+        $entity = $em->getRepository('AcmeFishBlockBundle:Series')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Serie entity.');
@@ -223,7 +224,7 @@ class SerieController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AcmeFishBlockBundle:Serie')->find($id);
+            $entity = $em->getRepository('AcmeFishBlockBundle:Series')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Serie entity.');

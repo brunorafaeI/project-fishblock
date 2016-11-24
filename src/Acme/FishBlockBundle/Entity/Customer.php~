@@ -1,4 +1,5 @@
 <?php
+//Acme/FishBlockBundle/Entity/Customer.php
 
 namespace Acme\FishBlockBundle\Entity;
 
@@ -60,7 +61,6 @@ class Customer
     {
         return $this->user;
     }
-      
 
 
     /**
@@ -74,6 +74,30 @@ class Customer
     }
 
     /**
+     * Set name
+     *
+     * @param string $name
+     * @return Customer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Affichage d'une entité Proposer avec echo
      * @return string Représentation du proposer
      */
@@ -84,5 +108,7 @@ class Customer
             $this->getId(),
         );
     }
+
+
 
 }

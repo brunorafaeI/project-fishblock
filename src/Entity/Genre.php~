@@ -1,0 +1,170 @@
+<?php
+# Fichier Genre.php
+
+namespace Acme\FishBlockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\GenreRepository")
+ */
+class Genre
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+    /**
+     * Bidirectional
+     *
+     * @ORM\ManyToMany(targetEntity="Serie", mappedBy="listeDesGenres")
+     */
+    protected $listeDesSeries;
+
+    /**
+     * @ORM\Column(type="string", length=90)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "2",
+     *      max = "50",
+     *      minMessage = "Le genre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le genre ne peut pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $label;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->listeDesSeries = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Genre
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Add listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     * @return Genre
+     */
+    public function addListeDesSerie(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries[] = $listeDesSeries;
+
+        return $this;
+    }
+
+    /**
+     * Remove listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     */
+    public function removeListeDesSerie(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries->removeElement($listeDesSeries);
+    }
+
+    /**
+     * Get listeDesSeries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getListeDesSeries()
+    {
+        return $this->listeDesSeries;
+    }
+
+    /**
+     * Affichage d'une entité Genre avec echo
+     * @return string Représentation du genre
+     */
+    public function __toString()
+    {
+        return $this->label;
+    }
+
+
+    /**
+     * Add listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     * @return Genre
+     */
+    public function addListeDesSeries(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries[] = $listeDesSeries;
+
+        return $this;
+    }
+
+    /**
+     * Remove listeDesSeries
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $listeDesSeries
+     */
+    public function removeListeDesSeries(\Acme\FishBlockBundle\Entity\Serie $listeDesSeries)
+    {
+        $this->listeDesSeries->removeElement($listeDesSeries);
+    }
+
+    /**
+     * Set propose
+     *
+     * @param \Acme\FishBlockBundle\Entity\Proposer $propose
+     * @return Genre
+     */
+    public function setPropose(\Acme\FishBlockBundle\Entity\Proposer $propose = null)
+    {
+        $this->propose = $propose;
+
+        return $this;
+    }
+
+    /**
+     * Get propose
+     *
+     * @return \Acme\FishBlockBundle\Entity\Proposer 
+     */
+    public function getPropose()
+    {
+        return $this->propose;
+    }
+}

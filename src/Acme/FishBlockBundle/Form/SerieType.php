@@ -29,7 +29,7 @@ class SerieType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\FishBlockBundle\Entity\Serie'
+            'data_class' => 'Acme\FishBlockBundle\Entity\Series'
         ));
     }
 

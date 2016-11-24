@@ -1,0 +1,103 @@
+<?php
+//Acme/FishBlockBundle/Entity/Series.php
+
+namespace Acme\FishBlockBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
+/**
+ * Series
+ *
+ * @ORM\Table(name="series")
+ * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SerieRepository")
+ */
+class Series
+{
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=120)
+     */
+    protected $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=120)
+     */
+    protected $auteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=120)
+     */
+    protected $acteurs;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(type="text")
+     */
+    protected $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="Image")
+     * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
+     */
+    protected $image;
+
+
+    /**
+     * @var \Category
+     *
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+
+
+    /**
+     * @var \Seasion
+     * @ORM\OneToMany(targetEntity="Seasion", mappedBy="serie")
+     *
+     */
+    private $seasion;
+
+
+
+
+    /**
+     * Affichage d'une entité Serie avec echo
+     * @return string Représentation de la série
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getImage(),
+            $this->getTitre(),
+            $this->getDescription(),
+            $this->getCategory(),
+            $this->getAuteur(),
+            $this->getActeurs(),
+            $this->getId()
+
+        );
+    }
+
+}

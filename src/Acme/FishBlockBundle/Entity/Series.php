@@ -1,17 +1,5 @@
 <?php
-# Fichier Serie.php
-
-/*******************************************************************************************
- *  Namespace dans lequel se trouvera notre objet "Serie" .
- * Les namespace servent à définir un espace de noms dans lesquels seront stockés notre objet.
- * Ici on dit que notre classe Genre fait partit de l'espace de Nom Entity,
- * ainsi  Symfony saura qu'il s'agit bien d'une entité.
- *
- * Dès lors qu'on utilisera l'instruction "use Acme\FishBlockBundle\Entity\Serie" dans un fichier PHP,
- * on pourra accéder à notre entité sans utiliser à chaque fois une référence complète vers l'objet !
- *
- * On pourra donc faire new Serie() au lieu de new Acme\FishBlockBundle\Entity\Serie();
- ********************************************************************************************/
+//Acme/FishBlockBundle/Entity/Series.php
 
 namespace Acme\FishBlockBundle\Entity;
 
@@ -20,51 +8,54 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-/*******************************************************************************************
- *
- * Ci-dessous, nous allons décrire notre table, telle qu'elle sera gérée par Doctrine.
- *
- * Vous allez voir des commentaires faisant apparaître le mot clé @ORM,
- * ces balises sont très importantes, elles permettent principalement de définir de quel
- * type de champ il s'agit. Ainsi Doctrine saura comment créé ce champ dans la base
- * de données de votre choix.
- *
- *******************************************************************************************/
 /**
+ * Series
+ *
+ * @ORM\Table(name="series")
  * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SerieRepository")
  */
-class Serie
+class Series
 {
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=120)
      */
     protected $titre;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=120)
      */
     protected $auteur;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=120)
      */
     protected $acteurs;
 
     /**
+     * @var text
+     *
      * @ORM\Column(type="text")
      */
     protected $description;
 
     /**
-     * @var String
+     * @var string
      *
      * @ORM\OneToOne(targetEntity="Image")
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
@@ -96,8 +87,6 @@ class Serie
         $this->seasion = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-
     /**
      * Get id
      *
@@ -112,7 +101,7 @@ class Serie
      * Set titre
      *
      * @param string $titre
-     * @return Serie
+     * @return Series
      */
     public function setTitre($titre)
     {
@@ -135,7 +124,7 @@ class Serie
      * Set auteur
      *
      * @param string $auteur
-     * @return Serie
+     * @return Series
      */
     public function setAuteur($auteur)
     {
@@ -158,7 +147,7 @@ class Serie
      * Set acteurs
      *
      * @param string $acteurs
-     * @return Serie
+     * @return Series
      */
     public function setActeurs($acteurs)
     {
@@ -181,7 +170,7 @@ class Serie
      * Set description
      *
      * @param string $description
-     * @return Serie
+     * @return Series
      */
     public function setDescription($description)
     {
@@ -204,7 +193,7 @@ class Serie
      * Set image
      *
      * @param \Acme\FishBlockBundle\Entity\Image $image
-     * @return Serie
+     * @return Series
      */
     public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
     {
@@ -227,7 +216,7 @@ class Serie
      * Set category
      *
      * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Serie
+     * @return Series
      */
     public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
     {
@@ -250,7 +239,7 @@ class Serie
      * Add seasion
      *
      * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
-     * @return Serie
+     * @return Series
      */
     public function addSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
     {
