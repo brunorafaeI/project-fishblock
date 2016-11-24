@@ -24,22 +24,85 @@ class Seasion
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="Episode", mappedBy="category")
+     * @ORM\Column(name="label", type="string", length=150)
+     *
      */
     private $label;
 
     /**
-     * @var string
+     * @var \Serie
      *
-     * @ORM\Column(name="episodes", type="string", length=150)
+     * @ORM\ManyToOne(targetEntity="Serie", inversedBy="seasion", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
+     */
+    private $serie;
+
+
+    /**
+     * @var \Episode
+     * @ORM\OneToMany(targetEntity="Episode", mappedBy="seasion")
+     *
      */
     private $episodes;
 
 
     /**
+     * Set serie
+     *
+     * @param \Acme\FishBlockBundle\Entity\Serie $serie
+     * @return Seasion
+     */
+    public function setSerie(\Acme\FishBlockBundle\Entity\Serie $serie = null)
+    {
+        $this->serie = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \Acme\FishBlockBundle\Entity\Serie
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
+
+    /**
+     * Add episodes
+     *
+     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     * @return Seasion
+     */
+    public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    {
+        $this->episodes[] = $episodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove episodes
+     *
+     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     */
+    public function removeEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    {
+        $this->episodes->removeElement($episodes);
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->episodes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +125,7 @@ class Seasion
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -70,55 +133,30 @@ class Seasion
     }
 
     /**
-     * Set episodes
-     *
-     * @param string $episodes
-     * @return Seasion
-     */
-    public function setEpisodes($episodes)
-    {
-        $this->episodes = $episodes;
-
-        return $this;
-    }
-
-    /**
      * Get episodes
      *
-     * @return string 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEpisodes()
     {
         return $this->episodes;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->label = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
 
     /**
-     * Add label
-     *
-     * @param \Acme\FishBlockBundle\Entity\Episode $label
-     * @return Seasion
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
      */
-    public function addLabel(\Acme\FishBlockBundle\Entity\Episode $label)
+    public function __toString()
     {
-        $this->label[] = $label;
+        return array(
+            $this->getLabel(),
+            $this->getEpisodes(),
+            $this->getSerie(),
+            $this->getId(),
 
-        return $this;
+        );
     }
 
-    /**
-     * Remove label
-     *
-     * @param \Acme\FishBlockBundle\Entity\Episode $label
-     */
-    public function removeLabel(\Acme\FishBlockBundle\Entity\Episode $label)
-    {
-        $this->label->removeElement($label);
-    }
+
 }

@@ -45,11 +45,10 @@ class Category
     {
         $this->serie = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -72,7 +71,7 @@ class Category
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -105,7 +104,7 @@ class Category
     /**
      * Get serie
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSerie()
     {
@@ -118,6 +117,10 @@ class Category
      */
     public function __toString()
     {
-        return $this->getLabel();
+        return array(
+            $this->getLabel(),
+            $this->getSerie(),
+        );
     }
+
 }

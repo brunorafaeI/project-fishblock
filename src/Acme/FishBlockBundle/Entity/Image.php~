@@ -33,9 +33,6 @@ class Image
     private $path;
 
 
-
-
-
     /**
      * Get id
      *
@@ -67,5 +64,17 @@ class Image
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Affichage d'une entité Image avec echo
+     * @return string Représentation de la image
+     */
+    public function __toString()
+    {
+        return array(
+            $this->getPath(),
+            $this->getId(),
+        );
     }
 }

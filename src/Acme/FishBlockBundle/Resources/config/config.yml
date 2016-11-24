@@ -46,4 +46,14 @@ fos_user:
         token_generator:        fos_user.util.token_generator.default
         user_manager:           fos_user.user_manager.default
 
-
+# EasyAdmin configuration
+easy_admin:
+    entities:
+        - Acme\FishBlockBundle\Entity\Serie
+        - Acme\FishBlockBundle\Entity\Customer
+        - Acme\FishBlockBundle\Entity\Category
+        - Acme\FishBlockBundle\Entity\User
+        - Acme\FishBlockBundle\Entity\Seasion
+        - Acme\FishBlockBundle\Entity\Episode
+        - Acme\FishBlockBundle\Entity\Image
+        - Acme\FishBlockBundle\Entity\Proposer

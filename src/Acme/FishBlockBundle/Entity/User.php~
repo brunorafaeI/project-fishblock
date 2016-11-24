@@ -6,6 +6,7 @@ namespace Acme\FishBlockBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Model\ParticipantInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,11 +38,53 @@ class User extends BaseUser implements ParticipantInterface
     protected $date_nais;
 
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Customer", mappedBy="user")
+     */
+    protected $customers;
+
+    /**
+     * Add customers
+     *
+     * @param \Customer $customers
+     * @return User
+     */
+    public function addCustomer(Customer $customers)
+    {
+        $this->customers[] = $customers;
+
+        return $this;
+    }
+
+    /**
+     * Remove customers
+     *
+     * @param \Customer $customers
+     */
+    public function removeCustomer(Customer $customers)
+    {
+        $this->customers->removeElement($customers);
+    }
+
+    /**
+     * Get customers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCustomers()
+    {
+        return $this->customers;
+    }
+
+
     public function __construct()
     {
 
 
         parent::__construct();
+        $this->customers = new ArrayCollection();
 
 
 
