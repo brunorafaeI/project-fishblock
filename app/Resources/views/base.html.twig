@@ -96,7 +96,11 @@
 
 
         <section class="contenu-fish">
-        {% block body %}{% endblock %}
+        {% block body %}
+
+        {% block messagerie %}{% endblock %}
+            
+        {% endblock %}
 
         </section>
         {% block javascripts %}

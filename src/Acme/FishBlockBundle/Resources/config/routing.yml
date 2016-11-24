@@ -17,3 +17,6 @@ _admin_serie:
     type:     annotation
     prefix:   /admin
 
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /chat
