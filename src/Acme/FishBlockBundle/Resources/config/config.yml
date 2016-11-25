@@ -49,6 +49,9 @@ fos_user:
 # EasyAdmin configuration
 easy_admin:
     site_name:  'FishBlock Administration'
+    design:
+      brand_color: '#48B9C7'
+      color_scheme: 'light'
     entities:
         - Acme\FishBlockBundle\Entity\Customer
         - Acme\FishBlockBundle\Entity\Series
