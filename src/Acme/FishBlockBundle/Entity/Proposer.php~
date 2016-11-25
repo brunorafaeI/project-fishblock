@@ -54,35 +54,20 @@ class Proposer
     protected $category;
 
 
-    
-
-
-    /**
-     * Affichage d'une entité Proposer avec echo
-     * @return string Représentation du proposer
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getNomSerie(),
-            $this->getImage(),
-            $this->getCategory(),
-            $this->getId()
-
-        );
-    }
 
 
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
+
+
 
     /**
      * Set nomSerie
@@ -100,7 +85,7 @@ class Proposer
     /**
      * Get nomSerie
      *
-     * @return string 
+     * @return string
      */
     public function getNomSerie()
     {
@@ -123,7 +108,7 @@ class Proposer
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -146,7 +131,7 @@ class Proposer
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -169,10 +154,19 @@ class Proposer
     /**
      * Get category
      *
-     * @return \Acme\FishBlockBundle\Entity\Category 
+     * @return \Acme\FishBlockBundle\Entity\Category
      */
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
+     */
+    public function __toString()
+    {
+        return $this->getNomSerie();
     }
 }

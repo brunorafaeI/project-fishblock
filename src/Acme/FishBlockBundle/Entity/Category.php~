@@ -31,11 +31,23 @@ class Category
 
     /**
      * @var \Series
-     * @ORM\OneToMany(targetEntity="Series", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="Series", inversedBy="category", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="series_id", referencedColumnName="id")
+     *
      *
      */
     private $serie;
 
+
+
+    /**
+     * Affichage d'une entité Category avec echo
+     * @return string Représentation de la category
+     */
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 
 
     /**
@@ -46,11 +58,10 @@ class Category
         $this->serie = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -73,7 +84,7 @@ class Category
     /**
      * Get label
      *
-     * @return string
+     * @return string 
      */
     public function getLabel()
     {
@@ -106,23 +117,10 @@ class Category
     /**
      * Get serie
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getSerie()
     {
         return $this->serie;
-    }
-
-    /**
-     * Affichage d'une entité Film avec echo
-     * @return string Représentation du film
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getLabel(),
-            $this->getSerie(),
-            $this->getId(),
-        );
     }
 }

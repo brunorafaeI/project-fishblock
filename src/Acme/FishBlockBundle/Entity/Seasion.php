@@ -32,20 +32,28 @@ class Seasion
 
     /**
      * @var \Series
-     *
      * @ORM\ManyToOne(targetEntity="Series", inversedBy="seasion", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
+     *
      */
     private $serie;
 
-
     /**
      * @var \Episode
-     * @ORM\OneToMany(targetEntity="Episode", mappedBy="seasion")
      *
+     * @ORM\OneToMany(targetEntity="Episode", mappedBy="seasion")
      */
-    private $episodes;
+    private $episode;
 
+
+    /**
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
+     */
+    public function __toString()
+    {
+        return $this->getLabel();
+    }
 
 
     /**
@@ -53,14 +61,13 @@ class Seasion
      */
     public function __construct()
     {
-        $this->episodes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->episode = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -83,7 +90,7 @@ class Seasion
     /**
      * Get label
      *
-     * @return string
+     * @return string 
      */
     public function getLabel()
     {
@@ -106,7 +113,7 @@ class Seasion
     /**
      * Get serie
      *
-     * @return \Acme\FishBlockBundle\Entity\Series
+     * @return \Acme\FishBlockBundle\Entity\Series 
      */
     public function getSerie()
     {
@@ -114,50 +121,35 @@ class Seasion
     }
 
     /**
-     * Add episodes
+     * Add episode
      *
-     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     * @param \Acme\FishBlockBundle\Entity\Episode $episode
      * @return Seasion
      */
-    public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episode)
     {
-        $this->episodes[] = $episodes;
+        $this->episode[] = $episode;
 
         return $this;
     }
 
     /**
-     * Remove episodes
+     * Remove episode
      *
-     * @param \Acme\FishBlockBundle\Entity\Episode $episodes
+     * @param \Acme\FishBlockBundle\Entity\Episode $episode
      */
-    public function removeEpisode(\Acme\FishBlockBundle\Entity\Episode $episodes)
+    public function removeEpisode(\Acme\FishBlockBundle\Entity\Episode $episode)
     {
-        $this->episodes->removeElement($episodes);
+        $this->episode->removeElement($episode);
     }
 
     /**
-     * Get episodes
+     * Get episode
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getEpisodes()
+    public function getEpisode()
     {
-        return $this->episodes;
-    }
-
-    /**
-     * Affichage d'une entité Proposer avec echo
-     * @return string Représentation du proposer
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getLabel(),
-            $this->getEpisodes(),
-            $this->getSerie(),
-            $this->getId(),
-
-        );
+        return $this->episode;
     }
 }

@@ -81,3 +81,14 @@ fos_message:
     db_driver: orm
     thread_class: Acme\FishBlockBundle\Entity\Thread
     message_class: Acme\FishBlockBundle\Entity\Message
+
+
+# Tinymce Configuration
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        language: %locale%
+        theme:
+            simple:
+                theme: "modern"
