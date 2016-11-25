@@ -60,19 +60,42 @@ easy_admin:
       brand_color: '#48B9C7'
       color_scheme: 'light'
       menu:
-        - { entity: 'Customer', icon: 'cogs' }
+#        - { entity: 'Customer', icon: 'cogs' }
         - { entity: 'User', icon: 'users' }
-        - { entity: 'Category', icon: 'tags' }
+#        - { entity: 'Category', icon: 'tags' }
         - { entity: 'Series', icon: 'tv' }
-        - { entity: 'Seasion', icon: 'cube' }
-        - { entity: 'Episode', icon: 'youtube-play' }
+#        - { entity: 'Seasion', icon: 'cube' }
+#        - { entity: 'Episode', icon: 'youtube-play' }
 
     entities:
-         - Acme\FishBlockBundle\Entity\Customer
-         - Acme\FishBlockBundle\Entity\Category
-         - Acme\FishBlockBundle\Entity\Series
-         - Acme\FishBlockBundle\Entity\Seasion
-         - Acme\FishBlockBundle\Entity\Episode
-         - Acme\FishBlockBundle\Entity\User
+            User:
+                class: Acme\FishBlockBundle\Entity\User
+                list:
+                    fields:
+                        - { property: 'image', type: 'image', base_path: '/uploads/images/' }
+                        - { property: 'username', type: 'text'}
+                        - { property: 'email', type: 'email'}
+                        - { property: 'roles', type: 'array'}
+                        - { property: 'date_nais', type: 'date', format: 'd/m/Y'}
+                        - { property: 'enabled', type: 'toggle'}
+                        - { property: 'last_login', type: 'datetime'}
+                        - { property: 'locked', type: 'boolean'}
+
+            Series:
+                class: Acme\FishBlockBundle\Entity\Series
+                list:
+                    fields:
+                        - { property: 'titre', type: 'text', }
+                        - { property: 'image', type: 'image', base_path: '/uploads/images/' }
+                        - { property: 'seasion', type: 'association', entity: 'seasion' }
+
+#         - Acme\FishBlockBundle\Entity\Customer
+#         - Acme\FishBlockBundle\Entity\Category
+#         - Acme\FishBlockBundle\Entity\Series
+#         - Acme\FishBlockBundle\Entity\Seasion
+#         - Acme\FishBlockBundle\Entity\Episode
+
+
+
 
 
