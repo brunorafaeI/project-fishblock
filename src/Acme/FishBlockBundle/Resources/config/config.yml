@@ -1,4 +1,7 @@
 fos_user:
+    registration:
+            form:
+                type: Acme\FishBlockBundle\Form\RegistrationType
     user_class:             ~ # Required
     use_listener:           true
     use_flash_notifications: true
