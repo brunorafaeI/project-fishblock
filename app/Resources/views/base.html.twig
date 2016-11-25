@@ -10,28 +10,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-32x32.png') }}" sizes="32x32" />
         <link rel="icon" type="image/png" href="{{ asset('favicon-16x16.png') }}" sizes="16x16" />
-        <script src="{{ asset('public/js/tinymce/tinymce.min.js') }}"></script>
-
-        <script>
-            tinymce.init({
-                mode: 'textareas',
-                menubar: false,
-                entity_encoding : "raw",
-                extended_valid_elements : 'img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]',
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste imagetools"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-                imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
-                content_css: [
-                    '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-                    '//www.tinymce.com/css/codepen.min.css'
-                ]
-            });
-        </script>
-
+              
 
     </head>
     <body>
@@ -83,12 +62,16 @@
             <script src="{{ asset('public/js/jquery.min.js') }}"></script>
             <script src="{{ asset('public/js/fishblock.js') }}"></script>
             <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
-            <script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>
-
-
+            <!--<script src="{{ asset('public/js/tinymce/jquery.tinymce.min.js') }}"></script>-->
+            
+    
 
         {% endblock %}
-
+        {{ tinymce_init({
+        theme: {'simple':{'language': app.request.locale, 'height': 500 }},
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        autosave_ask_before_unload: false})
+        }}
         {% block footer %}
        <footer>
         {% include('::footer_fish.html.twig') %}

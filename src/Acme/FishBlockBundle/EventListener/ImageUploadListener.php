@@ -38,9 +38,9 @@ class ImageUploadListener
     {
 
         // upload only works for Serie entities
-//        if (!$entity instanceof Series) {
-//            return;
-//        }
+       if ($entity instanceof Category) {
+           return;
+       }
 
 
         $file = $entity->getImage();
