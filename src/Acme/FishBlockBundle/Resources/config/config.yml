@@ -1,4 +1,7 @@
 fos_user:
+    profile:
+            form:
+                type: Acme\FishBlockBundle\Form\ProfileType
     registration:
             form:
                 type: Acme\FishBlockBundle\Form\RegistrationType

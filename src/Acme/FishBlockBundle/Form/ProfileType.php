@@ -1,22 +1,31 @@
 <?php
-// src/Acme/FishBlockBundle/Form/RegistrationType.php
-
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Acme\FishBlockBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Gregwar\CaptchaBundle\Type\CaptchaType;
 
-class RegistrationType extends AbstractType
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class ProfileType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
+
             ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
-            ->add('date_nais', BirthdayType::class, array('format' => 'ddMMyyyy', 'label' => 'Date de naissance: '))
-            ->add('captcha', CaptchaType::class, array('reload' => true, 'as_url' => true))
+
         ;
     }
 
@@ -28,14 +37,22 @@ class RegistrationType extends AbstractType
         // return 'fos_user_registration';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
-        return 'app_user_registration';
+        return 'fos_user_profile';
     }
-
-    // For Symfony 2.x
+    // BC for SF < 3.0
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return $this->getBlockPrefix();
     }
+
+
+
 }

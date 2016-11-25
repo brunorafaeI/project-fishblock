@@ -1,0 +1,18 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="fos_user_user_show">
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p>Image: <br>
+        <a href="{{ path('fos_user_profile_edit') }}">
+            <img class="profile-fish"  src="
+                        {% if app.user.image == true %}
+                            {{ asset('uploads/images/') ~ app.user.image }}
+                            {% else %}
+                            {{ asset('uploads/images/geek.jpg') }}
+                        {% endif %}" width="240" alt="{{ app.user.username }}
+                    ">
+        </a>
+    </p>
+</div>
