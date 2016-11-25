@@ -52,7 +52,7 @@
                     <a href="">
                         <i class="fa fa-bell-o"><span class="badge">3</span></i>
                     </a>
-                    <a href="">
+                    <a href="{{ path('fos_message_inbox') }}">
                         <i class="fa fa-envelope-o"><span {% if fos_message_nb_unread() > 0%} class="badge">{{ fos_message_nb_unread() }}{% endif %}</span></i>
                     </a>
                 </span>
