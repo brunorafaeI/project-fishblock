@@ -7,9 +7,12 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Acme\FishBlockBundle\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
-use Acme\FishBlockBundle\Entity\User;
-use Acme\FishBlockBundle\Entity\Proposer;
-use Acme\FishBlockBundle\Entity\Serie;
+
+
+use Acme\FishBlockBundle\Entity\Episode;
+use Acme\FishBlockBundle\Entity\Seasion;
+use Acme\FishBlockBundle\Entity\Category;
+
 
 class ImageUploadListener
 {
@@ -38,9 +41,15 @@ class ImageUploadListener
     {
 
         // upload only works for Serie entities
+<<<<<<< HEAD
        if ($entity instanceof Category) {
            return;
        }
+=======
+        if (($entity instanceof Seasion) OR ($entity instanceof Episode) OR ($entity instanceof Category)) {
+            return;
+        }
+>>>>>>> c7b8b7e6da045042cf9c25e3b9154f86d3ce194c
 
 
         $file = $entity->getImage();

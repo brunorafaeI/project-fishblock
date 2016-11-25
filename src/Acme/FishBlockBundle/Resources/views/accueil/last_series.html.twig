@@ -5,14 +5,14 @@
             <h4>{{ serie.titre }}</h4>
             <div class="list-group">{% for Genre in serie.category %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
             <div class="illustration  hoverzoom">
-                {% if serie.image is defined %}
+                {% if serie.image != NULL %}
                     <a  href="{{ path('_serie_show', { 'label': serie.titre|replace(" ", "-") }) }}">
                             <span class="roll">
                                 <h2>Title</h2>
                                 <p>description</p>
                             </span>
                     </a>
-                    <img src="{{ asset('uploads/series/') ~ serie.image }}" class="img-serie-fish" />
+                    <img src="{{ asset('uploads/images/') ~ serie.image }}" class="img-serie-fish" />
 
                 {% else %}
                     <span class="fa fa-ban"></span>

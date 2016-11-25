@@ -57,22 +57,31 @@ class Series
      */
     private $image;
 
+    /**
+     * @var \Seasion
+     *
+     * @ORM\OneToMany(targetEntity="Seasion", mappedBy="serie")
+     */
+    private $seasion;
+
 
     /**
      * @var \Category
      *
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="serie")
      */
     private $category;
 
 
+
     /**
-     * @var \Seasion
-     * @ORM\OneToMany(targetEntity="Seasion", mappedBy="serie")
-     *
+     * Affichage d'une entité Serie avec echo
+     * @return string Représentation de la série
      */
-    private $seasion;
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
 
 
     /**
@@ -81,12 +90,13 @@ class Series
     public function __construct()
     {
         $this->seasion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -97,8 +107,7 @@ class Series
      * Set titre
      *
      * @param string $titre
-     *
-     * @return Serie
+     * @return Series
      */
     public function setTitre($titre)
     {
@@ -110,7 +119,7 @@ class Series
     /**
      * Get titre
      *
-     * @return string
+     * @return string 
      */
     public function getTitre()
     {
@@ -121,8 +130,7 @@ class Series
      * Set auteur
      *
      * @param string $auteur
-     *
-     * @return Serie
+     * @return Series
      */
     public function setAuteur($auteur)
     {
@@ -134,7 +142,7 @@ class Series
     /**
      * Get auteur
      *
-     * @return string
+     * @return string 
      */
     public function getAuteur()
     {
@@ -145,8 +153,7 @@ class Series
      * Set acteurs
      *
      * @param string $acteurs
-     *
-     * @return Serie
+     * @return Series
      */
     public function setActeurs($acteurs)
     {
@@ -158,7 +165,7 @@ class Series
     /**
      * Get acteurs
      *
-     * @return string
+     * @return string 
      */
     public function getActeurs()
     {
@@ -169,8 +176,7 @@ class Series
      * Set description
      *
      * @param string $description
-     *
-     * @return Serie
+     * @return Series
      */
     public function setDescription($description)
     {
@@ -182,7 +188,7 @@ class Series
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -193,8 +199,7 @@ class Series
      * Set image
      *
      * @param string $image
-     *
-     * @return Serie
+     * @return Series
      */
     public function setImage($image)
     {
@@ -206,7 +211,7 @@ class Series
     /**
      * Get image
      *
-     * @return string
+     * @return string 
      */
     public function getImage()
     {
@@ -214,35 +219,10 @@ class Series
     }
 
     /**
-     * Set category
-     *
-     * @param \Acme\FishBlockBundle\Entity\Category $category
-     *
-     * @return Serie
-     */
-    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Acme\FishBlockBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
      * Add seasion
      *
      * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
-     *
-     * @return Serie
+     * @return Series
      */
     public function addSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
     {
@@ -264,7 +244,7 @@ class Series
     /**
      * Get seasion
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getSeasion()
     {
@@ -272,22 +252,35 @@ class Series
     }
 
     /**
-     * Affichage d'une entité Serie avec echo
-     * @return string Représentation de la série
+     * Add category
+     *
+     * @param \Acme\FishBlockBundle\Entity\Category $category
+     * @return Series
      */
-    public function __toString()
+    public function addCategory(\Acme\FishBlockBundle\Entity\Category $category)
     {
-        return array(
-            $this->getImage(),
-            $this->getTitre(),
-            $this->getDescription(),
-            $this->getCategory(),
-            $this->getAuteur(),
-            $this->getSeasion(),
-            $this->getActeurs(),
-            $this->getId()
+        $this->category[] = $category;
 
-        );
+        return $this;
     }
 
+    /**
+     * Remove category
+     *
+     * @param \Acme\FishBlockBundle\Entity\Category $category
+     */
+    public function removeCategory(\Acme\FishBlockBundle\Entity\Category $category)
+    {
+        $this->category->removeElement($category);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

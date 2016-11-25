@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new FOS\MessageBundle\FOSMessageBundle(),
             new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

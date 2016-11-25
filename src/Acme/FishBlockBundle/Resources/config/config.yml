@@ -51,16 +51,25 @@ fos_user:
 
 # EasyAdmin configuration
 easy_admin:
-    site_name:  'FishBlock Administration'
+    site_name:  'public/images/logo-fishblock2.png'
     design:
+      form_theme:   'vertical'
       brand_color: '#48B9C7'
       color_scheme: 'light'
+      menu:
+        - { entity: 'Customer', icon: 'cogs' }
+        - { entity: 'User', icon: 'users' }
+        - { entity: 'Category', icon: 'tags' }
+        - { entity: 'Series', icon: 'tv' }
+        - { entity: 'Seasion', icon: 'cube' }
+        - { entity: 'Episode', icon: 'youtube-play' }
+
     entities:
-        - Acme\FishBlockBundle\Entity\Customer
-        - Acme\FishBlockBundle\Entity\Series
-        - Acme\FishBlockBundle\Entity\Category
-        - Acme\FishBlockBundle\Entity\User
-        - Acme\FishBlockBundle\Entity\Seasion
-        - Acme\FishBlockBundle\Entity\Episode
-        - Acme\FishBlockBundle\Entity\Image
-        - Acme\FishBlockBundle\Entity\Proposer
+         - Acme\FishBlockBundle\Entity\Customer
+         - Acme\FishBlockBundle\Entity\Category
+         - Acme\FishBlockBundle\Entity\Series
+         - Acme\FishBlockBundle\Entity\Seasion
+         - Acme\FishBlockBundle\Entity\Episode
+         - Acme\FishBlockBundle\Entity\User
+
+

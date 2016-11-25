@@ -39,31 +39,40 @@ class Episode
     /**
      * @var \Seasion
      *
-     * @ORM\ManyToOne(targetEntity="Seasion", inversedBy="episodes", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Seasion", inversedBy="episode", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="seasion_id", referencedColumnName="id")
+     *
      */
     private $seasion;
 
     /**
-     * @var String
+     * @var \Series
      *
      * @ORM\ManyToOne(targetEntity="Series")
      *
      */
     protected $serie;
 
+    /**
+     * Affichage d'une entité Episode avec echo
+     * @return string Représentation du episode
+     */
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
+
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
         return $this->id;
     }
-
-
 
     /**
      * Set titre
@@ -81,7 +90,7 @@ class Episode
     /**
      * Get titre
      *
-     * @return string
+     * @return string 
      */
     public function getTitre()
     {
@@ -104,7 +113,7 @@ class Episode
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -127,7 +136,7 @@ class Episode
     /**
      * Get seasion
      *
-     * @return \Acme\FishBlockBundle\Entity\Seasion
+     * @return \Acme\FishBlockBundle\Entity\Seasion 
      */
     public function getSeasion()
     {
@@ -137,10 +146,10 @@ class Episode
     /**
      * Set serie
      *
-     * @param \Acme\FishBlockBundle\Entity\Serie $serie
+     * @param \Acme\FishBlockBundle\Entity\Series $serie
      * @return Episode
      */
-    public function setSerie(\Acme\FishBlockBundle\Entity\Serie $serie = null)
+    public function setSerie(\Acme\FishBlockBundle\Entity\Series $serie = null)
     {
         $this->serie = $serie;
 
@@ -150,29 +159,10 @@ class Episode
     /**
      * Get serie
      *
-     * @return \Acme\FishBlockBundle\Entity\Serie
+     * @return \Acme\FishBlockBundle\Entity\Series 
      */
     public function getSerie()
     {
         return $this->serie;
     }
-
-
-    /**
-     * Affichage d'une entité Proposer avec echo
-     * @return string Représentation du proposer
-     */
-    public function __toString()
-    {
-        return array(
-            $this->getTitre(),
-            $this->getDescription(),
-            $this->getSeasion(),
-            $this->getSerie(),
-            $this->getId()
-
-        );
-    }
-
-
 }

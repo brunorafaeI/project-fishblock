@@ -73,9 +73,6 @@ class Image
      */
     public function __toString()
     {
-        return array(
-            $this->getPath(),
-            $this->getId(),
-        );
+        return $this->getPath();
     }
 }

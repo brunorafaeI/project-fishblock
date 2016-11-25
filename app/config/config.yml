@@ -82,6 +82,7 @@ fos_message:
     thread_class: Acme\FishBlockBundle\Entity\Thread
     message_class: Acme\FishBlockBundle\Entity\Message
 
+<<<<<<< HEAD
 # TinyMCE Configuration
 stfalcon_tinymce:
     theme:
@@ -107,3 +108,15 @@ stfalcon_tinymce:
             theme_advanced_toolbar_align: "left"
             theme_advanced_statusbar_location: "bottom"
             theme_advanced_resizing: true
+=======
+
+# Tinymce Configuration
+stfalcon_tinymce:
+        include_jquery: true
+        tinymce_jquery: true
+        selector: ".tinymce"
+        language: %locale%
+        theme:
+            simple:
+                theme: "modern"
+>>>>>>> c7b8b7e6da045042cf9c25e3b9154f86d3ce194c
