@@ -36,8 +36,82 @@ class Category
      */
     private $serie;
 
-    
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->serie = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set label
+     *
+     * @param string $label
+     * @return Category
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
+     * Add serie
+     *
+     * @param \Acme\FishBlockBundle\Entity\Series $serie
+     * @return Category
+     */
+    public function addSerie(\Acme\FishBlockBundle\Entity\Series $serie)
+    {
+        $this->serie[] = $serie;
+
+        return $this;
+    }
+
+    /**
+     * Remove serie
+     *
+     * @param \Acme\FishBlockBundle\Entity\Series $serie
+     */
+    public function removeSerie(\Acme\FishBlockBundle\Entity\Series $serie)
+    {
+        $this->serie->removeElement($serie);
+    }
+
+    /**
+     * Get serie
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSerie()
+    {
+        return $this->serie;
+    }
 
     /**
      * Affichage d'une entité Film avec echo
@@ -47,9 +121,8 @@ class Category
     {
         return array(
             $this->getLabel(),
+            $this->getSerie(),
             $this->getId(),
         );
     }
-
-    
 }

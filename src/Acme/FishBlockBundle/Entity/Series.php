@@ -1,12 +1,9 @@
 <?php
-//Acme/FishBlockBundle/Entity/Series.php
 
 namespace Acme\FishBlockBundle\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * Series
@@ -19,48 +16,46 @@ class Series
     /**
      * @var int
      *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=120)
-     */
-    protected $titre;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=120)
+     * @ORM\Column(name="titre", type="string", length=150)
      */
-    protected $auteur;
+    private $titre;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=120)
+     * @ORM\Column(name="auteur", type="string", length=120, nullable=true)
      */
-    protected $acteurs;
-
-    /**
-     * @var text
-     *
-     * @ORM\Column(type="text")
-     */
-    protected $description;
+    private $auteur;
 
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="Image")
+     * @ORM\Column(name="acteurs", type="string", length=120, nullable=true)
+     */
+    private $acteurs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
-    protected $image;
+    private $image;
 
 
     /**
@@ -69,7 +64,7 @@ class Series
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $category;
+    private $category;
 
 
     /**
@@ -78,6 +73,7 @@ class Series
      *
      */
     private $seasion;
+
 
     /**
      * Constructor
@@ -101,7 +97,8 @@ class Series
      * Set titre
      *
      * @param string $titre
-     * @return Series
+     *
+     * @return Serie
      */
     public function setTitre($titre)
     {
@@ -124,7 +121,8 @@ class Series
      * Set auteur
      *
      * @param string $auteur
-     * @return Series
+     *
+     * @return Serie
      */
     public function setAuteur($auteur)
     {
@@ -147,7 +145,8 @@ class Series
      * Set acteurs
      *
      * @param string $acteurs
-     * @return Series
+     *
+     * @return Serie
      */
     public function setActeurs($acteurs)
     {
@@ -170,7 +169,8 @@ class Series
      * Set description
      *
      * @param string $description
-     * @return Series
+     *
+     * @return Serie
      */
     public function setDescription($description)
     {
@@ -192,10 +192,11 @@ class Series
     /**
      * Set image
      *
-     * @param \Acme\FishBlockBundle\Entity\Image $image
-     * @return Series
+     * @param string $image
+     *
+     * @return Serie
      */
-    public function setImage(\Acme\FishBlockBundle\Entity\Image $image = null)
+    public function setImage($image)
     {
         $this->image = $image;
 
@@ -205,7 +206,7 @@ class Series
     /**
      * Get image
      *
-     * @return \Acme\FishBlockBundle\Entity\Image
+     * @return string
      */
     public function getImage()
     {
@@ -216,7 +217,8 @@ class Series
      * Set category
      *
      * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Series
+     *
+     * @return Serie
      */
     public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
     {
@@ -239,7 +241,8 @@ class Series
      * Add seasion
      *
      * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
-     * @return Series
+     *
+     * @return Serie
      */
     public function addSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
     {
@@ -268,7 +271,6 @@ class Series
         return $this->seasion;
     }
 
-
     /**
      * Affichage d'une entité Serie avec echo
      * @return string Représentation de la série
@@ -281,11 +283,11 @@ class Series
             $this->getDescription(),
             $this->getCategory(),
             $this->getAuteur(),
+            $this->getSeasion(),
             $this->getActeurs(),
             $this->getId()
 
         );
     }
-
 
 }

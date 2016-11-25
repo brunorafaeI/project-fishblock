@@ -21,7 +21,7 @@ class ProposerType extends AbstractType
             ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'required' => false))
             ->add('category')
             ->add('description', TextareaType::class, array('label' => 'Description :','required' => false))
-            ->add('captcha', CaptchaType::class)
+            ->add('captcha', CaptchaType::class, array('reload' => true, 'as_url' => true))
         ;
     }
     
