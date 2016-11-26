@@ -9,9 +9,10 @@ use Acme\FishBlockBundle\FileUploader;
 use Symfony\Component\HttpFoundation\File\File;
 
 
-use Acme\FishBlockBundle\Entity\Episode;
-use Acme\FishBlockBundle\Entity\Seasion;
-use Acme\FishBlockBundle\Entity\Category;
+use Acme\FishBlockBundle\Entity\User;
+use Acme\FishBlockBundle\Entity\Series;
+use Acme\FishBlockBundle\Entity\Image;
+
 
 
 class ImageUploadListener
@@ -40,8 +41,8 @@ class ImageUploadListener
     private function uploadFile($entity)
     {
 
-        // upload only works for Serie entities
-        if (($entity instanceof Seasion) OR ($entity instanceof Episode) OR ($entity instanceof Category)) {
+        // upload only works for lited entities
+        if ((!$entity instanceof User) OR (!$entity instanceof Series) OR (!$entity instanceof Image)) {
             return;
         }
 

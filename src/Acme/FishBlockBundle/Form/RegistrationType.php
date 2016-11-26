@@ -14,7 +14,7 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
+
             ->add('date_nais', BirthdayType::class, array('format' => 'ddMMyyyy', 'label' => 'Date de naissance: '))
             ->add('captcha', CaptchaType::class, array('reload' => true, 'as_url' => true))
         ;

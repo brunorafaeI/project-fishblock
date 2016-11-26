@@ -103,7 +103,7 @@ class Customer
      */
     public function __toString()
     {
-        return $this->getUser();
+        return $this->getName();
     }
 
 

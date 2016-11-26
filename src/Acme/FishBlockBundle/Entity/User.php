@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Model\ParticipantInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -86,8 +87,26 @@ class User extends BaseUser implements ParticipantInterface
         parent::__construct();
         $this->customers = new ArrayCollection();
 
+    }
 
+    /**
+     * Get expiresAt
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
 
+    /**
+     * Get credentials_expire_at
+     *
+     * @return \DateTime
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
     }
 
     /**
@@ -96,7 +115,7 @@ class User extends BaseUser implements ParticipantInterface
      * @param string $image
      * @return User
      */
-    public function setImage($image)
+    public function setImage(UploadedFile $image = null)
     {
         $this->image = $image;
 
@@ -135,6 +154,7 @@ class User extends BaseUser implements ParticipantInterface
     {
         return $this->date_nais;
     }
+
 
 
 }

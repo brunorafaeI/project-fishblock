@@ -64,16 +64,33 @@ easy_admin:
         - { entity: 'User', icon: 'users' }
         - { entity: 'Category', icon: 'tags' }
         - { entity: 'Series', icon: 'youtube-play' }
-        - { entity: 'Season', icon: 'cube' }
-        - { entity: 'Episode', icon: 'tv' }
+        - { entity: 'Season', icon: 'modx' }
+        - { entity: 'Episode', icon: 'play-circle' }
 
     entities:
             Customer:
                  class: Acme\FishBlockBundle\Entity\Customer
+                 form:
+                      fields:
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
+                        - name
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Select user', icon: 'user' }
+                        - user
 
 
             User:
                 class: Acme\FishBlockBundle\Entity\User
+                form:
+                    fields:
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
+                        - customers
+                        - username
+                        - email
+                        - { property: 'date_nais', type: 'date', format: 'jj/mm/Y', label: 'Date de naissance' }
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Stats user', icon: 'cube' }
+                        - enabled
+                        - { property: 'password', algorithm: 'bcrypt', cost: 12 }
+                        - roles
                 list:
                     fields:
                         - { property: 'id', type: 'int'}
@@ -88,6 +105,17 @@ easy_admin:
 
             Series:
                 class: Acme\FishBlockBundle\Entity\Series
+                form:
+                    fields:
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
+                        - titre
+                        - { property: 'description', type: 'ckeditor' }
+                        - { property: 'image', type: 'file', data_class: 'null' }
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Others information', icon: 'coube' }
+                        - auteur
+                        - acteurs
+                        - season
+                        - category
                 list:
                     fields:
                         - { property: 'id', type: 'int'}

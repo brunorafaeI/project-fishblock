@@ -39,7 +39,7 @@ class Episode
     /**
      * @var \Season
      *
-     * @ORM\ManyToOne(targetEntity="Season", inversedBy="episode", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Season", inversedBy="episode")
      * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
      *
      */

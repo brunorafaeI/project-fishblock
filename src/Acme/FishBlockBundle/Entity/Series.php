@@ -4,12 +4,14 @@ namespace Acme\FishBlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Series
  *
  * @ORM\Table(name="series")
  * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SerieRepository")
+ *
  */
 class Series
 {
@@ -54,13 +56,14 @@ class Series
      * @var string
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
+     *
      */
     private $image;
 
     /**
      * @var \Season
      *
-     * @ORM\OneToMany(targetEntity="Season", mappedBy="serie")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="serie", cascade={"persist", "remove"})
      */
     private $season;
 
@@ -68,7 +71,7 @@ class Series
     /**
      * @var \Category
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="serie")
+     * @ORM\ManyToMany(targetEntity="Category", mappedBy="serie", cascade={"persist", "remove"})
      */
     private $category;
 
@@ -201,7 +204,7 @@ class Series
      * @param string $image
      * @return Series
      */
-    public function setImage($image)
+    public function setImage(UploadedFile $image = null)
     {
         $this->image = $image;
 
@@ -283,4 +286,6 @@ class Series
     {
         return $this->category;
     }
+
+
 }
