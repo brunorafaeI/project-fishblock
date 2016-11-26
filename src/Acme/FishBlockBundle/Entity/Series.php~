@@ -58,11 +58,11 @@ class Series
     private $image;
 
     /**
-     * @var \Seasion
+     * @var \Season
      *
-     * @ORM\OneToMany(targetEntity="Seasion", mappedBy="serie")
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="serie")
      */
-    private $seasion;
+    private $season;
 
 
     /**
@@ -89,7 +89,7 @@ class Series
      */
     public function __construct()
     {
-        $this->seasion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->season = new \Doctrine\Common\Collections\ArrayCollection();
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -219,36 +219,36 @@ class Series
     }
 
     /**
-     * Add seasion
+     * Add season
      *
-     * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
+     * @param \Acme\FishBlockBundle\Entity\Season $season
      * @return Series
      */
-    public function addSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
+    public function addSeason(\Acme\FishBlockBundle\Entity\Season $season)
     {
-        $this->seasion[] = $seasion;
+        $this->season[] = $season;
 
         return $this;
     }
 
     /**
-     * Remove seasion
+     * Remove season
      *
-     * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
+     * @param \Acme\FishBlockBundle\Entity\Season $season
      */
-    public function removeSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion)
+    public function removeSeason(\Acme\FishBlockBundle\Entity\Season $season)
     {
-        $this->seasion->removeElement($seasion);
+        $this->season->removeElement($season);
     }
 
     /**
-     * Get seasion
+     * Get season
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSeasion()
+    public function getSeason()
     {
-        return $this->seasion;
+        return $this->season;
     }
 
     /**

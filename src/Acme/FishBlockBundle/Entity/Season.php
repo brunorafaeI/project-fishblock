@@ -6,12 +6,12 @@ namespace Acme\FishBlockBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Seasion
+ * Season
  *
- * @ORM\Table(name="seasion")
- * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SeasionRepository")
+ * @ORM\Table(name="season")
+ * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\SeasonRepository")
  */
-class Seasion
+class Season
 {
     /**
      * @var int
@@ -32,7 +32,7 @@ class Seasion
 
     /**
      * @var \Series
-     * @ORM\ManyToOne(targetEntity="Series", inversedBy="seasion", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="Series", inversedBy="season", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="serie_id", referencedColumnName="id")
      *
      */
@@ -41,7 +41,7 @@ class Seasion
     /**
      * @var \Episode
      *
-     * @ORM\OneToMany(targetEntity="Episode", mappedBy="seasion")
+     * @ORM\OneToMany(targetEntity="Episode", mappedBy="season")
      */
     private $episode;
 
@@ -78,7 +78,7 @@ class Seasion
      * Set label
      *
      * @param string $label
-     * @return Seasion
+     * @return Season
      */
     public function setLabel($label)
     {
@@ -101,7 +101,7 @@ class Seasion
      * Set serie
      *
      * @param \Acme\FishBlockBundle\Entity\Series $serie
-     * @return Seasion
+     * @return Season
      */
     public function setSerie(\Acme\FishBlockBundle\Entity\Series $serie = null)
     {
@@ -124,7 +124,7 @@ class Seasion
      * Add episode
      *
      * @param \Acme\FishBlockBundle\Entity\Episode $episode
-     * @return Seasion
+     * @return Season
      */
     public function addEpisode(\Acme\FishBlockBundle\Entity\Episode $episode)
     {

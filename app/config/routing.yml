@@ -1,5 +1,5 @@
 acme_fish_block_seasion:
-    resource: "@AcmeFishBlockBundle/Controller/SeasionController.php"
+    resource: "@AcmeFishBlockBundle/Controller/SeasonController.php"
     type:     annotation
 
 acme_fish_block_episode:

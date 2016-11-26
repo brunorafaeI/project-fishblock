@@ -1,8 +1,8 @@
 {% extends 'FOSUserBundle::layout.html.twig' %}
 
-{% block title %}Seasions list{% endblock %}
+{% block title %}Seasons list{% endblock %}
 {% block body %}
-    <h1>Seasions list</h1>
+    <h1>Seasons list</h1>
 
     <table>
         <thead>
@@ -13,17 +13,17 @@
             </tr>
         </thead>
         <tbody>
-        {% for seasion in seasions %}
+        {% for season in seasons %}
             <tr>
-                <td><a href="{{ path('seasion_show', { 'id': seasion.id }) }}">{{ seasion.id }}</a></td>
-                <td>{{ seasion.episodes }}</td>
+                <td><a href="{{ path('season_show', { 'id': season.id }) }}">{{ season.id }}</a></td>
+                <td>{{ season.episodes }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('seasion_show', { 'id': seasion.id }) }}">show</a>
+                            <a href="{{ path('season_show', { 'id': season.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('seasion_edit', { 'id': seasion.id }) }}">edit</a>
+                            <a href="{{ path('season_edit', { 'id': season.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -34,7 +34,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('seasion_new') }}">Create a new seasion</a>
+            <a href="{{ path('season_new') }}">Create a new season</a>
         </li>
     </ul>
 {% endblock %}

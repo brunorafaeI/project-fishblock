@@ -37,13 +37,13 @@ class Episode
     private $description;
 
     /**
-     * @var \Seasion
+     * @var \Season
      *
-     * @ORM\ManyToOne(targetEntity="Seasion", inversedBy="episode", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="seasion_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Season", inversedBy="episode", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
      *
      */
-    private $seasion;
+    private $season;
 
     /**
      * @var \Series
@@ -121,26 +121,26 @@ class Episode
     }
 
     /**
-     * Set seasion
+     * Set season
      *
-     * @param \Acme\FishBlockBundle\Entity\Seasion $seasion
+     * @param \Acme\FishBlockBundle\Entity\Season $season
      * @return Episode
      */
-    public function setSeasion(\Acme\FishBlockBundle\Entity\Seasion $seasion = null)
+    public function setSeason(\Acme\FishBlockBundle\Entity\Season $season = null)
     {
-        $this->seasion = $seasion;
+        $this->season = $season;
 
         return $this;
     }
 
     /**
-     * Get seasion
+     * Get season
      *
-     * @return \Acme\FishBlockBundle\Entity\Seasion 
+     * @return \Acme\FishBlockBundle\Entity\Season 
      */
-    public function getSeasion()
+    public function getSeason()
     {
-        return $this->seasion;
+        return $this->season;
     }
 
     /**

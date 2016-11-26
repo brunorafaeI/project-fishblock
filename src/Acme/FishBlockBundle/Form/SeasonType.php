@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SeasionType extends AbstractType
+class SeasonType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ class SeasionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\FishBlockBundle\Entity\Seasion'
+            'data_class' => 'Acme\FishBlockBundle\Entity\Season'
         ));
     }
 
@@ -31,7 +31,7 @@ class SeasionType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'acme_fishblockbundle_seasion';
+        return 'acme_fishblockbundle_season';
     }
 
 
