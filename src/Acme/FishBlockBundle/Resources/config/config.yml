@@ -52,6 +52,15 @@ fos_user:
         token_generator:        fos_user.util.token_generator.default
         user_manager:           fos_user.user_manager.default
 
+
+# Vich Uploader Configuration
+vich_uploader:
+    db_driver: orm
+    mappings:
+            serie_images:
+                uri_prefix:         '%app.path.serie_images%'
+                upload_destination: '%kernel.root_dir%/../web/uploads/images'
+
 # EasyAdmin configuration
 easy_admin:
     site_name:  'public/images/logo-fishblock2.png'
@@ -86,6 +95,7 @@ easy_admin:
                         - customers
                         - username
                         - email
+                        - { property: 'imageFile', type: 'vich_image' }
                         - { property: 'date_nais', type: 'date', format: 'jj/mm/Y', label: 'Date de naissance' }
                         - { type: 'group', css_class: 'col-sm-6', label: 'Stats user', icon: 'cube' }
                         - enabled
@@ -94,11 +104,11 @@ easy_admin:
                 list:
                     fields:
                         - { property: 'id', type: 'int'}
-                        - { property: 'image', type: 'image', base_path: '/uploads/images/' }
+                        - { property: 'image', type: 'image', base_path: '%app.path.serie_images%' }
                         - { property: 'username', type: 'text'}
                         - { property: 'email', type: 'email'}
                         - { property: 'roles', type: 'array'}
-                        - { property: 'date_nais', type: 'date', format: 'd/m/Y'}
+                        - { property: 'date_nais', type: 'date', format: 'd M Y'}
                         - { property: 'enabled', type: 'toggle'}
                         - { property: 'last_login', type: 'datetime'}
                         - { property: 'locked', type: 'boolean'}
@@ -110,7 +120,7 @@ easy_admin:
                         - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
                         - titre
                         - { property: 'description', type: 'ckeditor' }
-                        - { property: 'image', type: 'file', data_class: 'null' }
+                        - { property: 'imageFile', type: 'vich_image' }
                         - { type: 'group', css_class: 'col-sm-6', label: 'Others information', icon: 'coube' }
                         - auteur
                         - acteurs
@@ -119,7 +129,7 @@ easy_admin:
                 list:
                     fields:
                         - { property: 'id', type: 'int'}
-                        - { property: 'image', type: 'image', base_path: '/uploads/images/' }
+                        - { property: 'image', type: 'image', base_path: '%app.path.serie_images%' }
                         - { property: 'titre', type: 'text', }
                         - { property: 'auteur', type: 'text', }
                         - { property: 'acteurs', type: 'text', }

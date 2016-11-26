@@ -10,7 +10,7 @@
 namespace Acme\FishBlockBundle\Form;
 
 
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -24,14 +24,14 @@ class ProfileType extends AbstractType
 
         $builder
 
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
+            ->add('imageFile', 'vich_image')
 
         ;
     }
 
     public function getParent()
     {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
 
         // Or for Symfony < 2.8
         // return 'fos_user_registration';

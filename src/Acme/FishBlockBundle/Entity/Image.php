@@ -5,6 +5,8 @@ namespace Acme\FishBlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 
 
@@ -13,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="image")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -26,13 +29,54 @@ class Image
     private $id;
 
     /**
-     * @var String
+     * @var string
      *
      * @ORM\Column(type="string", length=255)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
-    private $path;
+    private $image;
 
+    /**
+     * @Vich\UploadableField(mapping="serie_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    // ...
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+
+    /**
+     * Affichage d'une entité Image avec echo
+     * @return string Représentation de la image
+     */
+    public function __toString()
+    {
+        return $this->getImage();
+    }
 
     /**
      * Get id
@@ -45,34 +89,48 @@ class Image
     }
 
     /**
-     * Set path
+     * Set image
      *
-     * @param string $path
+     * @param string $image
      * @return Image
      */
-    public function setPath($path)
+    public function setImage($image)
     {
-        $this->path = $path;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get path
+     * Get image
      *
      * @return string 
      */
-    public function getPath()
+    public function getImage()
     {
-        return $this->path;
+        return $this->image;
     }
 
     /**
-     * Affichage d'une entité Image avec echo
-     * @return string Représentation de la image
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Image
      */
-    public function __toString()
+    public function setUpdatedAt($updatedAt)
     {
-        return $this->getPath();
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

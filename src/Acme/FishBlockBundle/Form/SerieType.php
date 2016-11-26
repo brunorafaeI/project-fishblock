@@ -5,7 +5,6 @@ namespace Acme\FishBlockBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 
 
@@ -16,7 +15,7 @@ class SerieType extends AbstractType
     {
         $builder
             ->add('titre', 'text', array('label' => 'Titre :'))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null,
+            ->add('image', ImageType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null,
             'attr' => array('required' => false)))
             ->add('description')
             ->add('category')
