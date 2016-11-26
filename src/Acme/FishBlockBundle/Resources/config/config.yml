@@ -89,6 +89,7 @@ easy_admin:
 
             User:
                 class: Acme\FishBlockBundle\Entity\User
+                title: 'Users'
                 form:
                     fields:
                         - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
