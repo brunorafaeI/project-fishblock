@@ -17,12 +17,12 @@
                 {% else %}
                     <span class="fa fa-ban"></span>
                 {% endif %}
-            </div>
-            <div class="description">
-                {{ serie.description }}
-            </div>
+            {#</div>#}
+            {#<div class="description">#}
+                {#{{ serie.description }}#}
+            {#</div>#}
             <div class="read-more">
-                <a class="" href="{{ path('serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
+                <a class="" href="{{ path('_serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
             </div>
         </div>
     {% endfor %}

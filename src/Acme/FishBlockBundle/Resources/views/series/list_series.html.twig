@@ -39,7 +39,7 @@
                 <div class="list-group">{% for Genre in serie.category %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
                 <div class="illustration  hoverzoom">
                     {% if serie.image is defined %}
-                        <a  href="{{ path('_serie_show', { 'label': serie.titre|e|replace(" ", "-") }) }}">
+                        <a  href="{{ path('_serie_show', { 'label': serie.titre|e|lower|replace(" ", "-") }) }}">
                             <span class="roll">
                                 <h2>Title</h2>
                                 <p>description</p>
@@ -60,12 +60,12 @@
                         <span class="fa fa-ban"></span>
                     {% endif %}
                 </div>
-                <div class="description">
-                    {{ serie.description }}
-                </div>
-                <div class="read-more">
-                    <a class="" href="{{ path('serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>
-                </div>
+                {#<div class="description">#}
+                    {#{{ serie.description }}#}
+                {#</div>#}
+                {#<div class="read-more">#}
+                    {#<a class="" href="{{ path('_serie_show', { 'id': serie.id }) }}">{{ 'fish.read'|trans({}, 'AcmeFishBlockBundle') }}</a>#}
+                {#</div>#}
             </div>
 
     {% else %}
