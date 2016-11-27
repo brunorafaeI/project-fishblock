@@ -33,7 +33,7 @@
     {% for serie in series %}
 
 
-        <aside class="list-serie-fish" id="resultats_recherche">
+        <aside class="list-serie-fish">
             <div class="block animated fadeInUp">
                 <h4>{{ serie.titre }}</h4>
                 <div class="list-group">{% for Genre in serie.category %}{% if loop.index > 1 %},{% endif %} <span class="fa fa-viadeo-square"> {{ Genre.label }}</span>{% endfor %}</div>
