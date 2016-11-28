@@ -96,7 +96,8 @@ class Series
     /**
      * @var \Category
      *
-     * @ORM\ManyToMany(targetEntity="Category", mappedBy="serie", cascade={"persist", "remove"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 

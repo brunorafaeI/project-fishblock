@@ -64,6 +64,12 @@ vich_uploader:
 # EasyAdmin configuration
 easy_admin:
     site_name:  'public/images/logo-fishblock2.png'
+    list:
+      max_results: 10
+      actions:
+         - { name: 'show', icon: 'eye' }
+         - { name: 'edit', icon: 'pencil' }
+         - { name: 'delete', icon: 'remove'}
     design:
       form_theme:   'vertical'
       brand_color: '#48B9C7'
@@ -74,7 +80,7 @@ easy_admin:
         - { entity: 'Category', icon: 'tags' }
         - { entity: 'Series', icon: 'youtube-play' }
         - { entity: 'Season', icon: 'modx' }
-        - { entity: 'Episode', icon: 'play-circle' }
+        - { entity: 'Episode', icon: 'caret-square-o-right' }
 
     entities:
             Customer:

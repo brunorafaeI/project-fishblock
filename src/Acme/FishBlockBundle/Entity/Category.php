@@ -31,9 +31,8 @@ class Category
 
     /**
      * @var \Series
-     * @ORM\ManyToMany(targetEntity="Series", inversedBy="category", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="series_id", referencedColumnName="id")
      *
+     * @ORM\ManyToMany(targetEntity="Series", mappedBy="category", cascade={"persist", "remove"})
      *
      */
     private $serie;
