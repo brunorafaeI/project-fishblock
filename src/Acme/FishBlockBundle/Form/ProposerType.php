@@ -18,7 +18,7 @@ class ProposerType extends AbstractType
     {
         $builder
             ->add('nomSerie','text', array('label' => 'Nom de la série :'))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'required' => false))
+            ->add('image', 'vich_image')
             ->add('category')
             ->add('description', TextareaType::class, array('label' => 'Description :','required' => false))
             ->add('captcha', CaptchaType::class, array('reload' => true, 'as_url' => true))

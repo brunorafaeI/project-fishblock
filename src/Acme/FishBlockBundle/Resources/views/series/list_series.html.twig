@@ -39,8 +39,7 @@
                     {% if serie.image is defined %}
                         <a  href="{{ path('_serie_show', { 'label': serie.titre|e|lower|replace(" ", "-") }) }}">
                             <span class="roll">
-                                <h2>Title</h2>
-                                <p>description</p>
+                                <i class="fa fa-eye"></i><p>{{ 'fish.learn'|trans({}, 'AcmeFishBlockBundle') }}</p>
                             </span>
                         </a>
 

@@ -40,9 +40,9 @@ class Series
     private $auteur;
 
     /**
-     * @var string
+     * @var \Acteurs
      *
-     * @ORM\Column(name="acteurs", type="string", length=120, nullable=true)
+     * @ORM\OneToMany(targetEntity="Acteurs", mappedBy="serie", cascade={"persist", "remove"})
      */
     private $acteurs;
 
@@ -61,7 +61,24 @@ class Series
     private $image;
 
     /**
-     * @Vich\UploadableField(mapping="serie_images", fileNameProperty="image")
+     * @var \Season
+     *
+     * @ORM\OneToMany(targetEntity="Season", mappedBy="serie", cascade={"persist", "remove"})
+     */
+    private $season;
+
+
+    /**
+     * @var \Category
+     *
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
+    
+    /**
+     * @Vich\UploadableField(mapping="_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
@@ -85,22 +102,10 @@ class Series
         }
     }
 
-    /**
-     * @var \Season
-     *
-     * @ORM\OneToMany(targetEntity="Season", mappedBy="serie", cascade={"persist", "remove"})
-     */
-    private $season;
-
-
-    /**
-     * @var \Category
-     *
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="serie", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */
-    private $category;
-
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
 
 
     /**
@@ -113,13 +118,13 @@ class Series
     }
 
 
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->season = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->acteurs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -179,29 +184,6 @@ class Series
     }
 
     /**
-     * Set acteurs
-     *
-     * @param string $acteurs
-     * @return Series
-     */
-    public function setActeurs($acteurs)
-    {
-        $this->acteurs = $acteurs;
-
-        return $this;
-    }
-
-    /**
-     * Get acteurs
-     *
-     * @return string 
-     */
-    public function getActeurs()
-    {
-        return $this->acteurs;
-    }
-
-    /**
      * Set description
      *
      * @param string $description
@@ -245,6 +227,62 @@ class Series
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Series
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add acteurs
+     *
+     * @param \Acme\FishBlockBundle\Entity\Acteurs $acteurs
+     * @return Series
+     */
+    public function addActeur(\Acme\FishBlockBundle\Entity\Acteurs $acteurs)
+    {
+        $this->acteurs[] = $acteurs;
+
+        return $this;
+    }
+
+    /**
+     * Remove acteurs
+     *
+     * @param \Acme\FishBlockBundle\Entity\Acteurs $acteurs
+     */
+    public function removeActeur(\Acme\FishBlockBundle\Entity\Acteurs $acteurs)
+    {
+        $this->acteurs->removeElement($acteurs);
+    }
+
+    /**
+     * Get acteurs
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getActeurs()
+    {
+        return $this->acteurs;
     }
 
     /**
@@ -311,33 +349,5 @@ class Series
     public function getCategory()
     {
         return $this->category;
-    }
-
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Series
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 }

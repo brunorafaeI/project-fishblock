@@ -5,12 +5,16 @@ namespace Acme\FishBlockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 /**
  * Proposer
  *
  * @ORM\Table(name="proposer")
  * @ORM\Entity(repositoryClass="Acme\FishBlockBundle\Repository\ProposerRepository")
+ * @Vich\Uploadable
  */
 class Proposer
 {
@@ -30,44 +34,73 @@ class Proposer
      */
     private $nomSerie;
 
+    /**
+     * @var \User
+     *
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist", "remove"})
+     *
+     */
+    private $user;
+
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=150, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\File(mimeTypes={ "image/jpg", "image/png", "image/jpeg" }, maxSize = "4096k")
      */
     private $image;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @Vich\UploadableField(mapping="_images", fileNameProperty="image")
+     * @var File
      */
-    private $description;
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
 
 
     /**
-     * @var \Category
-     *
-     * @ORM\OneToOne(targetEntity="Category")
+     * Affichage d'une entité Proposer avec echo
+     * @return string Représentation du proposer
      */
-    protected $category;
-
-
+    public function __toString()
+    {
+        return $this->getNomSerie();
+    }
 
 
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
         return $this->id;
     }
-
-
 
     /**
      * Set nomSerie
@@ -85,7 +118,7 @@ class Proposer
     /**
      * Get nomSerie
      *
-     * @return string
+     * @return string 
      */
     public function getNomSerie()
     {
@@ -108,7 +141,7 @@ class Proposer
     /**
      * Get image
      *
-     * @return string
+     * @return string 
      */
     public function getImage()
     {
@@ -116,57 +149,25 @@ class Proposer
     }
 
     /**
-     * Set description
+     * Set updatedAt
      *
-     * @param string $description
+     * @param \DateTime $updatedAt
      * @return Proposer
      */
-    public function setDescription($description)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->description = $description;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get updatedAt
      *
-     * @return string
+     * @return \DateTime 
      */
-    public function getDescription()
+    public function getUpdatedAt()
     {
-        return $this->description;
-    }
-
-    /**
-     * Set category
-     *
-     * @param \Acme\FishBlockBundle\Entity\Category $category
-     * @return Proposer
-     */
-    public function setCategory(\Acme\FishBlockBundle\Entity\Category $category = null)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return \Acme\FishBlockBundle\Entity\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Affichage d'une entité Proposer avec echo
-     * @return string Représentation du proposer
-     */
-    public function __toString()
-    {
-        return $this->getNomSerie();
+        return $this->updatedAt;
     }
 }

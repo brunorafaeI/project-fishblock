@@ -12,7 +12,6 @@ namespace  Acme\FishBlockBundle\DataFixtures\ORM;
  */
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Acme\FishBlockBundle\Entity\User;
 
 # il nous faut ce namespace pour la gestion du cryptage du mot de passe
 use Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder;
@@ -59,48 +58,33 @@ class LoadingFixtures implements FixtureInterface
         $manager->persist($Science_fiction);
         $manager->flush();
 
+        // Création d'un genre Science fiction
+        $drame = new Category();
+        $drame->setLabel("Drame");
+        // Enregistrment dans la base de données
+        $manager->persist($drame);
+        $manager->flush();
+
         // On crée la série !
         $Serie = new Series();
-        $Serie->setTitre("Matrix");
-        $Serie->setDescription("Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?");
-        $Serie->getListeDesCategories()->add($Action);
+        $Serie->setTitre("Game of Thrones");
+        $Serie->setDescription("Game of Thrones, également désignée par le titre français de l'œuvre dont elle est adaptée, Le Trône de fer1, est une série télévisée américaine médiéval-fantastique2 créée par David Benioff et D. B. Weiss, diffusée depuis le 17 avril 2011 sur HBO. Il s'agit de l'adaptation de la saga A Song of Ice and Fire, une suite de romans écrits par George R. R. Martin depuis 1996 elle-même inspirée par exemple de la suite romanesque Les Rois maudits écrite par Maurice Druon. La saga est réputée pour son réalisme et par ses nombreuses inspirations tirées d’événements, lieux et personnages historiques réels, tels que, la guerre des Deux-Roses, le mur d'Hadrien, Henri Tudor etc.");
+        $Serie->getListeDesCategories()->add($drame);
         $Serie->getListeDesCategories()->add($Science_fiction);
         // Enregistrment dans la base de données
         $manager->persist($Serie);
         $manager->flush();
 
-//        // Create the roles
-//        $role_user = new Role();
-//        $role_user->setName("ROLE_USER");
-//        $manager->persist($role_user);
-//        $manager->flush();
-//
-//        $role_admin = new Role();
-//        $role_admin->setName("ROLE_ADMIN");
-//        $manager->persist($role_admin);
-//        $manager->flush();
-//
-//        // create a user
-//        $user = new User();
-//
-//        // On donne le login Admin à notre nouvel utilisateur
-//        $user->setUsername('admin');
-//
-//        // On cré un salt pour amélioré la sécurité
-//        $user->setSalt(md5(time()));
-//
-//        // On crée un mot de passe (attention, comme vous pouvez le voir, il faut utiliser les même paramètres
-//        // que spécifiés dans le fichier security.yml, à savoir SHA512 avec 10 itérations.
-//        $encoder = new MessageDigestPasswordEncoder('sha512', true, 10);
-//        // On crée donc le mot de passe "admin" à partir de l'encodage choisi au-dessus
-//        $password = $encoder->encodePassword('password', $user->getSalt());
-//        // On applique le mot de passe à l'utilisateur
-//        $user->setPassword($password);
-//
-//        $user->getUserRoles()->add($role_admin);
-//
-//        $manager->persist($user);
-//        $manager->flush();
+        // On crée la série !
+        $Serie = new Series();
+        $Serie->setTitre("Game of Thrones");
+        $Serie->setDescription("Game of Thrones, également désignée par le titre français de l'œuvre dont elle est adaptée, Le Trône de fer1, est une série télévisée américaine médiéval-fantastique2 créée par David Benioff et D. B. Weiss, diffusée depuis le 17 avril 2011 sur HBO. Il s'agit de l'adaptation de la saga A Song of Ice and Fire, une suite de romans écrits par George R. R. Martin depuis 1996 elle-même inspirée par exemple de la suite romanesque Les Rois maudits écrite par Maurice Druon. La saga est réputée pour son réalisme et par ses nombreuses inspirations tirées d’événements, lieux et personnages historiques réels, tels que, la guerre des Deux-Roses, le mur d'Hadrien, Henri Tudor etc.");
+        $Serie->getListeDesCategories()->add($drame);
+        $Serie->getListeDesCategories()->add($Science_fiction);
+        // Enregistrment dans la base de données
+        $manager->persist($Serie);
+        $manager->flush();
+
     }
 }
 ?>

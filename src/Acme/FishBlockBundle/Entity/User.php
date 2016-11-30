@@ -33,7 +33,7 @@ class User extends BaseUser implements ParticipantInterface
     protected $image;
 
     /**
-     * @Vich\UploadableField(mapping="serie_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="_images", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
@@ -75,29 +75,6 @@ class User extends BaseUser implements ParticipantInterface
         return $this->imageFile;
     }
 
-    /**
-     * Add customers
-     *
-     * @param \Customer $customers
-     * @return User
-     */
-    public function addCustomer(Customer $customers)
-    {
-        $this->customers[] = $customers;
-
-        return $this;
-    }
-
-    /**
-     * Remove customers
-     *
-     * @param \Customer $customers
-     */
-    public function removeCustomer(Customer $customers)
-    {
-        $this->customers->removeElement($customers);
-    }
-
 
     /**
      * Get customers
@@ -109,43 +86,8 @@ class User extends BaseUser implements ParticipantInterface
         return $this->customers;
     }
 
-    /**
-     * Affichage d'une entité Serie avec echo
-     * @return string Représentation de la série
-     */
-    public function __toString()
-    {
-        return $this->getUsername();
-    }
-
-    public function __construct()
-    {
 
 
-        parent::__construct();
-        $this->customers = new ArrayCollection();
-
-    }
-
-    /**
-     * Get expiresAt
-     *
-     * @return \DateTime
-     */
-    public function getExpiresAt()
-    {
-        return $this->expiresAt;
-    }
-
-    /**
-     * Get credentials_expire_at
-     *
-     * @return \DateTime
-     */
-    public function getCredentialsExpireAt()
-    {
-        return $this->credentialsExpireAt;
-    }
 
     /**
      * Set image
@@ -193,9 +135,6 @@ class User extends BaseUser implements ParticipantInterface
         return $this->date_nais;
     }
 
-
-
-
     /**
      * Set updatedAt
      *
@@ -217,5 +156,28 @@ class User extends BaseUser implements ParticipantInterface
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Add customers
+     *
+     * @param \Acme\FishBlockBundle\Entity\Customer $customers
+     * @return User
+     */
+    public function addCustomer(\Acme\FishBlockBundle\Entity\Customer $customers)
+    {
+        $this->customers[] = $customers;
+
+        return $this;
+    }
+
+    /**
+     * Remove customers
+     *
+     * @param \Acme\FishBlockBundle\Entity\Customer $customers
+     */
+    public function removeCustomer(\Acme\FishBlockBundle\Entity\Customer $customers)
+    {
+        $this->customers->removeElement($customers);
     }
 }

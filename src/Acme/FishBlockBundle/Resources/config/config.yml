@@ -57,7 +57,7 @@ fos_user:
 vich_uploader:
     db_driver: orm
     mappings:
-            serie_images:
+            _images:
                 uri_prefix:         '%app.path.serie_images%'
                 upload_destination: '%kernel.root_dir%/../web/uploads/images'
 
@@ -81,6 +81,7 @@ easy_admin:
         - { entity: 'Series', icon: 'youtube-play' }
         - { entity: 'Season', icon: 'modx' }
         - { entity: 'Episode', icon: 'caret-square-o-right' }
+        - { entity: 'Acteurs', icon: 'street-view' }
 
     entities:
             Customer:
@@ -103,7 +104,7 @@ easy_admin:
                         - username
                         - email
                         - { property: 'imageFile', type: 'vich_image' }
-                        - { property: 'date_nais', type: 'date', format: 'jj/mm/Y', label: 'Date de naissance' }
+                        - { property: 'date_nais', type: 'date', format: 'j/m/Y', label: 'Date de naissance' }
                         - { type: 'group', css_class: 'col-sm-6', label: 'Stats user', icon: 'cube' }
                         - enabled
                         - { property: 'password', algorithm: 'bcrypt', cost: 12 }
@@ -118,7 +119,7 @@ easy_admin:
                         - { property: 'date_nais', type: 'date', format: 'd M Y'}
                         - { property: 'enabled', type: 'toggle'}
                         - { property: 'last_login', type: 'datetime'}
-                        - { property: 'locked', type: 'boolean'}
+#                        - { property: 'locked', type: 'boolean'}
 
             Series:
                 class: Acme\FishBlockBundle\Entity\Series
@@ -137,20 +138,45 @@ easy_admin:
                     fields:
                         - { property: 'id', type: 'int'}
                         - { property: 'image', type: 'image', base_path: '%app.path.serie_images%' }
-                        - { property: 'titre', type: 'text', }
-                        - { property: 'auteur', type: 'text', }
-                        - { property: 'acteurs', type: 'text', }
+                        - { property: 'titre', type: 'text' }
+                        - { property: 'auteur', type: 'text' }
+                        - { property: 'acteurs', type: 'association', entity: 'acteurs' }
                         - { property: 'season', type: 'association', entity: 'season' }
                         - { property: 'category', type: 'association', entity: 'category' }
 
             Season:
-                 class: Acme\FishBlockBundle\Entity\Season
+                class: Acme\FishBlockBundle\Entity\Season
 
             Episode:
-                  class: Acme\FishBlockBundle\Entity\Episode
+                class: Acme\FishBlockBundle\Entity\Episode
 
             Category:
-                  class: Acme\FishBlockBundle\Entity\Category
+                class: Acme\FishBlockBundle\Entity\Category
+
+            Acteurs:
+                class: Acme\FishBlockBundle\Entity\Acteurs
+                form:
+                    fields:
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Basic information', icon: 'pencil' }
+                        - name
+                        - pseudo
+                        - serie
+                        - { property: 'resume', type: 'ckeditor' }
+                        - { type: 'group', css_class: 'col-sm-6', label: 'Others informations', icon: 'cube' }
+                        - { property: 'imageFile', type: 'vich_image' }
+                        - { property: 'date_nais', type: 'datetime', format: 'd/n/Y', label: 'Date de naissance' }
+                        - taille
+
+                list:
+                    fields:
+                        - { property: 'id', type: 'int'}
+                        - name
+                        - pseudo
+                        - { property: 'date_nais', type: 'date', format: 'd M Y'}
+                        - taille
+                        - { property: 'image', type: 'image', base_path: '%app.path.serie_images%' }
+
+
 
 
 

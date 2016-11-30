@@ -1,3 +1,7 @@
+acme_fish_block_acteurs:
+    resource: "@AcmeFishBlockBundle/Controller/ActeursController.php"
+    type:     annotation
+
 acme_fish_block_seasion:
     resource: "@AcmeFishBlockBundle/Controller/SeasonController.php"
     type:     annotation
