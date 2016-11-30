@@ -41,15 +41,15 @@ class ImageUploadListener
     {
 
         // upload only works for Serie entities
-<<<<<<< HEAD
+        
        if ($entity instanceof Category) {
            return;
        }
-=======
+
         if (($entity instanceof Seasion) OR ($entity instanceof Episode) OR ($entity instanceof Category)) {
             return;
         }
->>>>>>> c7b8b7e6da045042cf9c25e3b9154f86d3ce194c
+
 
 
         $file = $entity->getImage();
