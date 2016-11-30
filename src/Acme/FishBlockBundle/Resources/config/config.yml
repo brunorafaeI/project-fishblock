@@ -12,7 +12,7 @@ fos_user:
     model_manager_name:     null  # change it to the name of your entity/document manager if you don't want to use the default one.
     from_email:
         address:        noreply@fishblock.com
-        sender_name:    Fish Block
+        sender_name:    Demo Test
     profile:
         form:
             type:               FOS\UserBundle\Form\Type\ProfileFormType # or 'fos_user_profile' on Symfony < 2.8
@@ -27,9 +27,9 @@ fos_user:
         confirmation:
             from_email: # Use this node only if you don't want the global email address for the confirmation email
                 address:        noreply@fishblock.com
-                sender_name:    Confirmation
-            enabled:    false # change to true for required email confirmation
+                sender_name:    Registration
             template:   FOSUserBundle:Registration:email.txt.twig
+            enabled:    false # change to true for required email confirmation
         form:
             type:               FOS\UserBundle\Form\Type\RegistrationFormType # or 'fos_user_registration' on Symfony < 2.8
             name:               fos_user_registration_form
@@ -40,13 +40,13 @@ fos_user:
             from_email: # Use this node only if you don't want the global email address for the resetting email
                 address:        noreply@fishblock.com
                 sender_name:    Resetting
-            template:   FOSUserBundle:Resetting:email.txt.twig
+            template:   email/password_resetting.email.twig
         form:
             type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
             name:               fos_user_resetting_form
             validation_groups:  [ResetPassword, Default]
     service:
-        mailer:                 fos_user.mailer.default
+        mailer:                 fos_user.mailer.twig_swift
         email_canonicalizer:    fos_user.util.canonicalizer.default
         username_canonicalizer: fos_user.util.canonicalizer.default
         token_generator:        fos_user.util.token_generator.default

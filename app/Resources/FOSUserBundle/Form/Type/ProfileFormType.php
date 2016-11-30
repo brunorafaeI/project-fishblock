@@ -48,7 +48,7 @@ class ProfileFormType extends AbstractType
             'mapped' => false,
             'constraints' => new UserPassword($constraintsOptions),
             ))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
+            ->add('image', 'vich_image')
 
         ;
     }
@@ -90,7 +90,7 @@ class ProfileFormType extends AbstractType
         $builder
             ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
             ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('image', FileType::class, array('label' => 'Image (jpg, png, jpeg)', 'data_class' => null, 'attr' => array('required' => false)))
+            ->add('image', 'vich_image')
         ;
     }
 }

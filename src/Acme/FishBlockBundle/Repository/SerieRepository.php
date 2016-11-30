@@ -19,7 +19,7 @@ class SerieRepository extends EntityRepository
         $query = $this->_em->createQueryBuilder();
         $query->select('s')
             ->from('AcmeFishBlockBundle:Series', 's')
-            ->setMaxResults(4)
+            ->setMaxResults(6)
             ->orderBy('s.id', 'DESC');
 
         return $query->getQuery()->getResult();
